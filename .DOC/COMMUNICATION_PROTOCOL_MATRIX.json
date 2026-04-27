@@ -1,0 +1,217 @@
+{
+  "communicationProtocolMatrix": {
+    "title": "AITT Module Communication Protocol Matrix",
+    "version": "1.0.0",
+    "date": "2024-03-30",
+
+    "modulePairs": [
+      {
+        "id": "MP-001",
+        "from": "Frontend",
+        "to": "Backend",
+        "direction": "Bidirectional",
+        "type": "Method calls",
+        "pattern": "Async (CompletableFuture)",
+        "protocol": "Java API",
+        "operations": [
+          "FlashingService.validate(modules, targetProfile)",
+          "FlashingService.execute(...)",
+          "HardwareService.discoverProbes()",
+          "HardwareService.connect(probeId, chipsetConfig)"
+        ],
+        "callbacks": [
+          "progressCallback: Consumer<Double>",
+          "logCallback: Consumer<String>"
+        ],
+        "concurrency": "Non-blocking"
+      },
+
+      {
+        "id": "MP-002",
+        "from": "Backend",
+        "to": "Hardware",
+        "direction": "Bidirectional",
+        "type": "Service calls",
+        "pattern": "Sync/Async",
+        "protocol": "Internal APIs",
+        "operations": [
+          "HardwareBridge.discoverProbes()",
+          "HardwareBridge.connect(probeId, chipsetConfig)",
+          "HardwareBridge.sendCommand(command)",
+          "HardwareBridge.addConnectionListener()"
+        ],
+        "concurrency": "May block or async",
+        "timeout": "5-30 seconds"
+      },
+
+      {
+        "id": "MP-003",
+        "from": "Backend",
+        "to": "Native",
+        "direction": "Unidirectional",
+        "type": "JNI bridges",
+        "pattern": "Synchronous",
+        "protocol": "JNI interface",
+        "operations": [
+          "Java_...discoverProbes()",
+          "Java_...connect()",
+          "Java_...sendCommand()",
+          "Java_...readMemory()",
+          "Java_...writeMemory()"
+        ],
+        "typeMapping": {
+          "String": "jstring → UTF-8 char*",
+          "byte[]": "jbyteArray → uint8_t*",
+          "long": "jlong → int64_t",
+          "int": "jint → int32_t"
+        },
+        "concurrency": "Blocking - Java thread waits",
+        "timeout": "100-5000ms"
+      },
+
+      {
+        "id": "MP-004",
+        "from": "Native",
+        "to": "Hardware",
+        "direction": "Unidirectional",
+        "type": "Driver functions",
+        "pattern": "Synchronous",
+        "protocol": "C API",
+        "drivers": [
+          {
+            "name": "S32K148 (ARM Cortex-M4F, SWD)",
+            "operations": [
+              "s32k148_init(ChipsetConfig_t *config)",
+              "s32k148_send_command(const char *cmd, CommandResult_t *result)",
+              "s32k148_read_memory(uint64_t addr, uint8_t *buf, int len)",
+              "s32k148_write_memory(uint64_t addr, uint8_t *data, int len)"
+            ]
+          },
+          {
+            "name": "MPC5777M (Power ISA, JTAG)",
+            "operations": [
+              "mpc5777m_init(ChipsetConfig_t *config)",
+              "mpc5777m_send_command(const char *cmd, CommandResult_t *result)",
+              "mpc5777m_read_memory(uint64_t addr, uint8_t *buf, int len)",
+              "mpc5777m_write_memory(uint64_t addr, uint8_t *data, int len)"
+            ]
+          }
+        ],
+        "concurrency": "Blocking",
+        "timeout": "5-30 seconds"
+      },
+
+      {
+        "id": "MP-005",
+        "from": "Backend",
+        "to": "Remote",
+        "direction": "Bidirectional",
+        "type": "TCP sockets",
+        "pattern": "Async with frames",
+        "protocol": "Binary TCP",
+        "operations": [
+          "NetworkProbeService.discover()",
+          "RemoteFlashingService.executeRemoteFlashing(...)",
+          "NetworkProbeService.connect(probeId, ipAddress, port)"
+        ],
+        "port": 20101,
+        "frameStructure": {
+          "magic": "uint32 = 0xDEADBEEF",
+          "messageType": "uint16 (FLASH_REQ=1, FLASH_RESP=2, PROGRESS=3)",
+          "payloadSize": "uint32",
+          "checksum": "uint32 (CRC32)"
+        },
+        "concurrency": "Non-blocking async",
+        "timeout": "3000-600000ms",
+        "reliability": "Frame-based ACK/NAK with retransmission"
+      },
+
+      {
+        "id": "MP-006",
+        "from": "Frontend",
+        "to": "Backend",
+        "direction": "Unidirectional",
+        "type": "Callbacks",
+        "pattern": "Event-driven",
+        "protocol": "Lambdas",
+        "callbacks": [
+          {
+            "name": "progressCallback",
+            "type": "Consumer<Double>",
+            "parameter": "Double (0.0 to 1.0)",
+            "usage": "Update progress bar"
+          },
+          {
+            "name": "logCallback",
+            "type": "Consumer<String>",
+            "parameter": "String (log message)",
+            "usage": "Display in log pane"
+          },
+          {
+            "name": "ConnectionEvent",
+            "type": "Consumer<ConnectionEvent>",
+            "parameter": "state: DISCONNECTED|CONNECTING|CONNECTED|ERROR",
+            "usage": "Update connection status"
+          },
+          {
+            "name": "DiscoveryEvent",
+            "type": "Consumer<List<HardwareInfo>>",
+            "parameter": "List<NetworkProbe> or List<HardwareInfo>",
+            "usage": "Populate probe list"
+          }
+        ],
+        "threadModel": "UI updates must use Platform.runLater()",
+        "concurrency": "Asynchronous event delivery"
+      }
+    ],
+
+    "services": [
+      {
+        "name": "FlashingService",
+        "description": "Handles firmware flashing operations",
+        "methods": [
+          "validate(modules, targetProfile): ValidationResult",
+          "execute(modules, targetProfile, progressCallback, logCallback): CompletableFuture<FlashingSession>"
+        ]
+      },
+      {
+        "name": "HardwareService",
+        "description": "Manages local hardware probe operations",
+        "methods": [
+          "discoverProbes(): CompletableFuture<List<HardwareInfo>>",
+          "connect(probeId, chipsetConfig): CompletableFuture<Void>",
+          "sendCommand(command): CompletableFuture<CommandResult>",
+          "readMemory(address, length): CompletableFuture<byte[]>",
+          "writeMemory(address, data): CompletableFuture<Void>"
+        ]
+      },
+      {
+        "name": "NetworkProbeService",
+        "description": "Discovers and manages remote network probes",
+        "methods": [
+          "discover(): CompletableFuture<List<NetworkProbe>>",
+          "connect(probeId, ipAddress, port): CompletableFuture<Void>",
+          "disconnect(probeId): void"
+        ]
+      },
+      {
+        "name": "RemoteFlashingService",
+        "description": "Executes flashing operations on remote probes",
+        "methods": [
+          "executeRemoteFlashing(modules, targetProfile, progressCallback): CompletableFuture<RemoteFlashingResult>"
+        ]
+      },
+      {
+        "name": "HardwareBridge",
+        "description": "JNI bridge to native library",
+        "methods": [
+          "discoverProbes(): HardwareInfo[]",
+          "connect(probeId, chipsetConfig): void",
+          "sendCommand(command): CommandResult",
+          "readMemory(address, length): byte[]",
+          "writeMemory(address, data): void"
+        ]
+      }
+    ]
+  }
+}

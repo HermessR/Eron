@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.core.config.ui.SettingsController"
+            styleClass="settings-root">
+
+    <!-- Header -->
+    <top>
+        <HBox styleClass="settings-header" alignment="CENTER_LEFT" spacing="10">
+            <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+            <Label text="Settings" styleClass="settings-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Reset to Defaults" onAction="#handleResetDefaults" styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <!-- Settings Tabs -->
+    <center>
+        <TabPane fx:id="settingsTabs" tabClosingPolicy="UNAVAILABLE" styleClass="settings-tabs">
+            <padding><Insets top="10" right="20" bottom="10" left="20"/></padding>
+
+            <!-- TRACE32 Settings Tab -->
+            <Tab text="TRACE32">
+                <ScrollPane fitToWidth="true" styleClass="settings-scroll">
+                    <VBox spacing="20" styleClass="settings-content">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                        <VBox spacing="8">
+                            <Label text="TRACE32 Executable Path" styleClass="field-label"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <TextField fx:id="trace32PathField" HBox.hgrow="ALWAYS" 
+                                           promptText="Path to t32marm.exe"/>
+                                <Button text="Browse..." onAction="#handleBrowseTrace32"/>
+                            </HBox>
+                            <Label text="Full path to the TRACE32 executable (e.g., t32marm.exe)" 
+                                   styleClass="field-hint"/>
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label text="Connection Timeout (seconds)" styleClass="field-label"/>
+                            <Spinner fx:id="timeoutSpinner" editable="true" prefWidth="120"/>
+                            <Label text="Timeout for TRACE32 connection attempts" styleClass="field-hint"/>
+                        </VBox>
+
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <!-- Flashing Settings Tab -->
+            <Tab text="Flashing">
+                <ScrollPane fitToWidth="true" styleClass="settings-scroll">
+                    <VBox spacing="20" styleClass="settings-content">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                        <VBox spacing="8">
+                            <Label text="Default Target Profile" styleClass="field-label"/>
+                            <ComboBox fx:id="defaultProfileCombo" prefWidth="300" 
+                                      promptText="Select default profile"/>
+                            <Label text="Profile selected by default when starting a new session" 
+                                   styleClass="field-hint"/>
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label text="Validation Options" styleClass="field-label"/>
+                            <CheckBox fx:id="autoValidateCheck" text="Auto-validate firmware before flashing"/>
+                            <Label text="Automatically run validation checks on loaded firmware" 
+                                   styleClass="field-hint"/>
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label text="Confirmation Dialogs" styleClass="field-label"/>
+                            <CheckBox fx:id="confirmFlashCheck" text="Confirm before starting flash operation"/>
+                            <CheckBox fx:id="confirmAbortCheck" text="Confirm before aborting flash operation"/>
+                            <Label text="Show confirmation dialogs for critical operations" 
+                                   styleClass="field-hint"/>
+                        </VBox>
+
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <!-- Output Settings Tab -->
+            <Tab text="Output">
+                <ScrollPane fitToWidth="true" styleClass="settings-scroll">
+                    <VBox spacing="20" styleClass="settings-content">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                        <VBox spacing="8">
+                            <Label text="Default Output Directory" styleClass="field-label"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <TextField fx:id="outputDirField" HBox.hgrow="ALWAYS" 
+                                           promptText="Directory for CMM script output"/>
+                                <Button text="Browse..." onAction="#handleBrowseOutputDir"/>
+                            </HBox>
+                            <Label text="Directory where generated CMM scripts will be saved" 
+                                   styleClass="field-hint"/>
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label text="File Generation Options" styleClass="field-label"/>
+                            <CheckBox fx:id="autoFilenameCheck" 
+                                      text="Auto-generate filename with timestamp"/>
+                            <CheckBox fx:id="openFolderCheck" 
+                                      text="Open output folder after generating file"/>
+                            <Label text="Options for CMM script file generation" styleClass="field-hint"/>
+                        </VBox>
+
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <!-- Appearance Settings Tab -->
+            <Tab text="Appearance">
+                <ScrollPane fitToWidth="true" styleClass="settings-scroll">
+                    <VBox spacing="20" styleClass="settings-content">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                        <VBox spacing="8">
+                            <Label text="Theme" styleClass="field-label"/>
+                            <ComboBox fx:id="themeCombo" prefWidth="200"/>
+                            <Label text="Application color theme" styleClass="field-hint"/>
+                        </VBox>
+
+                        <VBox spacing="8">
+                            <Label text="Log Display" styleClass="field-label"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Maximum log lines:"/>
+                                <Spinner fx:id="logLinesSpinner" editable="true" prefWidth="100"/>
+                            </HBox>
+                            <CheckBox fx:id="showTimestampCheck" text="Show timestamp in log entries"/>
+                            <CheckBox fx:id="wrapLogCheck" text="Wrap long log lines"/>
+                            <Label text="Configure how log output is displayed" styleClass="field-hint"/>
+                        </VBox>
+
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <!-- Documentation Tab -->
+            <Tab text="Documentation">
+                <ScrollPane fitToWidth="true" styleClass="settings-scroll">
+                    <VBox spacing="18" styleClass="settings-content">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+                        <VBox spacing="6">
+                            <Label text="AITT Implemented Sections" styleClass="form-title"/>
+                            <Label text="This section documents all implemented modules and core capabilities currently available in the tool."
+                                   styleClass="field-hint" wrapText="true"/>
+                        </VBox>
+
+                        <Separator/>
+
+                        <VBox spacing="6">
+                            <Label text="1. Login &amp; Session" styleClass="field-label"/>
+                            <Label text="- License key, username, and password based authentication flow." wrapText="true"/>
+                            <Label text="- Validation, error messaging, and keyboard Enter-to-login support." wrapText="true"/>
+                            <Label text="- Animated app title on login screen and controlled navigation to dashboard." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="2. Dashboard &amp; Navigation" styleClass="field-label"/>
+                            <Label text="- Central dashboard with module cards and status indicators." wrapText="true"/>
+                            <Label text="- Integrated routing to Flashing, Hardware, Remote, Scripting, Config, and TestDev modules." wrapText="true"/>
+                            <Label text="- Settings dialog access and logout/session switching flow." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="3. Flashing Module" styleClass="field-label"/>
+                            <Label text="- Target profile management and firmware/session handling." wrapText="true"/>
+                            <Label text="- Firmware validation, CMM generation, and TRACE32 execution orchestration." wrapText="true"/>
+                            <Label text="- Flash progress/status tracking with abort controls and confirmations." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="4. Hardware Module" styleClass="field-label"/>
+                            <Label text="- Probe and hardware information workflow through native bridge integration." wrapText="true"/>
+                            <Label text="- Device status presentation and runtime diagnostics surface in UI." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="5. Remote Module" styleClass="field-label"/>
+                            <Label text="- Remote probing and network-assisted operations through dedicated services." wrapText="true"/>
+                            <Label text="- Support path for remote flashing/probe discovery scenarios." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="6. Scripting Module" styleClass="field-label"/>
+                            <Label text="- Integrated scripting console/editor workflow with command execution hooks." wrapText="true"/>
+                            <Label text="- Output directory integration with application settings and generated artifacts." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="7. Config &amp; TestDev Sections" styleClass="field-label"/>
+                            <Label text="- Module entry points and placeholder screens for configuration and test development workflows." wrapText="true"/>
+                            <Label text="- Structured for extension with future implementation phases." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="8. Native Integration Layer" styleClass="field-label"/>
+                            <Label text="- JNI/native bridge components for hardware-specific operations and chipset abstractions." wrapText="true"/>
+                            <Label text="- Includes native project build assets and generated bindings for target support." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="9. Theme &amp; UI System" styleClass="field-label"/>
+                            <Label text="- Global dark/light theme switching through ThemeManager." wrapText="true"/>
+                            <Label text="- Shared style tokens and consistent structural layout across themes." wrapText="true"/>
+                        </VBox>
+
+                        <VBox spacing="6">
+                            <Label text="10. Settings &amp; Persistence" styleClass="field-label"/>
+                            <Label text="- Settings for TRACE32, flashing defaults, output behavior, and UI appearance." wrapText="true"/>
+                            <Label text="- JSON-backed persistence with reset-to-defaults and save/cancel flow." wrapText="true"/>
+                        </VBox>
+
+                        <Separator/>
+
+                        <Label text="Note: This documentation reflects the currently implemented baseline. It can be expanded as additional features are added."
+                               styleClass="field-hint" wrapText="true"/>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+    <!-- Footer with Save/Cancel buttons -->
+    <bottom>
+        <HBox styleClass="settings-footer" alignment="CENTER_RIGHT" spacing="10">
+            <padding><Insets top="15" right="20" bottom="15" left="20"/></padding>
+            <Button text="Cancel" onAction="#handleCancel" styleClass="secondary-button" prefWidth="100"/>
+            <Button text="Save" onAction="#handleSave" styleClass="primary-button" prefWidth="100"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

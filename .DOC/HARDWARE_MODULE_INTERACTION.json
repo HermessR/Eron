@@ -1,0 +1,461 @@
+{
+  "diagram": {
+    "title": "AITT Hardware Modules Interconnection",
+    "tool": "ToDiagram",
+    "direction": "left-to-right",
+    "legend": {
+      "requestPath": "solid",
+      "responsePath": "dashed",
+      "controlPath": "dotted"
+    },
+    "groups": [
+      {
+        "id": "g_app",
+        "label": "App",
+        "nodes": ["main_app", "hardware_controller", "scripting_controller"]
+      },
+      {
+        "id": "g_java_core",
+        "label": "Java Core Logic",
+        "nodes": ["hardware_service", "executor", "events"]
+      },
+      {
+        "id": "g_jni",
+        "label": "JNI Bridge Layer",
+        "nodes": ["hardware_bridge", "jni_detect", "jni_connect", "jni_command", "jni_memory", "jni_config"]
+      },
+      {
+        "id": "g_translation",
+        "label": "Translation Layer (Java <-> C)",
+        "nodes": ["map_strings", "map_bytes", "map_config", "map_result"]
+      },
+      {
+        "id": "g_native",
+        "label": "Native C Layer",
+        "nodes": ["native_core", "native_lock", "driver_registry"]
+      },
+      {
+        "id": "g_hw_abs",
+        "label": "Hardware Abstraction",
+        "nodes": ["drv_s32k148", "drv_mpc5777m"]
+      },
+      {
+        "id": "g_physical",
+        "label": "Physical Execution",
+        "nodes": ["usb_probe", "interface_bus", "target_hw"]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "main_app",
+        "label": "MainApp",
+        "subtitle": "native pre-warm",
+        "type": "app"
+      },
+      {
+        "id": "hardware_controller",
+        "label": "HardwareController",
+        "subtitle": "scan/connect/send",
+        "type": "app"
+      },
+      {
+        "id": "scripting_controller",
+        "label": "ScriptingController",
+        "subtitle": "sendCommandAndWait",
+        "type": "app"
+      },
+      {
+        "id": "hardware_service",
+        "label": "HardwareService",
+        "subtitle": "high-level orchestration",
+        "type": "service"
+      },
+      {
+        "id": "executor",
+        "label": "Single-thread Executor",
+        "subtitle": "CompletableFuture wrapper",
+        "type": "service"
+      },
+      {
+        "id": "events",
+        "label": "Connection/Log Events",
+        "subtitle": "UI callbacks",
+        "type": "service"
+      },
+      {
+        "id": "hardware_bridge",
+        "label": "HardwareBridge",
+        "subtitle": "singleton JNI gateway",
+        "type": "bridge"
+      },
+      {
+        "id": "jni_detect",
+        "label": "nativeDetectHardware / nativeDetectPorts",
+        "type": "jni"
+      },
+      {
+        "id": "jni_connect",
+        "label": "nativeConfigureChipset + nativeConnectProbe",
+        "type": "jni"
+      },
+      {
+        "id": "jni_command",
+        "label": "nativeSendCommandWithTimeout",
+        "type": "jni"
+      },
+      {
+        "id": "jni_memory",
+        "label": "nativeReadMemory / nativeWriteMemory",
+        "type": "jni"
+      },
+      {
+        "id": "jni_config",
+        "label": "nativeInit / nativeShutdown / nativeGetVersion",
+        "type": "jni"
+      },
+      {
+        "id": "map_strings",
+        "label": "String[] <-> ProbeInfo[]",
+        "type": "translation"
+      },
+      {
+        "id": "map_bytes",
+        "label": "byte[] <-> uint8_t*",
+        "type": "translation"
+      },
+      {
+        "id": "map_config",
+        "label": "ChipsetConfig JSON <-> C struct",
+        "type": "translation"
+      },
+      {
+        "id": "map_result",
+        "label": "Native response <-> CommandResult",
+        "type": "translation"
+      },
+      {
+        "id": "native_core",
+        "label": "aitt_native.c",
+        "subtitle": "detect/connect/send/read/write",
+        "type": "native"
+      },
+      {
+        "id": "native_lock",
+        "label": "CRITICAL_SECTION lock",
+        "subtitle": "serialized hardware access",
+        "type": "native"
+      },
+      {
+        "id": "driver_registry",
+        "label": "Driver Registry",
+        "subtitle": "select active driver",
+        "type": "native"
+      },
+      {
+        "id": "drv_s32k148",
+        "label": "chipset_s32k148.c",
+        "subtitle": "SWD driver",
+        "type": "driver"
+      },
+      {
+        "id": "drv_mpc5777m",
+        "label": "chipset_mpc5777m.c",
+        "subtitle": "JTAG driver",
+        "type": "driver"
+      },
+      {
+        "id": "usb_probe",
+        "label": "USB Debug Probe",
+        "subtitle": "J-Link / ST-Link / CMSIS-DAP",
+        "type": "hardware"
+      },
+      {
+        "id": "interface_bus",
+        "label": "Debug Interface",
+        "subtitle": "SWD or JTAG pins",
+        "type": "hardware"
+      },
+      {
+        "id": "target_hw",
+        "label": "Target Hardware",
+        "subtitle": "S32K148 / MPC5777M",
+        "type": "hardware"
+      }
+    ],
+    "links": [
+      {
+        "from": "main_app",
+        "to": "hardware_bridge",
+        "label": "pre-warm native",
+        "kind": "controlPath"
+      },
+      {
+        "from": "hardware_controller",
+        "to": "hardware_service",
+        "label": "scan/connect/send",
+        "kind": "requestPath"
+      },
+      {
+        "from": "scripting_controller",
+        "to": "hardware_service",
+        "label": "sync command",
+        "kind": "requestPath"
+      },
+      {
+        "from": "hardware_service",
+        "to": "executor",
+        "label": "run async",
+        "kind": "requestPath"
+      },
+      {
+        "from": "executor",
+        "to": "hardware_bridge",
+        "label": "call JNI",
+        "kind": "requestPath"
+      },
+      {
+        "from": "hardware_bridge",
+        "to": "jni_detect",
+        "label": "detect",
+        "kind": "requestPath"
+      },
+      {
+        "from": "hardware_bridge",
+        "to": "jni_connect",
+        "label": "configure+connect",
+        "kind": "requestPath"
+      },
+      {
+        "from": "hardware_bridge",
+        "to": "jni_command",
+        "label": "send command",
+        "kind": "requestPath"
+      },
+      {
+        "from": "hardware_bridge",
+        "to": "jni_memory",
+        "label": "read/write memory",
+        "kind": "requestPath"
+      },
+      {
+        "from": "hardware_bridge",
+        "to": "jni_config",
+        "label": "init/version/shutdown",
+        "kind": "controlPath"
+      },
+      {
+        "from": "jni_detect",
+        "to": "map_strings",
+        "label": "marshal",
+        "kind": "requestPath"
+      },
+      {
+        "from": "jni_connect",
+        "to": "map_config",
+        "label": "marshal",
+        "kind": "requestPath"
+      },
+      {
+        "from": "jni_command",
+        "to": "map_result",
+        "label": "marshal",
+        "kind": "requestPath"
+      },
+      {
+        "from": "jni_memory",
+        "to": "map_bytes",
+        "label": "marshal",
+        "kind": "requestPath"
+      },
+      {
+        "from": "map_strings",
+        "to": "native_core",
+        "label": "C call",
+        "kind": "requestPath"
+      },
+      {
+        "from": "map_config",
+        "to": "native_core",
+        "label": "C call",
+        "kind": "requestPath"
+      },
+      {
+        "from": "map_result",
+        "to": "native_core",
+        "label": "C call",
+        "kind": "requestPath"
+      },
+      {
+        "from": "map_bytes",
+        "to": "native_core",
+        "label": "C call",
+        "kind": "requestPath"
+      },
+      {
+        "from": "native_core",
+        "to": "native_lock",
+        "label": "lock",
+        "kind": "controlPath"
+      },
+      {
+        "from": "native_core",
+        "to": "driver_registry",
+        "label": "resolve driver",
+        "kind": "requestPath"
+      },
+      {
+        "from": "driver_registry",
+        "to": "drv_s32k148",
+        "label": "chipset=S32K148",
+        "kind": "requestPath"
+      },
+      {
+        "from": "driver_registry",
+        "to": "drv_mpc5777m",
+        "label": "chipset=MPC5777M",
+        "kind": "requestPath"
+      },
+      {
+        "from": "drv_s32k148",
+        "to": "usb_probe",
+        "label": "SWD operations",
+        "kind": "requestPath"
+      },
+      {
+        "from": "drv_mpc5777m",
+        "to": "usb_probe",
+        "label": "JTAG operations",
+        "kind": "requestPath"
+      },
+      {
+        "from": "usb_probe",
+        "to": "interface_bus",
+        "label": "physical transport",
+        "kind": "requestPath"
+      },
+      {
+        "from": "interface_bus",
+        "to": "target_hw",
+        "label": "pin-level execution",
+        "kind": "requestPath"
+      },
+      {
+        "from": "target_hw",
+        "to": "interface_bus",
+        "label": "response",
+        "kind": "responsePath"
+      },
+      {
+        "from": "interface_bus",
+        "to": "usb_probe",
+        "label": "response",
+        "kind": "responsePath"
+      },
+      {
+        "from": "usb_probe",
+        "to": "native_core",
+        "label": "driver result",
+        "kind": "responsePath"
+      },
+      {
+        "from": "native_core",
+        "to": "hardware_bridge",
+        "label": "native return",
+        "kind": "responsePath"
+      },
+      {
+        "from": "hardware_bridge",
+        "to": "hardware_service",
+        "label": "result",
+        "kind": "responsePath"
+      },
+      {
+        "from": "hardware_service",
+        "to": "events",
+        "label": "fire events/logs",
+        "kind": "controlPath"
+      },
+      {
+        "from": "events",
+        "to": "hardware_controller",
+        "label": "UI updates",
+        "kind": "responsePath"
+      },
+      {
+        "from": "events",
+        "to": "scripting_controller",
+        "label": "status/log updates",
+        "kind": "responsePath"
+      }
+    ],
+    "operationViews": [
+      {
+        "name": "DetectHardware",
+        "path": [
+          "hardware_controller",
+          "hardware_service",
+          "executor",
+          "hardware_bridge",
+          "jni_detect",
+          "map_strings",
+          "native_core",
+          "usb_probe",
+          "target_hw"
+        ]
+      },
+      {
+        "name": "ConnectProbe",
+        "path": [
+          "hardware_controller",
+          "hardware_service",
+          "executor",
+          "hardware_bridge",
+          "jni_config",
+          "jni_connect",
+          "map_config",
+          "native_core",
+          "driver_registry",
+          "drv_s32k148",
+          "usb_probe",
+          "target_hw"
+        ]
+      },
+      {
+        "name": "SendCommand",
+        "path": [
+          "hardware_controller",
+          "hardware_service",
+          "executor",
+          "hardware_bridge",
+          "jni_command",
+          "map_result",
+          "native_core",
+          "driver_registry",
+          "drv_mpc5777m",
+          "usb_probe",
+          "target_hw"
+        ]
+      },
+      {
+        "name": "ReadWriteMemory",
+        "path": [
+          "scripting_controller",
+          "hardware_service",
+          "executor",
+          "hardware_bridge",
+          "jni_memory",
+          "map_bytes",
+          "native_core",
+          "driver_registry",
+          "usb_probe",
+          "target_hw"
+        ]
+      }
+    ],
+    "notes": [
+      "App stays responsive because HardwareService offloads calls to a single-thread executor.",
+      "JNI/native path is blocking per call; native core serializes access with CRITICAL_SECTION.",
+      "Driver registry routes operations to S32K148 (SWD) or MPC5777M (JTAG)."
+    ]
+  }
+}

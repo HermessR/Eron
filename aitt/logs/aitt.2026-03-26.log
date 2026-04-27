@@ -1,0 +1,571 @@
+2026-03-26 20:27:42.754 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 20:27:42.852 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native13821260549454233877\aitt_native.dll
+2026-03-26 20:27:42.854 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 20:27:43.118 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 20:27:43.119 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:27:43.312 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 20:27:43.746 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 20:27:43.746 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 20:27:53.420 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:27:53.423 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:27:53.423 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:27:53.430 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:43)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:28:29.925 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:28:29.926 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:28:29.941 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:28:29.944 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:43)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:29:38.515 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-03-26 20:48:25.297 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 20:48:25.404 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native3835135547311754516\aitt_native.dll
+2026-03-26 20:48:25.406 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 20:48:25.786 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 20:48:25.787 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:48:26.028 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 20:48:26.519 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 20:48:26.520 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 20:48:40.430 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:48:40.445 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:48:40.447 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:48:40.455 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:43)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:48:51.425 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:48:51.426 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:48:51.426 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:48:51.428 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:43)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:48:54.006 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:48:54.007 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:48:54.007 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:48:54.010 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:43)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:48:57.143 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-03-26 20:49:06.348 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 20:49:06.457 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native16230285622651813285\aitt_native.dll
+2026-03-26 20:49:06.459 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 20:49:06.640 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 20:49:06.641 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:49:06.828 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 20:49:07.282 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 20:49:07.283 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 20:50:24.628 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: desktop
+2026-03-26 20:50:24.629 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - User desktop authenticated successfully
+2026-03-26 20:50:24.630 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: desktop
+2026-03-26 20:50:24.634 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:42)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:50:26.943 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: desktop
+2026-03-26 20:50:26.943 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - User desktop authenticated successfully
+2026-03-26 20:50:26.944 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: desktop
+2026-03-26 20:50:26.945 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/dashboard.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/dashboard.fxml:11
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:946)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$InstanceDeclarationElement.processAttribute(FXMLLoader.java:983)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$Element.processStartElement(FXMLLoader.java:230)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processStartElement(FXMLLoader.java:757)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2853)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2649)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.LoginController.navigateToDashboard(LoginController.java:171)
+	at com.aerospace.aitt.shell.LoginController.lambda$5(LoginController.java:145)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718)
+	at java.base/java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:79)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader$ValueElement.processAttribute(FXMLLoader.java:941)
+	... 20 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	DateTimeFormatter cannot be resolved to a type
+	DateTimeFormatter cannot be resolved
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	List cannot be resolved to a type
+	ArrayList cannot be resolved to a type
+	List cannot be resolved to a type
+	LocalDateTime cannot be resolved
+	DateTimeFormatter cannot be resolved to a type
+	IOException cannot be resolved to a type
+
+	at com.aerospace.aitt.shell.DashboardController.<init>(DashboardController.java:42)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	... 23 common frames omitted
+2026-03-26 20:50:39.412 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-03-26 20:51:04.743 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 20:51:04.846 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native4673319675135267986\aitt_native.dll
+2026-03-26 20:51:04.847 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 20:51:05.036 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 20:51:05.037 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:51:05.205 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 20:51:05.555 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 20:51:05.555 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 20:51:14.476 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-03-26 20:54:02.887 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 20:54:02.978 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native17160447822135386690\aitt_native.dll
+2026-03-26 20:54:02.979 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 20:54:03.164 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 20:54:03.165 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:54:03.333 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 20:54:03.665 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 20:54:03.666 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 20:54:14.067 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:54:14.069 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:54:14.069 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:54:14.110 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-03-26 20:54:14.194 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-03-26 20:54:14.196 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-03-26 20:54:14.203 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-03-26 20:54:14.203 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-03-26 20:54:20.442 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-03-26 20:57:24.238 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 20:57:24.342 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native11713525250461042823\aitt_native.dll
+2026-03-26 20:57:24.343 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 20:57:24.527 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 20:57:24.528 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:57:24.703 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 20:57:25.074 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 20:57:25.074 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 20:57:34.231 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 20:57:34.234 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 20:57:34.247 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 20:57:34.299 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-03-26 20:57:34.351 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-03-26 20:57:34.353 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-03-26 20:57:34.358 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-03-26 20:57:34.358 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-03-26 20:57:56.243 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-03-26 20:57:56.308 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-03-26 20:57:56.328 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-03-26 20:57:56.332 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 20:58:03.326 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-03-26 21:11:59.882 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-03-26 21:12:00.006 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native8491065300371573355\aitt_native.dll
+2026-03-26 21:12:00.008 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-03-26 21:12:00.184 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-03-26 21:12:00.186 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 21:12:00.358 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-03-26 21:12:00.787 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-03-26 21:12:00.787 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-03-26 21:12:10.334 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-03-26 21:12:10.337 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-03-26 21:12:10.338 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-03-26 21:12:10.380 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-03-26 21:12:10.442 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-03-26 21:12:10.444 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-03-26 21:12:10.451 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-03-26 21:12:10.451 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-03-26 21:12:14.250 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-03-26 21:12:14.318 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-03-26 21:12:14.334 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-03-26 21:12:14.339 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-03-26 21:12:18.582 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down

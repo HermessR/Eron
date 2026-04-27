@@ -1,0 +1,4 @@
+C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/aitt_native.dir
+C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/INSTALL.dir
+C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/ZERO_CHECK.dir

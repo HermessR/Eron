@@ -1,0 +1,99 @@
+2026-04-15 11:49:41.182 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-15 11:49:41.305 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native15458818239890289403\aitt_native.dll
+2026-04-15 11:49:41.307 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-15 11:49:41.531 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-15 11:49:41.532 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-15 11:49:41.726 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-15 11:49:42.360 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-15 11:49:42.361 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-15 11:49:53.292 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-15 11:49:53.309 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-15 11:49:53.310 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-15 11:49:53.358 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-15 11:49:53.439 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-15 11:49:53.441 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-15 11:49:53.449 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-15 11:49:53.450 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-15 11:49:55.665 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-15 11:49:55.815 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-15 11:49:55.843 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-15 11:49:55.850 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-15 11:49:55.851 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-15 11:50:41.484 [JavaFX Application Thread] WARN  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Failed to resolve address: Unknown logical name: 'logic'. Available names: [adc_ch3_raw, adc_ch0_raw, calibration_data, adc_ch1_raw, status_register, pwm_enable, gpio_port_a, gpio_port_b, temperature_sensor, mode_flag, voltage_output, result_status, current_input, pwm_frequency, error_code, adc_ch2_raw, pwm_duty_cycle]
+2026-04-15 11:51:27.180 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.log.AppLogger - [CMMTestService] Generating CMM script for test: ChipsetValidation_1776250195821
+2026-04-15 11:51:27.181 [ForkJoinPool.commonPool-worker-2] ERROR com.aerospace.aitt.core.log.AppLogger - [CMMTestService] Failed to generate CMM script: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+2026-04-15 11:51:27.181 [ForkJoinPool.commonPool-worker-2] ERROR com.aerospace.aitt.core.log.AppLogger - Failed to generate CMM script: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+java.lang.IllegalArgumentException: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+	at com.aerospace.aitt.testdev.service.CMMTestService.lambda$generateTestScript$0(CMMTestService.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+2026-04-15 11:51:32.261 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.log.AppLogger - [TestDevController] Script generation error: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+2026-04-15 11:51:32.261 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.log.AppLogger - Script generation error: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+java.util.concurrent.CompletionException: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1770)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+	at com.aerospace.aitt.testdev.service.CMMTestService.lambda$generateTestScript$0(CMMTestService.java:92)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	... 6 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Invalid logical name: logic. Run getAvailableLogicalNames() for valid options.
+	at com.aerospace.aitt.testdev.service.CMMTestService.lambda$generateTestScript$0(CMMTestService.java:68)
+	... 7 common frames omitted
+2026-04-15 11:51:56.480 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-15 11:51:56.482 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-15 11:51:56.482 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-15 11:52:05.444 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-15 11:52:05.514 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-15 11:52:05.536 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-15 11:52:05.547 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-15 11:52:10.852 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings saved to C:\Users\THINKPAD\.aitt\settings.json
+2026-04-15 11:52:10.854 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-15 11:52:10.854 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Theme applied globally: Dark
+2026-04-15 11:52:10.854 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Settings saved successfully
+2026-04-15 11:52:31.477 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Hardware Module
+2026-04-15 11:52:31.536 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareController] Initializing HardwareController
+2026-04-15 11:52:31.541 [ForkJoinPool.commonPool-worker-3] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] HardwareBridge initialized - Native version: 1.0.0
+2026-04-15 11:52:31.542 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/hardware.fxml
+2026-04-15 11:52:31.546 [ForkJoinPool.commonPool-worker-3] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareService] HardwareService initialized
+2026-04-15 11:52:31.602 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareController] HardwareController initialized
+2026-04-15 11:52:41.153 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-15 11:52:41.153 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-15 11:52:59.629 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Scripting Console
+2026-04-15 11:52:59.667 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Initializing ScriptingController
+2026-04-15 11:52:59.670 [ForkJoinPool.commonPool-worker-3] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareService] HardwareService initialized
+2026-04-15 11:52:59.671 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] ScriptingController initialized
+2026-04-15 11:52:59.672 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Scripting Console displayed
+2026-04-15 11:52:59.672 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/scripting.fxml
+2026-04-15 11:53:08.748 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-15 11:53:08.748 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-15 11:53:14.979 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Remote Probes Module
+2026-04-15 11:53:15.007 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] Initializing RemoteProbeController
+2026-04-15 11:53:15.009 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] Remote Probe Manager displayed
+2026-04-15 11:53:15.009 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/remote.fxml
+2026-04-15 11:53:15.011 [ForkJoinPool.commonPool-worker-3] INFO  com.aerospace.aitt.core.log.AppLogger - [NetworkProbeService] NetworkProbeService initialized
+2026-04-15 11:53:15.038 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] RemoteProbeController initialized
+2026-04-15 11:53:18.530 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [NetworkProbeService] NetworkProbeService closed
+2026-04-15 11:53:18.530 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] RemoteProbeController cleanup
+2026-04-15 11:53:18.531 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-15 11:53:18.531 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-15 11:53:34.987 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Remote Probes Module
+2026-04-15 11:53:55.475 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [NetworkProbeService] NetworkProbeService closed
+2026-04-15 11:53:55.477 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] RemoteProbeController cleanup
+2026-04-15 11:53:55.477 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-15 11:53:55.477 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-15 11:53:57.322 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-15 11:53:57.326 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-15 11:53:57.326 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-15 11:58:01.391 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down

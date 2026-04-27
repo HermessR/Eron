@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\build\CMakeFiles\21cafd194c436faf6c69a55b0a4890c7\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BFBDFF5B-D2FC-308A-95D4-6D863A47B512}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="module-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.remote.ui.RemoteProbeController">
+    
+    <!-- Top Header -->
+    <top>
+        <VBox spacing="0">
+            <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="10">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                </padding>
+                
+                <Button text="← Back" styleClass="back-button" onAction="#handleBack"/>
+                <Separator orientation="VERTICAL"/>
+                <Label styleClass="module-header-title" text="Remote Probe Manager"/>
+                <Label styleClass="module-header-subtitle" text="Network-Attached Probes"/>
+                
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <VBox spacing="2">
+                    <Label fx:id="lblConnectionStatus" styleClass="profile-info" text="Status: Ready"/>
+                    <Label fx:id="lblConnectedCount" styleClass="profile-info-small" text="Connected: 0"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Loading Progress Bar -->
+            <StackPane fx:id="loadingPane" styleClass="progress-container" managed="false" visible="false">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="8" right="20" bottom="8" left="20"/>
+                    </padding>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <HBox spacing="10">
+                            <Label fx:id="lblLoadingStatus" styleClass="status-label" text="Processing..."/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnCancelOperation" text="Cancel" styleClass="abort-button" 
+                                    onAction="#handleCancelOperation"/>
+                        </HBox>
+                        <ProgressBar fx:id="mainProgressBar" progress="0" prefWidth="2000" maxWidth="2000"/>
+                    </VBox>
+                </HBox>
+            </StackPane>
+        </VBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="8" right="8" bottom="8" left="8"/>
+            </padding>
+            
+            <!-- Left Panel: Probe List -->
+            <VBox styleClass="section-panel" spacing="10" prefWidth="350" minWidth="300">
+                <padding>
+                    <Insets top="8" right="8" bottom="8" left="8"/>
+                </padding>
+                
+                <Label styleClass="section-title" text="🌐 Network Probes"/>
+                
+                <!-- Discovery Controls -->
+                <HBox spacing="8">
+                    <Button fx:id="btnDiscover" text="🔍 Discover" styleClass="action-button" 
+                            onAction="#handleDiscover"/>
+                    <Button fx:id="btnAddManual" text="+ Add Manual" styleClass="secondary-button"
+                            onAction="#handleAddManual"/>
+                    <ProgressIndicator fx:id="scanProgress" prefWidth="20" prefHeight="20" visible="false"/>
+                </HBox>
+                
+                <Label fx:id="lblScanStatus" styleClass="field-hint" 
+                       text="Click 'Discover' to scan for network probes"/>
+                
+                <!-- Probe List -->
+                <ListView fx:id="probeListView" VBox.vgrow="ALWAYS" styleClass="probe-list" 
+                          prefHeight="400"/>
+                
+                <!-- List Actions -->
+                <HBox spacing="8">
+                    <Button fx:id="btnRemove" text="Remove" styleClass="danger-button" 
+                            onAction="#handleRemove" disable="true"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblDiscoveredCount" styleClass="field-hint" text="Discovered: 0"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Right Panel: Connection & Actions -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS">
+                
+                <!-- Connection Panel -->
+                <VBox styleClass="section-panel" spacing="10">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <Label styleClass="section-title" text="🔗 Connection"/>
+                    
+                    <HBox spacing="10">
+                        <Button fx:id="btnConnect" text="Connect" styleClass="action-button" 
+                                onAction="#handleConnect" disable="true"/>
+                        <Button fx:id="btnDisconnect" text="Disconnect" styleClass="secondary-button" 
+                                onAction="#handleDisconnect" disable="true"/>
+                        <Button fx:id="btnTestConnection" text="Test" styleClass="secondary-button" 
+                                onAction="#handleTestConnection" disable="true"/>
+                    </HBox>
+                    
+                    <Label fx:id="lblProbeDetails" styleClass="field-hint" text="No probe selected" 
+                           wrapText="true"/>
+                </VBox>
+                
+                <!-- Flash Actions Panel -->
+                <VBox styleClass="section-panel" spacing="10">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <Label styleClass="section-title" text="⚡ Remote Flashing"/>
+                    
+                    <Label styleClass="field-hint" 
+                           text="Flash firmware to targets connected to remote probes"/>
+                    
+                    <Button fx:id="btnFlashRemote" text="Open Flashing Module →" 
+                            styleClass="primary-button" prefWidth="250"
+                            onAction="#handleFlashRemote" disable="true"/>
+                </VBox>
+                
+                <!-- Command Panel -->
+                <VBox styleClass="section-panel" spacing="10">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <Label styleClass="section-title" text="💻 Command Console"/>
+                    
+                    <HBox spacing="8">
+                        <TextField fx:id="txtCommand" promptText="Enter command..." 
+                                   HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnSendCommand" text="Send" styleClass="action-button" 
+                                onAction="#handleSendCommand" disable="true"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Log Panel -->
+                <VBox styleClass="section-panel" spacing="10" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="section-title" text="📋 Logs"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnClearLog" text="Clear" styleClass="small-button" 
+                                onAction="#handleClearLog"/>
+                    </HBox>
+                    
+                    <TextArea fx:id="logArea" VBox.vgrow="ALWAYS" styleClass="log-area" 
+                              editable="false" wrapText="true"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="8" right="15" bottom="8" left="15"/>
+            </padding>
+            
+            <Label fx:id="lblStatusBar" text="Remote Probe Manager Ready"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Network-attached probes allow remote flashing operations"/>
+        </HBox>
+    </bottom>
+</BorderPane>

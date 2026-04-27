@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane styleClass="dashboard-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.shell.DashboardController">
+    
+    <!-- Top Header -->
+    <top>
+        <HBox styleClass="dashboard-header" alignment="CENTER_LEFT" spacing="15">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+            
+            <VBox spacing="2">
+                <Label styleClass="header-title" text="AITT Dashboard"/>
+                <Label fx:id="lblWelcome" styleClass="header-subtitle" text="Welcome, User"/>
+            </VBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Label fx:id="lblDateTime" styleClass="header-datetime" text="2026-01-01 12:00:00"/>
+                <Separator orientation="VERTICAL"/>
+                <Button fx:id="btnSettings" text="Settings" styleClass="header-button" onAction="#openSettings"/>
+                <Button fx:id="btnLogout" text="Logout" styleClass="header-button-danger" onAction="#handleLogout"/>
+            </HBox>
+        </HBox>
+    </top>
+    
+    <!-- Center Content - Module Selection -->
+    <center>
+        <VBox alignment="CENTER" spacing="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Label styleClass="section-title" text="Select Module"/>
+            
+            <!-- Module Cards with Carousel Effects -->
+            <HBox fx:id="moduleCardsContainer" alignment="CENTER" spacing="10">
+                <padding>
+                    <Insets top="20" right="0" bottom="20" left="0"/>
+                </padding>
+                
+                <!-- Flashing Module Card -->
+                <VBox fx:id="cardFlashing" styleClass="module-card" alignment="CENTER" spacing="6">
+                    <padding>
+                        <Insets top="10" right="8" bottom="10" left="8"/>
+                    </padding>
+                    <Label styleClass="module-icon" text="⚡"/>
+                    <Label styleClass="module-title" text="Flashing"/>
+                    <Label styleClass="module-desc" text="Flash firmware"/>
+                    <Label styleClass="module-status-ready" text="● Ready"/>
+                </VBox>
+                
+                <!-- Hardware Module Card -->
+                <VBox fx:id="cardHardware" styleClass="module-card" alignment="CENTER" spacing="6">
+                    <padding>
+                        <Insets top="10" right="8" bottom="10" left="8"/>
+                    </padding>
+                    <Label styleClass="module-icon" text="🔌"/>
+                    <Label styleClass="module-title" text="Hardware"/>
+                    <Label styleClass="module-desc" text="Debug probes"/>
+                    <Label styleClass="module-status-ready" text="● Ready"/>
+                </VBox>
+                
+                <!-- Scripting Console Card -->
+                <VBox fx:id="cardScripting" styleClass="module-card" alignment="CENTER" spacing="6">
+                    <padding>
+                        <Insets top="10" right="8" bottom="10" left="8"/>
+                    </padding>
+                    <Label styleClass="module-icon" text="📜"/>
+                    <Label styleClass="module-title" text="Scripting"/>
+                    <Label styleClass="module-desc" text="CMM scripts"/>
+                    <Label styleClass="module-status-ready" text="● Ready"/>
+                </VBox>
+                
+                <!-- Configuration Module Card -->
+                <VBox fx:id="cardConfig" styleClass="module-card" alignment="CENTER" spacing="6">
+                    <padding>
+                        <Insets top="10" right="8" bottom="10" left="8"/>
+                    </padding>
+                    <Label styleClass="module-icon" text="⚙"/>
+                    <Label styleClass="module-title" text="Configuration"/>
+                    <Label styleClass="module-desc" text="Settings"/>
+                    <Label styleClass="module-status-ready" text="● Ready"/>
+                </VBox>
+                
+                <!-- Remote Probes Module Card -->
+                <VBox fx:id="cardRemote" styleClass="module-card" alignment="CENTER" spacing="6">
+                    <padding>
+                        <Insets top="10" right="8" bottom="10" left="8"/>
+                    </padding>
+                    <Label styleClass="module-icon" text="🌐"/>
+                    <Label styleClass="module-title" text="Remote"/>
+                    <Label styleClass="module-desc" text="Network probes"/>
+                    <Label styleClass="module-status-ready" text="● Ready"/>
+                </VBox>
+                
+                <!-- Test Development Module Card -->
+                <VBox fx:id="cardTestDev" styleClass="module-card" alignment="CENTER" spacing="6">
+                    <padding>
+                        <Insets top="10" right="8" bottom="10" left="8"/>
+                    </padding>
+                    <Label styleClass="module-icon" text="🧪"/>
+                    <Label styleClass="module-title" text="Test Dev"/>
+                    <Label styleClass="module-desc" text="Integration tests"/>
+                    <Label styleClass="module-status-ready" text="● Ready"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Quick Stats -->
+            <HBox alignment="CENTER" spacing="30" styleClass="stats-container">
+                <padding>
+                    <Insets top="20" right="0" bottom="0" left="0"/>
+                </padding>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-box">
+                    <Label fx:id="lblTotalSessions" styleClass="stat-value" text="0"/>
+                    <Label styleClass="stat-label" text="Total Sessions"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-box">
+                    <Label fx:id="lblSuccessRate" styleClass="stat-value" text="0%"/>
+                    <Label styleClass="stat-label" text="Success Rate"/>
+                </VBox>
+                
+                <VBox alignment="CENTER" spacing="5" styleClass="stat-box">
+                    <Label fx:id="lblLastSession" styleClass="stat-value" text="-"/>
+                    <Label styleClass="stat-label" text="Last Session"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding>
+                <Insets top="8" right="15" bottom="8" left="15"/>
+            </padding>
+            
+            <Label fx:id="lblSystemStatus" styleClass="status-text" text="System Ready"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label styleClass="status-text" text="AITT v1.0.0"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

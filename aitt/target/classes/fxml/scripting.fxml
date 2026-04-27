@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="module-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.scripting.ui.ScriptingController">
+    
+    <!-- Top Header -->
+    <top>
+        <VBox spacing="0">
+            <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="10">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                </padding>
+                
+                <Button text="← Back" styleClass="back-button" onAction="#handleBack"/>
+                <Separator orientation="VERTICAL"/>
+                <Label styleClass="module-header-title" text="CMM Scripting Console"/>
+                
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <Label fx:id="lblScriptName" styleClass="script-name" text="Untitled.cmm"/>
+                
+                <Separator orientation="VERTICAL"/>
+                
+                <Label text="Probe:" styleClass="field-label"/>
+                <Label fx:id="lblConnectionStatus" styleClass="connection-status" text="Disconnected"/>
+            </HBox>
+            
+            <!-- Loading Progress Bar -->
+            <StackPane fx:id="loadingPane" styleClass="progress-container" managed="false" visible="false">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="8" right="20" bottom="8" left="20"/>
+                    </padding>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <HBox spacing="10">
+                            <Label fx:id="lblLoadingStatus" styleClass="status-label" text="Executing..."/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnCancelExecution" text="Stop" styleClass="abort-button" 
+                                    onAction="#handleCancelExecution"/>
+                        </HBox>
+                        <ProgressBar fx:id="mainProgressBar" progress="-1" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+            </StackPane>
+        </VBox>
+    </top>
+    
+    <!-- Center Content -->
+    <center>
+        <SplitPane dividerPositions="0.6" orientation="HORIZONTAL">
+            <!-- Left Panel - Script Editor -->
+            <VBox spacing="10" styleClass="panel">
+                <padding>
+                    <Insets top="8" right="8" bottom="8" left="8"/>
+                </padding>
+                
+                <!-- Toolbar -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="btnNewScript" text="📄 New" styleClass="action-button" 
+                            onAction="#handleNewScript"/>
+                    <Button fx:id="btnOpenScript" text="📂 Open" styleClass="action-button" 
+                            onAction="#handleOpenScript"/>
+                    <Button fx:id="btnSaveScript" text="💾 Save" styleClass="action-button" 
+                            onAction="#handleSaveScript"/>
+                    
+                    <Separator orientation="VERTICAL"/>
+                    
+                    <Button fx:id="btnRunScript" text="▶ Run Script" styleClass="primary-button" 
+                            onAction="#handleRunScript"/>
+                    <Button fx:id="btnStopScript" text="■ Stop" styleClass="abort-button" 
+                            onAction="#handleStopScript"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <Label fx:id="lblLineCount" styleClass="editor-info" text="Lines: 0"/>
+                    <Label fx:id="lblCursorPos" styleClass="editor-info" text="Ln 1, Col 1"/>
+                </HBox>
+                
+                <!-- Script Editor -->
+                <TextArea fx:id="scriptEditor" 
+                          VBox.vgrow="ALWAYS" 
+                          styleClass="code-editor"
+                          promptText="; Enter CMM commands here...&#10;; Lines starting with ; are comments"/>
+                
+                <Separator/>
+                
+                <!-- Quick Command Section -->
+                <Label styleClass="panel-title" text="Quick Command"/>
+                
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="txtQuickCommand" 
+                               HBox.hgrow="ALWAYS" 
+                               promptText="Enter single CMM command (e.g., SYStem.Up, Data.Dump 0x08000000)"
+                               styleClass="command-input"/>
+                    <Button fx:id="btnSendCommand" text="Send" styleClass="primary-button" 
+                            onAction="#handleSendCommand"/>
+                </HBox>
+                
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Recent:" styleClass="field-label"/>
+                    <ComboBox fx:id="cmbRecentCommands" prefWidth="300" promptText="Select recent command"/>
+                </HBox>
+                
+                <!-- Quick Actions -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Quick Actions:" styleClass="field-label"/>
+                    <Button fx:id="btnSystemUp" text="System.Up" styleClass="quick-cmd-button" 
+                            onAction="#handleSystemUp"/>
+                    <Button fx:id="btnSystemReset" text="System.RESet" styleClass="quick-cmd-button" 
+                            onAction="#handleSystemReset"/>
+                    <Button fx:id="btnBreak" text="Break" styleClass="quick-cmd-button" 
+                            onAction="#handleBreak"/>
+                    <Button fx:id="btnGo" text="Go" styleClass="quick-cmd-button" 
+                            onAction="#handleGo"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Right Panel - Output & History -->
+            <SplitPane dividerPositions="0.65" orientation="VERTICAL">
+                <!-- Output Panel -->
+                <VBox spacing="10" styleClass="panel">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="panel-title" text="Output"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnClearOutput" text="Clear" styleClass="action-button-small" 
+                                onAction="#handleClearOutput"/>
+                    </HBox>
+                    
+                    <TextArea fx:id="outputArea" 
+                              VBox.vgrow="ALWAYS" 
+                              editable="false"
+                              styleClass="output-area"
+                              promptText="Command output will appear here..."/>
+                </VBox>
+                
+                <!-- History Panel -->
+                <VBox spacing="10" styleClass="panel">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="panel-title" text="Command History"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnClearHistory" text="Clear" styleClass="action-button-small" 
+                                onAction="#handleClearHistory"/>
+                    </HBox>
+                    
+                    <ListView fx:id="historyList" VBox.vgrow="ALWAYS" styleClass="history-list">
+                        <placeholder>
+                            <Label text="Command history will appear here. Double-click to reuse." 
+                                   styleClass="table-placeholder"/>
+                        </placeholder>
+                    </ListView>
+                </VBox>
+            </SplitPane>
+        </SplitPane>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="6" right="15" bottom="6" left="15"/>
+            </padding>
+            
+            <Label text="CMM Scripting Console" styleClass="status-text"/>
+            <Separator orientation="VERTICAL"/>
+            <Label text="Tip: Press Enter in Quick Command to send. Use ↑↓ for history." styleClass="status-text-dim"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label styleClass="status-text-dim" text="TRACE32 CMM Syntax"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

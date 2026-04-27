@@ -1,0 +1,7 @@
+Native library placeholder.
+
+After building the native library with:
+  cd native
+  build.bat
+
+The aitt_native.dll will be automatically copied here.

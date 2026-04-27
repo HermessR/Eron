@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="module-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.flashing.ui.FlashingController">
+    
+    <!-- Top Header -->
+    <top>
+        <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+            
+            <Button text="← Back" styleClass="back-button" onAction="#handleBack"/>
+            <Separator orientation="VERTICAL"/>
+            <Label styleClass="module-header-title" text="Flashing Module"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Target Profile Selection -->
+            <Label text="Target Profile:"/>
+            <ComboBox fx:id="profileComboBox" prefWidth="200"/>
+            
+            <Separator orientation="VERTICAL"/>
+            
+            <VBox spacing="2">
+                <Label fx:id="lblCpuType" styleClass="profile-info" text="CPU: -"/>
+                <Label fx:id="lblFlashRange" styleClass="profile-info-small" text="Flash: -"/>
+            </VBox>
+            <Label fx:id="lblRamAddress" styleClass="profile-info-small" text="RAM: -" visible="false" managed="false"/>
+        </HBox>
+    </top>
+    
+    <!-- Center Content -->
+    <center>
+        <SplitPane dividerPositions="0.65" orientation="HORIZONTAL">
+            <!-- Left Panel - Firmware Table & Actions -->
+            <VBox spacing="10" styleClass="panel">
+                <padding>
+                    <Insets top="8" right="8" bottom="8" left="8"/>
+                </padding>
+                
+                <!-- Firmware Modules Table -->
+                <Label styleClass="panel-title" text="Firmware Modules"/>
+                
+                <TableView fx:id="firmwareTable" VBox.vgrow="ALWAYS" styleClass="firmware-table">
+                    <placeholder>
+                        <Label text="No firmware modules added. Click '+ Add Module' to begin." styleClass="table-placeholder"/>
+                    </placeholder>
+                    <columns>
+                        <TableColumn fx:id="colModuleName" text="Module Name" prefWidth="140"/>
+                        <TableColumn fx:id="colFilePath" text="File" prefWidth="150"/>
+                        <TableColumn fx:id="colAddress" text="Address" prefWidth="100"/>
+                        <TableColumn fx:id="colSize" text="Size" prefWidth="80"/>
+                        <TableColumn fx:id="colChecksum" text="Checksum" prefWidth="120"/>
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="80"/>
+                    </columns>
+                </TableView>
+                
+                <!-- Module Actions -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="btnAddModule" text="+ Add Module" styleClass="action-button"/>
+                    <Button fx:id="btnRemoveModule" text="- Remove" styleClass="action-button-secondary"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnValidate" text="Validate" styleClass="action-button"/>
+                </HBox>
+                
+                <Separator/>
+                
+                <!-- Output Path & Execute -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Output CMM:"/>
+                    <TextField fx:id="txtOutputPath" HBox.hgrow="ALWAYS" promptText="Select output path..."/>
+                    <Button fx:id="btnBrowseOutput" text="Browse" styleClass="browse-button"/>
+                </HBox>
+                
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="btnGenerateCmm" text="Generate CMM" styleClass="primary-button"/>
+                    <Button fx:id="btnRunTrace32" text="▶ Run TRACE32" styleClass="execute-button"/>
+                    <CheckBox fx:id="chkRunAfterGenerate" text="Run after generate"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="btnAbort" text="■ Abort" styleClass="abort-button" disable="true"/>
+                </HBox>
+                
+                <!-- Progress -->
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="progress-container">
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <HBox spacing="10">
+                            <Label fx:id="lblStatus" styleClass="status-label" text="Ready"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="lblProgress" styleClass="progress-label" text=""/>
+                        </HBox>
+                        <ProgressBar fx:id="progressBar" progress="0" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+            
+            <!-- Right Panel - Log & Session History -->
+            <SplitPane dividerPositions="0.55" orientation="VERTICAL">
+                <!-- Log Panel -->
+                <VBox spacing="10" styleClass="panel">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="panel-title" text="Log Output"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnClearLog" text="Clear" styleClass="small-button"/>
+                    </HBox>
+                    
+                    <TextArea fx:id="logArea" VBox.vgrow="ALWAYS" editable="false" 
+                              wrapText="true" styleClass="log-area"
+                              promptText="Log output will appear here..."/>
+                </VBox>
+                
+                <!-- Session History Panel -->
+                <VBox spacing="10" styleClass="panel">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="panel-title" text="Session History"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnRefreshHistory" text="↻" styleClass="small-button"/>
+                    </HBox>
+                    
+                    <TableView fx:id="sessionTable" VBox.vgrow="ALWAYS" styleClass="session-table">
+                        <placeholder>
+                            <Label text="No session history" styleClass="table-placeholder"/>
+                        </placeholder>
+                        <columns>
+                            <TableColumn fx:id="colSessionTime" text="Time" prefWidth="140"/>
+                            <TableColumn fx:id="colSessionTarget" text="Target" prefWidth="100"/>
+                            <TableColumn fx:id="colSessionModules" text="#" prefWidth="40"/>
+                            <TableColumn fx:id="colSessionStatus" text="Status" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="btnViewSession" text="View Details" styleClass="action-button-secondary"/>
+                        <Button fx:id="btnDeleteSession" text="Delete" styleClass="action-button-danger"/>
+                    </HBox>
+                </VBox>
+            </SplitPane>
+        </SplitPane>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="6" right="15" bottom="6" left="15"/>
+            </padding>
+            
+            <Label text="Flashing Module" styleClass="status-text"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="lblModuleCount" styleClass="status-text" text="0 modules loaded"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label styleClass="status-text" text="TRACE32 Integration Ready"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

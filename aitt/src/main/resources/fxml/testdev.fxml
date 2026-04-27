@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="module-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.testdev.ui.TestDevController">
+    
+    <!-- Top Header -->
+    <top>
+        <VBox spacing="0">
+            <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="10">
+                <padding>
+                    <Insets top="12" right="20" bottom="12" left="20"/>
+                </padding>
+                
+                <Button text="← Back" styleClass="back-button" onAction="#handleBack"/>
+                <Separator orientation="VERTICAL"/>
+                <Label styleClass="module-header-title" text="CMM Test Development"/>
+                <Label styleClass="module-header-subtitle" text="MPC Chipset Validation"/>
+                
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <VBox spacing="2">
+                    <Label fx:id="lblChipsetType" styleClass="profile-info" text="Chipset: MPC5777M"/>
+                    <Label fx:id="lblTestStatus" styleClass="profile-info-small" text="Ready"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Progress Bar -->
+            <StackPane fx:id="progressPane" styleClass="progress-container" managed="false" visible="false">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="8" right="20" bottom="8" left="20"/>
+                    </padding>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <HBox spacing="10">
+                            <Label fx:id="lblProgressStatus" styleClass="status-label" text="Processing..."/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnCancel" text="Cancel" styleClass="abort-button" onAction="#handleCancel"/>
+                        </HBox>
+                        <ProgressBar fx:id="progressBar" progress="0" prefWidth="2000" maxWidth="2000"/>
+                    </VBox>
+                </HBox>
+            </StackPane>
+        </VBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox spacing="8">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                
+                <!-- Test Configuration Card -->
+                <VBox styleClass="panel" spacing="10">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <Label styleClass="panel-title" text="Test Configuration"/>
+                    
+                    <HBox spacing="10">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label styleClass="field-label" text="Chipset:"/>
+                            <ComboBox fx:id="chipsetCombo" promptText="Select chipset" styleClass="input-field"/>
+                        </VBox>
+                        
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label styleClass="field-label" text="Test Name:"/>
+                            <TextField fx:id="txtTestName" promptText="e.g., ChipsetValidation_001" styleClass="input-field"/>
+                        </VBox>
+                        
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label styleClass="field-label" text="Breakpoint Name:"/>
+                            <TextField fx:id="txtBreakpointName" promptText="e.g., UserFunction_ValidateChipset" styleClass="input-field"/>
+                        </VBox>
+                    </HBox>
+                    
+                    <Label styleClass="field-hint" 
+                           text="Breakpoint: Function where test pauses. Inputs injected BEFORE, outputs captured AFTER."/>
+                </VBox>
+                
+                <!-- Input/Output Tables Row -->
+                <HBox spacing="8" VBox.vgrow="ALWAYS">
+                    <!-- Input Table Card -->
+                    <VBox styleClass="panel" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="8" right="8" bottom="8" left="8"/>
+                        </padding>
+                        
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Label styleClass="panel-title" text="Test Inputs" HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnAddInput" text="Add" styleClass="action-button" onAction="#handleAddInput"/>
+                            <Button fx:id="btnDeleteInput" text="Remove" styleClass="secondary-button" onAction="#handleDeleteInput"/>
+                        </HBox>
+                        
+                        <TableView fx:id="inputTable" prefHeight="250" styleClass="custom-table" VBox.vgrow="ALWAYS"/>
+                        
+                        <Label styleClass="field-hint" text="Auto-resolved addresses and formats."/>
+                    </VBox>
+                    
+                    <!-- Output Table Card -->
+                    <VBox styleClass="panel" spacing="10" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="8" right="8" bottom="8" left="8"/>
+                        </padding>
+                        
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Label styleClass="panel-title" text="Expected Outputs" HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnAddOutput" text="Add" styleClass="action-button" onAction="#handleAddOutput"/>
+                            <Button fx:id="btnSyncInputs" text="Sync" styleClass="secondary-button" onAction="#handleSyncInputs"/>
+                            <Button fx:id="btnDeleteOutput" text="Remove" styleClass="secondary-button" onAction="#handleDeleteOutput"/>
+                        </HBox>
+                        
+                        <TableView fx:id="outputTable" prefHeight="250" styleClass="custom-table" VBox.vgrow="ALWAYS"/>
+                        
+                        <Label styleClass="field-hint" text="For post-processing validation."/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Script Summary Card -->
+                <VBox styleClass="panel" spacing="10">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <Label styleClass="panel-title" text="Script Summary"/>
+                    
+                    <HBox spacing="20">
+                        <VBox spacing="3">
+                            <Label styleClass="field-label" text="Inputs:"/>
+                            <Label fx:id="lblInputCount" text="0" styleClass="field-value"/>
+                        </VBox>
+                        <VBox spacing="3">
+                            <Label styleClass="field-label" text="Outputs:"/>
+                            <Label fx:id="lblOutputCount" text="0" styleClass="field-value"/>
+                        </VBox>
+                        <VBox spacing="3">
+                            <Label styleClass="field-label" text="Chipset:"/>
+                            <Label fx:id="lblChipset" text="MPC5777M" styleClass="field-value"/>
+                        </VBox>
+                    </HBox>
+                    
+                    <TextArea fx:id="txtScriptPreview" promptText="Script preview will appear here..." 
+                             prefHeight="150" wrapText="true" style="-fx-font-family: 'Courier New'; -fx-font-size: 9;"/>
+                    
+                    <HBox spacing="8">
+                        <Button fx:id="btnGenerateScript" text="Generate" 
+                               styleClass="primary-button" onAction="#handleGenerateScript" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnExecuteScript" text="Execute" 
+                               styleClass="action-button" onAction="#handleExecuteScript" HBox.hgrow="ALWAYS" disable="true"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Execution Results Card -->
+                <VBox styleClass="panel" spacing="10">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="panel-title" text="Execution Results" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnClearLog" text="Clear" styleClass="secondary-button" onAction="#handleClearLog"/>
+                        <Button fx:id="btnRefreshLog" text="Refresh" styleClass="secondary-button" onAction="#handleRefreshLog"/>
+                        <Button fx:id="btnOpenLogFile" text="File" styleClass="secondary-button" onAction="#handleOpenLogFile"/>
+                    </HBox>
+                    
+                    <HBox spacing="10">
+                        <VBox spacing="3" HBox.hgrow="ALWAYS">
+                            <Label styleClass="field-label" text="Generated Script:"/>
+                            <Label fx:id="lblGeneratedScript" text="(No script generated yet)" styleClass="field-value"/>
+                        </VBox>
+                        <VBox spacing="3" HBox.hgrow="ALWAYS">
+                            <Label styleClass="field-label" text="Execution Log:"/>
+                            <Label fx:id="lblExecutionLog" text="(Not executed)" styleClass="field-value"/>
+                        </VBox>
+                    </HBox>
+                    
+                    <TextArea fx:id="executionLog" wrapText="true" prefHeight="200" 
+                             style="-fx-font-family: 'Courier New'; -fx-font-size: 8;" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" spacing="20" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label fx:id="statusLabel" text="Ready" styleClass="status-text"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblTimestamp" text="" styleClass="status-time"/>
+        </HBox>
+    </bottom>
+</BorderPane>

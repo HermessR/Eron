@@ -1,0 +1,169 @@
+{
+  "hardwareModule": {
+    "title": "Hardware Module - Simplified View",
+    "overview": "Shows how hardware requests flow from Java → JNI → Native → Hardware",
+
+    "layers": {
+      "layer1_java": {
+        "name": "Java Application Layer",
+        "component": "HardwareService",
+        "operations": {
+          "discoverProbes()": "Find all connected debug probes",
+          "connect(probeId, config)": "Establish connection to probe",
+          "sendCommand(cmd)": "Send debug command to target",
+          "readMemory(addr, len)": "Read bytes from target memory",
+          "writeMemory(addr, data)": "Write bytes to target memory"
+        },
+        "style": "Async (returns CompletableFuture)",
+        "blocking": false
+      },
+
+      "layer2_jni": {
+        "name": "JNI Bridge Layer",
+        "component": "HardwareBridge",
+        "library": "aitt_native.dll",
+        "methods": {
+          "discoverProbes()": "jobjectArray",
+          "connect(jstring, jobject)": "void",
+          "sendCommand(jstring)": "jobject",
+          "readMemory(jlong, jint)": "jbyteArray",
+          "writeMemory(jlong, jbyteArray)": "void"
+        },
+        "note": "All JNI calls are BLOCKING while native code executes"
+      },
+
+      "layer3_native": {
+        "name": "Native C Core Layer",
+        "file": "aitt_native.c",
+        "handlers": {
+          "Java_...discoverProbes()": "Enumerate USB devices → Query vendor/product/serial → Return list",
+          "Java_...connect()": "Open USB handle → Load chipset driver → Init protocol → Ready",
+          "Java_...sendCommand()": "Parse command → Route to chipset driver → Get response",
+          "Java_...readMemory()": "Route to chipset driver → Read target address → Return bytes",
+          "Java_...writeMemory()": "Route to chipset driver → Write target address → Verify"
+        }
+      },
+
+      "layer4_chipset": {
+        "name": "Chipset Drivers",
+        "drivers": {
+          "S32K148": {
+            "protocol": "SWD (Serial Wire Debug)",
+            "architecture": "ARM Cortex-M4F",
+            "pins": "SWIO (data), SWCK (clock)",
+            "file": "chipset_s32k148.c",
+            "functions": [
+              "s32k148_init() - Setup SWD pins and negotiate speed",
+              "s32k148_send_command() - Send CMM command via SWD bitbang",
+              "s32k148_read_memory() - Read from target address",
+              "s32k148_write_memory() - Write to target address"
+            ]
+          },
+          "MPC5777M": {
+            "protocol": "JTAG (Test Access Port)",
+            "architecture": "Power ISA dual-core",
+            "pins": "TCO (clock), TDI (in), TDO (out), TMS (select)",
+            "file": "chipset_mpc5777m.c",
+            "functions": [
+              "mpc5777m_init() - Setup JTAG pins, TAP reset, sync cores",
+              "mpc5777m_send_command() - Send CMM via JTAG IR/DR",
+              "mpc5777m_read_memory() - Read target memory",
+              "mpc5777m_write_memory() - Write target memory"
+            ]
+          }
+        }
+      },
+
+      "layer5_hardware": {
+        "name": "Physical Hardware",
+        "debugProbes": [
+          "J-Link (SEGGER) - SWD/JTAG probe",
+          "ST-Link (STMicroelectronics) - SWD probe",
+          "CMSIS-DAP - SWD/JTAG probe"
+        ],
+        "connection": "USB to host machine",
+        "targetProcessors": [
+          "S32K148 (ARM Cortex-M4F)",
+          "MPC5777M (Power ISA dual-core)"
+        ]
+      }
+    },
+
+    "callFlow": {
+      "scenario": "User clicks 'Discover Probes'",
+      "steps": [
+        "1. Frontend → HardwareService.discoverProbes() [async, non-blocking]",
+        "2. HardwareService queues in thread pool, returns CompletableFuture",
+        "3. Thread pool calls HardwareBridge.discoverProbes() [JNI, blocking]",
+        "4. JNI crosses into native aitt_native.c",
+        "5. Native code enumerates USB devices (probes)",
+        "6. Build HardwareInfo array from USB device list",
+        "7. Return jobjectArray back across JNI boundary",
+        "8. CompletableFuture completes with List<HardwareInfo>",
+        "9. Frontend callback receives probe list, updates UI"
+      ]
+    },
+
+    "callFlow_Command": {
+      "scenario": "User sends command to target",
+      "steps": [
+        "1. Frontend → HardwareService.sendCommand(cmd) [async]",
+        "2. HardwareService queues in thread pool",
+        "3. Thread calls HardwareBridge.sendCommand(cmd) [JNI, blocking]",
+        "4. Native Java_...sendCommand() receives control",
+        "5. Route to active chipset driver (S32K148 or MPC5777M)",
+        "6. Chipset driver parses CMM command",
+        "7. Bitbang SWIO/SWCK pins (SWD) or toggle JTAG pins (JTAG)",
+        "8. Target processor responds",
+        "9. Collect response data, build CommandResult",
+        "10. Return CommandResult back to Java via JNI",
+        "11. CompletableFuture completes",
+        "12. Frontend callback updates with result"
+      ]
+    },
+
+    "typeMapping": {
+      "Java → Native": {
+        "String": "jstring → char* (UTF-8)",
+        "byte[]": "jbyteArray → uint8_t*",
+        "long": "jlong → int64_t",
+        "int": "jint → int32_t",
+        "ChipsetConfig": "jobject → ChipsetConfig_t struct"
+      }
+    },
+
+    "timing": {
+      "discoverProbes": "100-500ms",
+      "connect": "100-1000ms",
+      "sendCommand": "100-5000ms",
+      "readMemory": "10-1000ms",
+      "writeMemory": "10-1000ms",
+      "note": "Governed by USB/debug protocol speed, not CPU"
+    },
+
+    "concurrency": {
+      "Frontend": "Non-blocking (UI thread not blocked)",
+      "Java Service": "Thread-pool async execution",
+      "JNI Bridge": "Blocking - Java thread waits for native code",
+      "Native Code": "Blocking - waits for USB/debug I/O",
+      "Hardware": "I/O bound - USB protocol timing"
+    },
+
+    "errorFlow": {
+      "native": "chipset driver returns error code (AITT_OK, AITT_ERROR_*)",
+      "jni": "Native function checks code, throws NativeException if error",
+      "java": "HardwareService catches exception, logs, fires ErrorEvent",
+      "frontend": "Frontend receives ErrorEvent or failed CompletableFuture, shows error dialog"
+    },
+
+    "key_insights": [
+      "All JNI calls block the calling thread - that's why async/thread pool wrapper exists",
+      "CompletableFuture keeps UI responsive even though JNI blocks",
+      "Chipset drivers are the actual hardware protocol handlers",
+      "S32K148 uses SWD (2-pin protocol), MPC5777M uses JTAG (4-pin protocol)",
+      "Each target has its own driver with init/send/read/write functions",
+      "USB enumeration finds available debug probes",
+      "Debug probes bridge USB (host) to SWD/JTAG (target)"
+    ]
+  }
+}

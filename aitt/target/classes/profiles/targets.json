@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cortex-r5-safety-mcu",
+    "name": "Cortex-R5 Safety MCU",
+    "cpu_type": "CortexR5",
+    "flash_start": "0x08000000",
+    "flash_end": "0x08200000",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-R5 Safety MCU with 2MB Flash - Aerospace Safety Critical Applications"
+  },
+  {
+    "id": "cortex-r5-performance",
+    "name": "Cortex-R5 Performance",
+    "cpu_type": "CortexR5",
+    "flash_start": "0x00000000",
+    "flash_end": "0x00400000",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-R5 High Performance MCU with 4MB Flash"
+  },
+  {
+    "id": "cortex-m4-safety",
+    "name": "Cortex-M4 Safety Controller",
+    "cpu_type": "CortexM4",
+    "flash_start": "0x08000000",
+    "flash_end": "0x08100000",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-M4 Safety Controller with 1MB Flash - DO-178C DAL-B"
+  },
+  {
+    "id": "cortex-m7-flight",
+    "name": "Cortex-M7 Flight Computer",
+    "cpu_type": "CortexM7",
+    "flash_start": "0x08000000",
+    "flash_end": "0x08200000",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-M7 Flight Computer with 2MB Flash - High Performance"
+  },
+  {
+    "id": "cortex-m7-sensor",
+    "name": "Cortex-M7 Sensor Hub",
+    "cpu_type": "CortexM7",
+    "flash_start": "0x08000000",
+    "flash_end": "0x08080000",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-M7 Sensor Fusion Hub with 512KB Flash"
+  },
+  {
+    "id": "cortex-a53-app",
+    "name": "Cortex-A53 Application Processor",
+    "cpu_type": "CortexA53",
+    "flash_start": "0x00000000",
+    "flash_end": "0x10000000",
+    "ram_address": "0x80000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-A53 Application Processor - Linux/RTOS Host"
+  },
+  {
+    "id": "cortex-r52-lockstep",
+    "name": "Cortex-R52 Lockstep",
+    "cpu_type": "CortexR52",
+    "flash_start": "0x00000000",
+    "flash_end": "0x00800000",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "ARM Cortex-R52 Lockstep Safety Core with 8MB Flash - ASIL-D"
+  },
+  {
+    "id": "custom-target",
+    "name": "Custom Target",
+    "cpu_type": "ARM",
+    "flash_start": "0x00000000",
+    "flash_end": "0xFFFFFFFF",
+    "ram_address": "0x20000000",
+    "t32_config_path": null,
+    "description": "Custom target configuration - User defined parameters"
+  }
+]

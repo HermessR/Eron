@@ -1,0 +1,177 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      The system is: Windows - 10.0.26200 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:12 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.14.40+3e7442088 for .NET Framework
+      Build started 3/9/2026 5:25:40 PM.
+      
+      Project "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\3.27.0-rc5\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      PrepareForBuild:
+        Creating directory "Debug\\".
+        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+        Creating directory "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+        Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\3.27.0-rc5\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Done Building Project "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\3.27.0-rc5\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      
+      Build succeeded.
+          0 Warning(s)
+          0 Error(s)
+      
+      Time Elapsed 00:00:01.63
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/3.27.0-rc5/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:12 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-gb573q"
+      binary: "C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-gb573q"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-gb573q'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_93517.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.40+3e7442088 for .NET Framework
+        Build started 3/9/2026 5:25:42 PM.
+        
+        Project "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gb573q\\cmTC_93517.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_93517.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gb573q\\Debug\\".
+          Creating directory "cmTC_93517.dir\\Debug\\cmTC_93517.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_93517.dir\\Debug\\cmTC_93517.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_93517.dir\\Debug\\cmTC_93517.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_93517.dir\\Debug\\\\" /Fd"cmTC_93517.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35222 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_93517.dir\\Debug\\\\" /Fd"cmTC_93517.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gb573q\\Debug\\cmTC_93517.exe" /INCREMENTAL /ILK:"cmTC_93517.dir\\Debug\\cmTC_93517.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-gb573q/Debug/cmTC_93517.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-gb573q/Debug/cmTC_93517.lib" /MACHINE:X64  /machine:x64 cmTC_93517.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_93517.vcxproj -> C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gb573q\\Debug\\cmTC_93517.exe
+        FinalizeBuildStatus:
+          Deleting file "cmTC_93517.dir\\Debug\\cmTC_93517.tlog\\unsuccessfulbuild".
+          Touching "cmTC_93517.dir\\Debug\\cmTC_93517.tlog\\cmTC_93517.lastbuildstate".
+        Done Building Project "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gb573q\\cmTC_93517.vcxproj" (default targets).
+        
+        Build succeeded.
+            0 Warning(s)
+            0 Error(s)
+        
+        Time Elapsed 00:00:00.78
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckSourceCompiles.cmake:77 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/FindJNI.cmake:465 (check_source_compiles)"
+      - "CMakeLists.txt:27 (find_package)"
+    directories:
+      source: "C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-fglgfg"
+      binary: "C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-fglgfg"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "JNI_INCLUDE_PATH2_OPTIONAL"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/CMakeFiles/CMakeScratch/TryCompile-fglgfg'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7fae9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.14.40+3e7442088 for .NET Framework
+        Build started 3/9/2026 5:25:43 PM.
+        
+        Project "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\cmTC_7fae9.vcxproj" on node 1 (default targets).
+        PrepareForBuild:
+          Creating directory "cmTC_7fae9.dir\\Debug\\".
+          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
+          Creating directory "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\Debug\\".
+          Creating directory "cmTC_7fae9.dir\\Debug\\cmTC_7fae9.tlog\\".
+        InitializeBuildStatus:
+          Creating "cmTC_7fae9.dir\\Debug\\cmTC_7fae9.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_7fae9.dir\\Debug\\cmTC_7fae9.tlog\\unsuccessfulbuild".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Program Files\\Java\\jdk-20\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D JNI_INCLUDE_PATH2_OPTIONAL /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7fae9.dir\\Debug\\\\" /Fd"cmTC_7fae9.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35222 for x64
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /I"C:\\Program Files\\Java\\jdk-20\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D JNI_INCLUDE_PATH2_OPTIONAL /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7fae9.dir\\Debug\\\\" /Fd"cmTC_7fae9.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\src.c"
+          src.c
+        C:\\Program Files\\Java\\jdk-20\\include\\jni.h(45,10): error C1083: Cannot open include file: 'jni_md.h': No such file or directory [C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\cmTC_7fae9.vcxproj]
+          (compiling source file 'src.c')
+          
+        Done Building Project "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\cmTC_7fae9.vcxproj" (default targets) -- FAILED.
+        
+        Build FAILED.
+        
+        "C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\cmTC_7fae9.vcxproj" (default target) (1) ->
+        (ClCompile target) -> 
+          C:\\Program Files\\Java\\jdk-20\\include\\jni.h(45,10): error C1083: Cannot open include file: 'jni_md.h': No such file or directory [C:\\Users\\THINKPAD\\Desktop\\Eron\\aitt\\native\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fglgfg\\cmTC_7fae9.vcxproj]
+        
+            0 Warning(s)
+            1 Error(s)
+        
+        Time Elapsed 00:00:00.75
+        
+      exitCode: 1
+...

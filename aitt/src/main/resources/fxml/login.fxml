@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20" styleClass="login-container"
+      xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.aerospace.aitt.shell.LoginController">
+    
+    <padding>
+        <Insets top="50" right="50" bottom="50" left="50"/>
+    </padding>
+    
+    <!-- Logo / Title -->
+    <VBox alignment="CENTER" spacing="5" styleClass="login-header">
+        <Label fx:id="lblAppTitle" styleClass="app-title" text="AITT"/>
+        <Label styleClass="app-subtitle" text="Automation Integration Test Tool"/>
+        <Label styleClass="app-version" text="v1.0.0 | Aerospace Systems"/>
+    </VBox>
+    
+    <!-- Login Form -->
+    <VBox alignment="CENTER" spacing="15" styleClass="login-form" maxWidth="350">
+        <padding>
+            <Insets top="30" right="40" bottom="30" left="40"/>
+        </padding>
+        
+        <Label styleClass="form-title" text="Authentication"/>
+        
+        <VBox spacing="5">
+            <Label styleClass="field-label" text="License Key"/>
+            <TextField fx:id="txtLicenseKey" promptText="Enter license key..." styleClass="login-field"/>
+        </VBox>
+        
+        <VBox spacing="5">
+            <Label styleClass="field-label" text="Username"/>
+            <TextField fx:id="txtUsername" promptText="Enter username..." styleClass="login-field"/>
+        </VBox>
+        
+        <VBox spacing="5">
+            <Label styleClass="field-label" text="Password"/>
+            <PasswordField fx:id="txtPassword" promptText="Enter password..." styleClass="login-field"/>
+        </VBox>
+        
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <CheckBox fx:id="chkRemember" text="Remember me" styleClass="remember-checkbox"/>
+        </HBox>
+        
+        <Button fx:id="btnLogin" text="Login" styleClass="login-button" maxWidth="Infinity" onAction="#handleLogin"/>
+        
+        <Label fx:id="lblStatus" styleClass="status-label" text=""/>
+    </VBox>
+    
+    <!-- Footer -->
+    <VBox alignment="CENTER" spacing="3" styleClass="login-footer">
+        <Label text="© 2026 Aerospace Systems Integration" styleClass="footer-text"/>
+        <Label text="For authorized personnel only" styleClass="footer-warning"/>
+    </VBox>
+    
+</VBox>

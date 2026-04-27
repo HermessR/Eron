@@ -1,0 +1,1349 @@
+{
+  "projectMetadata": {
+    "name": "AITT",
+    "fullName": "Automation Integration Test Tool",
+    "description": "Desktop application for integration testing of aeronautical embedded systems",
+    "version": "1.0.0",
+    "organization": "com.aerospace",
+    "language": "Java 20",
+    "framework": "JavaFX 20.0.2",
+    "buildTool": "Maven",
+    "targetPlatform": "Windows 10/11 (x64)",
+    "type": "Desktop GUI Application"
+  },
+  
+  "architecture": {
+    "overview": "Layered MVC architecture with native interop for hardware communication",
+    "layers": {
+      "presentation": {
+        "name": "Presentation Layer (JavaFX UI)",
+        "description": "Desktop UI controllers and views for user interaction",
+        "technology": "JavaFX FXML",
+        "responsibilities": [
+          "User interface rendering",
+          "Event handling and user input",
+          "Real-time UI updates",
+          "Cross-module navigation"
+        ],
+        "components": {
+          "shell": {
+            "description": "Application shell and navigation",
+            "classes": [
+              {
+                "name": "MainApp",
+                "file": "shell/MainApp.java",
+                "purpose": "JavaFX Application entry point",
+                "responsibilities": [
+                  "Initialize JavaFX stage",
+                  "Pre-warm native library",
+                  "Show login screen",
+                  "Manage application lifecycle"
+                ]
+              },
+              {
+                "name": "LoginController",
+                "file": "shell/LoginController.java",
+                "purpose": "User authentication UI",
+                "responsibilities": ["Credential input", "Session initiation"]
+              },
+              {
+                "name": "DashboardController",
+                "file": "shell/DashboardController.java",
+                "purpose": "Main dashboard navigation hub",
+                "responsibilities": [
+                  "Module navigation",
+                  "Dashboard layout",
+                  "Module switching"
+                ]
+              },
+              {
+                "name": "ModuleLoader",
+                "file": "shell/ModuleLoader.java",
+                "purpose": "Dynamic module loading and initialization",
+                "responsibilities": ["Runtime module discovery", "FXML loading"]
+              }
+            ]
+          },
+          "flashing": {
+            "description": "Firmware flashing UI module",
+            "classes": [
+              {
+                "name": "FlashingController",
+                "file": "flashing/ui/FlashingController.java",
+                "purpose": "Firmware flashing interface",
+                "responsibilities": [
+                  "Module selection and validation",
+                  "Progress monitoring",
+                  "CMM script execution control",
+                  "Abort functionality"
+                ]
+              }
+            ]
+          },
+          "hardware": {
+            "description": "Local hardware probe management UI",
+            "classes": [
+              {
+                "name": "HardwareController",
+                "file": "hardware/ui/HardwareController.java",
+                "purpose": "USB/JTAG debug probe interface",
+                "responsibilities": [
+                  "Probe discovery and listing",
+                  "Connection management",
+                  "Command execution",
+                  "Real-time logging"
+                ]
+              }
+            ]
+          },
+          "remote": {
+            "description": "Network probe management UI",
+            "classes": [
+              {
+                "name": "RemoteProbeController",
+                "file": "remote/ui/RemoteProbeController.java",
+                "purpose": "Network debug probe interface",
+                "responsibilities": [
+                  "Network probe discovery",
+                  "Remote connection management",
+                  "Remote command execution"
+                ]
+              }
+            ]
+          },
+          "scripting": {
+            "description": "CMM script editing and execution UI",
+            "classes": [
+              {
+                "name": "ScriptingController",
+                "file": "scripting/ui/ScriptingController.java",
+                "purpose": "TRACE32 CMM script editor",
+                "responsibilities": [
+                  "Script composition",
+                  "Syntax assistance",
+                  "Script execution"
+                ]
+              }
+            ]
+          },
+          "config": {
+            "description": "Application configuration UI",
+            "classes": [
+              {
+                "name": "SettingsController",
+                "file": "core/config/ui/SettingsController.java",
+                "purpose": "Application preferences interface",
+                "responsibilities": [
+                  "TRACE32 path configuration",
+                  "Visual theme selection",
+                  "Flashing defaults",
+                  "Output preferences"
+                ]
+              },
+              {
+                "name": "ConfigController",
+                "file": "config/ui/ConfigController.java",
+                "purpose": "Advanced configuration options",
+                "responsibilities": ["Expert-level settings"]
+              }
+            ]
+          },
+          "testdev": {
+            "description": "Development and testing UI",
+            "classes": [
+              {
+                "name": "TestDevController",
+                "file": "testdev/ui/TestDevController.java",
+                "purpose": "Development testing interface",
+                "responsibilities": ["Feature testing", "Integration testing"]
+              }
+            ]
+          }
+        }
+      },
+
+      "applicationLogic": {
+        "name": "Application Logic Layer",
+        "description": "Business logic and orchestration services",
+        "technology": "Java Services Pattern",
+        "responsibilities": [
+          "Business process orchestration",
+          "Cross-module coordination",
+          "State management",
+          "Event distribution"
+        ],
+        "components": {
+          "flashingService": {
+            "description": "Main orchestrator for firmware flashing operations",
+            "classes": [
+              {
+                "name": "FlashingService",
+                "file": "flashing/service/FlashingService.java",
+                "purpose": "Flashing process orchestration",
+                "responsibilities": [
+                  "Coordinate validation, generation, and execution",
+                  "Manage flashing sessions",
+                  "Async operation handling",
+                  "Abort and recovery logic"
+                ],
+                "dependencies": [
+                  "Validator",
+                  "CmmGenerator",
+                  "Trace32Runner",
+                  "SessionStore",
+                  "ProfileStore"
+                ],
+                "publicMethods": [
+                  "validate(modules, target) -> ValidationResult",
+                  "execute(modules, target, outputPath, runTrace32, trace32Path, logCallback, progressCallback) -> CompletableFuture<FlashingSession>",
+                  "abort()",
+                  "getCurrentSession() -> FlashingSession"
+                ]
+              },
+              {
+                "name": "Validator",
+                "file": "flashing/service/Validator.java",
+                "purpose": "Firmware module validation against target",
+                "responsibilities": [
+                  "Memory address conflict detection",
+                  "Module compatibility checking",
+                  "Target profile validation"
+                ]
+              },
+              {
+                "name": "CmmGenerator",
+                "file": "flashing/service/CmmGenerator.java",
+                "purpose": "TRACE32 CMM script generation",
+                "responsibilities": [
+                  "CMM command sequence generation",
+                  "Chipset-specific code generation",
+                  "Script output formatting"
+                ]
+              },
+              {
+                "name": "Trace32Runner",
+                "file": "flashing/service/Trace32Runner.java",
+                "purpose": "TRACE32 external process management",
+                "responsibilities": [
+                  "Process invocation",
+                  "Process monitoring",
+                  "Output capture",
+                  "Error handling"
+                ]
+              }
+            ]
+          },
+          
+          "hardwareService": {
+            "description": "Hardware probe management and communication",
+            "classes": [
+              {
+                "name": "HardwareService",
+                "file": "native_/HardwareService.java",
+                "purpose": "High-level hardware operations wrapper",
+                "responsibilities": [
+                  "Async operation support",
+                  "Connection state management",
+                  "Event callbacks for UI",
+                  "Automatic reconnection",
+                  "Probe discovery and enumeration"
+                ],
+                "dependencies": ["HardwareBridge"],
+                "publicMethods": [
+                  "discoverProbes() -> CompletableFuture<List<ProbeInfo>>",
+                  "connect(probeId, chipset) -> CompletableFuture<Void>",
+                  "disconnect() -> CompletableFuture<Void>",
+                  "sendCommand(cmd) -> CompletableFuture<CommandResult>",
+                  "readMemory(address, length) -> CompletableFuture<byte[]>",
+                  "writeMemory(address, data) -> CompletableFuture<Void>"
+                ],
+                "events": [
+                  "ConnectionEvent(state, probeId, message)",
+                  "LogEvent(message)"
+                ]
+              }
+            ]
+          },
+          
+          "networkProbeService": {
+            "description": "Network-attached debug probe discovery and management",
+            "classes": [
+              {
+                "name": "NetworkProbeService",
+                "file": "remote/service/NetworkProbeService.java",
+                "purpose": "TCP/IP debug probe management",
+                "responsibilities": [
+                  "UDP broadcast discovery",
+                  "Direct TCP connection",
+                  "Subnet scanning",
+                  "DNS-SD discovery",
+                  "Keep-alive management",
+                  "Connection pooling"
+                ],
+                "discoveryMethods": [
+                  "UDP broadcast for AITT probe servers",
+                  "Direct TCP to known addresses",
+                  "Subnet scanning for TRACE32 units",
+                  "mDNS/DNS-SD discovery"
+                ]
+              },
+              {
+                "name": "RemoteFlashingService",
+                "file": "remote/service/RemoteFlashingService.java",
+                "purpose": "Remote flashing over network",
+                "responsibilities": [
+                  "Remote flashing coordination",
+                  "Network reliability",
+                  "Remote command execution"
+                ]
+              }
+            ]
+          },
+          
+          "authenticationService": {
+            "description": "User authentication and session management",
+            "classes": [
+              {
+                "name": "AuthService",
+                "file": "core/auth/AuthService.java",
+                "purpose": "User authentication and authorization",
+                "pattern": "Singleton",
+                "responsibilities": [
+                  "Credential validation",
+                  "Session creation",
+                  "User role assignment",
+                  "Future: License validation"
+                ]
+              }
+            ]
+          }
+        }
+      },
+
+      "businessLogic": {
+        "name": "Business Logic & Data Models",
+        "description": "Core business entities and domain logic",
+        "components": {
+          "flashingDomain": {
+            "description": "Firmware flashing domain models",
+            "classes": [
+              {
+                "name": "FlashingSession",
+                "file": "flashing/model/FlashingSession.java",
+                "purpose": "Represents a single flashing operation",
+                "properties": [
+                  "sessionId",
+                  "modules: List<SoftwareModule>",
+                  "targetProfile: TargetProfile",
+                  "status: FlashStatus",
+                  "generatedScript: Path",
+                  "startTime: LocalDateTime",
+                  "endTime: LocalDateTime"
+                ]
+              },
+              {
+                "name": "SoftwareModule",
+                "file": "flashing/model/SoftwareModule.java",
+                "purpose": "Firmware module with binary and metadata",
+                "properties": [
+                  "name: String",
+                  "version: String",
+                  "binaryPath: Path",
+                  "baseAddress: long",
+                  "size: long",
+                  "checksum: String"
+                ]
+              },
+              {
+                "name": "TargetProfile",
+                "file": "flashing/model/TargetProfile.java",
+                "purpose": "Chipset memory map and configuration",
+                "pattern": "Record",
+                "properties": [
+                  "id: String",
+                  "name: String",
+                  "cpuType: String",
+                  "flashStart: long",
+                  "flashEnd: long",
+                  "ramAddress: long",
+                  "t32ConfigPath: Path"
+                ]
+              },
+              {
+                "name": "FlashStatus",
+                "file": "flashing/model/FlashStatus.java",
+                "purpose": "Flashing execution status enumeration",
+                "values": [
+                  "IDLE",
+                  "VALIDATING",
+                  "GENERATING",
+                  "EXECUTING",
+                  "COMPLETED",
+                  "FAILED",
+                  "ABORTED"
+                ]
+              },
+              {
+                "name": "ValidationResult",
+                "file": "flashing/model/ValidationResult.java",
+                "purpose": "Validation outcome with details",
+                "properties": [
+                  "valid: boolean",
+                  "errors: List<String>",
+                  "warnings: List<String>"
+                ]
+              }
+            ]
+          },
+
+          "hardwareDomain": {
+            "description": "Hardware communication domain models",
+            "classes": [
+              {
+                "name": "HardwareInfo",
+                "file": "native_/HardwareInfo.java",
+                "purpose": "Hardware capability and status information",
+                "properties": [
+                  "probeId: String",
+                  "probeType: ProbeType",
+                  "serialNumber: String",
+                  "firmwareVersion: String",
+                  "supportedChipsets: List<String>"
+                ]
+              },
+              {
+                "name": "CommandResult",
+                "file": "native_/CommandResult.java",
+                "purpose": "Hardware command execution result",
+                "properties": [
+                  "success: boolean",
+                  "message: String",
+                  "data: byte[]",
+                  "errorCode: int"
+                ]
+              },
+              {
+                "name": "ChipsetConfig",
+                "file": "native_/ChipsetConfig.java",
+                "purpose": "Chipset-specific configuration",
+                "properties": [
+                  "chipsetId: String",
+                  "debugPort: String",
+                  "debugFrequency: int",
+                  "resetType: String"
+                ]
+              }
+            ]
+          },
+
+          "remoteDomain": {
+            "description": "Network probe domain models",
+            "classes": [
+              {
+                "name": "NetworkProbe",
+                "file": "remote/model/NetworkProbe.java",
+                "purpose": "Network-accessible debug probe",
+                "properties": [
+                  "id: String",
+                  "hostname: String",
+                  "ipAddress: String",
+                  "port: int",
+                  "probeType: RemoteType",
+                  "connectionStatus: ConnectionStatus",
+                  "lastSeen: LocalDateTime"
+                ],
+                "enums": {
+                  "RemoteType": ["AITT_SERVER", "TRACE32_UNIT", "GENERIC_TCP"],
+                  "ConnectionStatus": ["AVAILABLE", "CONNECTED", "DISCONNECTED", "ERROR"]
+                }
+              }
+            ]
+          },
+
+          "authenticationDomain": {
+            "description": "User and authentication domain",
+            "classes": [
+              {
+                "name": "User",
+                "file": "core/auth/User.java",
+                "purpose": "Authenticated user representation",
+                "properties": [
+                  "username: String",
+                  "displayName: String",
+                  "role: UserRole",
+                  "loginTime: LocalDateTime"
+                ]
+              }
+            ]
+          }
+        }
+      },
+
+      "supportingLayers": {
+        "name": "Supporting & Cross-Cutting Layers",
+        "description": "Configuration, utilities, logging, and infrastructure",
+        "components": {
+          "configuration": {
+            "description": "Application settings and configuration management",
+            "classes": [
+              {
+                "name": "AppSettings",
+                "file": "core/config/AppSettings.java",
+                "purpose": "Centralized application preferences",
+                "categories": {
+                  "trace32": [
+                    "executable_path",
+                    "connection_timeout"
+                  ],
+                  "flashing": [
+                    "default_target_profile",
+                    "auto_validate",
+                    "confirm_before_flash"
+                  ],
+                  "output": [
+                    "default_directory",
+                    "auto_generate_filename",
+                    "open_after_generate"
+                  ],
+                  "appearance": [
+                    "theme",
+                    "log_max_lines",
+                    "show_timestamp",
+                    "wrap_log_text"
+                  ]
+                }
+              },
+              {
+                "name": "SettingsStore",
+                "file": "core/config/SettingsStore.java",
+                "purpose": "Persistent settings storage",
+                "responsibilities": [
+                  "JSON serialization/deserialization",
+                  "File I/O management",
+                  "Settings change notifications"
+                ]
+              }
+            ]
+          },
+
+          "dataManagement": {
+            "description": "Persistent data storage for sessions and profiles",
+            "classes": [
+              {
+                "name": "SessionStore",
+                "file": "flashing/data/SessionStore.java",
+                "purpose": "Flashing session history persistence",
+                "responsibilities": [
+                  "Session serialization",
+                  "Historical data retrieval",
+                  "Session archive management"
+                ]
+              },
+              {
+                "name": "ProfileStore",
+                "file": "flashing/data/ProfileStore.java",
+                "purpose": "Target profile management and caching",
+                "responsibilities": [
+                  "Profile loading from JSON",
+                  "Profile validation",
+                  "Chipset profile discovery"
+                ]
+              }
+            ]
+          },
+
+          "utilities": {
+            "description": "Utility functions for common operations",
+            "classes": [
+              {
+                "name": "HexUtil",
+                "file": "core/util/HexUtil.java",
+                "purpose": "Hexadecimal formatting and parsing",
+                "methods": [
+                  "toHex(byte[]) -> String",
+                  "fromHex(String) -> byte[]",
+                  "formatAddress(long) -> String"
+                ]
+              },
+              {
+                "name": "FileUtil",
+                "file": "core/util/FileUtil.java",
+                "purpose": "File operations and path management",
+                "methods": [
+                  "readBinary(Path) -> byte[]",
+                  "writeBinary(Path, byte[]) -> void",
+                  "getFileSize(Path) -> long"
+                ]
+              },
+              {
+                "name": "ChecksumUtil",
+                "file": "core/util/ChecksumUtil.java",
+                "purpose": "Checksum and hash computation",
+                "methods": [
+                  "crc32(byte[]) -> long",
+                  "md5(byte[]) -> String",
+                  "sha256(byte[]) -> String"
+                ]
+              }
+            ]
+          },
+
+          "userInterface": {
+            "description": "UI framework and component utilities",
+            "classes": [
+              {
+                "name": "StageManager",
+                "file": "core/ui/StageManager.java",
+                "purpose": "Scene navigation and stage management",
+                "pattern": "Singleton",
+                "responsibilities": [
+                  "FXML loading",
+                  "Scene switching",
+                  "Stage lifecycle",
+                  "Window management"
+                ]
+              },
+              {
+                "name": "BaseController",
+                "file": "core/ui/BaseController.java",
+                "purpose": "Abstract controller base class",
+                "responsibilities": [
+                  "Common initialization",
+                  "FXML injection",
+                  "Lifecycle hooks"
+                ]
+              },
+              {
+                "name": "ThemeManager",
+                "file": "core/ui/ThemeManager.java",
+                "purpose": "Application theming (dark/light modes)",
+                "responsibilities": [
+                  "CSS stylesheet management",
+                  "Theme switching",
+                  "Persistence of theme choice"
+                ]
+              },
+              {
+                "name": "Alerts",
+                "file": "core/ui/Alerts.java",
+                "purpose": "Dialog and alert utilities",
+                "methods": [
+                  "showInfo(title, message)",
+                  "showWarning(title, message)",
+                  "showError(title, message)",
+                  "showConfirmation(title, message) -> boolean"
+                ]
+              },
+              {
+                "name": "InfiniteCarousel",
+                "file": "core/ui/InfiniteCarousel.java",
+                "purpose": "Reusable carousel UI component",
+                "responsibilities": ["Item display", "Navigation"]
+              }
+            ]
+          },
+
+          "logging": {
+            "description": "Structured logging and debugging",
+            "classes": [
+              {
+                "name": "AppLogger",
+                "file": "core/log/AppLogger.java",
+                "purpose": "Application-wide logging facade",
+                "backend": "Logback SLF4J",
+                "levels": [
+                  "DEBUG",
+                  "INFO",
+                  "WARN",
+                  "ERROR"
+                ],
+                "features": [
+                  "Async logging",
+                  "File rotation",
+                  "Console output",
+                  "Structured logging"
+                ]
+              }
+            ]
+          }
+        }
+      },
+
+      "nativeLayer": {
+        "name": "Native Integration Layer (C/C++)",
+        "description": "JNI bridge to native hardware communication",
+        "technology": "C, JNI, CMake, Visual Studio",
+        "targetOS": "Windows 10/11 x64",
+        "components": {
+          "jniBridge": {
+            "description": "Java Native Interface bindings",
+            "files": [
+              {
+                "name": "aitt_native.h",
+                "path": "native/include/aitt_native.h",
+                "purpose": "Public C API definition",
+                "scope": "Header-only"
+              },
+              {
+                "name": "aitt_native.c",
+                "path": "native/src/aitt_native.c",
+                "purpose": "Core native implementation",
+                "responsibilities": [
+                  "Probe initialization and discovery",
+                  "Communication protocol handling",
+                  "Memory management",
+                  "Driver registration"
+                ]
+              },
+              {
+                "name": "jni_bindings.c",
+                "path": "native/src/jni_bindings.c",
+                "purpose": "JNI method implementations",
+                "responsibilities": [
+                  "Java call handling",
+                  "Type conversion (Java <-> C)",
+                  "Exception propagation",
+                  "Callback management"
+                ],
+                "jniMethods": [
+                  "Java_com_aerospace_aitt_native__HardwareBridge_discoverProbes",
+                  "Java_com_aerospace_aitt_native__HardwareBridge_connect",
+                  "Java_com_aerospace_aitt_native__HardwareBridge_sendCommand",
+                  "Java_com_aerospace_aitt_native__HardwareBridge_readMemory",
+                  "Java_com_aerospace_aitt_native__HardwareBridge_writeMemory"
+                ]
+              }
+            ]
+          },
+
+          "chipsetDrivers": {
+            "description": "Hardware-specific driver implementations",
+            "files": [
+              {
+                "name": "chipset_s32k148.c",
+                "path": "native/src/chipset_s32k148.c",
+                "purpose": "NXP S32K148 ARM Cortex-M4F driver",
+                "chipset": {
+                  "id": "S32K148",
+                  "architecture": "ARM Cortex-M4F",
+                  "debugInterface": "SWD (Serial Wire Debug)",
+                  "flashStart": "0x00000000",
+                  "flashSize": "2MB",
+                  "ramSize": "512KB"
+                },
+                "capabilities": [
+                  "SWD connection",
+                  "Memory read/write",
+                  "Register access",
+                  "Flash programming",
+                  "Breakpoint management"
+                ]
+              },
+              {
+                "name": "chipset_mpc5777m.c",
+                "path": "native/src/chipset_mpc5777m.c",
+                "purpose": "NXP MPC5777M Power ISA dual-core driver",
+                "chipset": {
+                  "id": "MPC5777M",
+                  "architecture": "Power ISA (e500v2)",
+                  "cores": 2,
+                  "debugInterface": "JTAG",
+                  "flashStart": "0x00000000",
+                  "flashSize": "4MB",
+                  "ramSize": "768KB"
+                },
+                "capabilities": [
+                  "JTAG connection",
+                  "Multi-core debugging",
+                  "Memory read/write",
+                  "Dual-core synchronization",
+                  "Flash programming"
+                ]
+              }
+            ]
+          },
+
+          "nativeBridge": {
+            "description": "Java class wrapping native interface",
+            "classes": [
+              {
+                "name": "HardwareBridge",
+                "file": "native_/HardwareBridge.java",
+                "purpose": "Low-level JNI wrapper",
+                "pattern": "Singleton",
+                "nativeMethods": [
+                  "native void init() throws NativeException",
+                  "native void shutdown()",
+                  "native ProbeInfo[] discoverProbes() throws NativeException",
+                  "native void connect(String probeId, ChipsetConfig config) throws NativeException",
+                  "native void disconnect()",
+                  "native CommandResult sendCommand(String command) throws NativeException",
+                  "native byte[] readMemory(long address, int length) throws NativeException",
+                  "native void writeMemory(long address, byte[] data) throws NativeException"
+                ],
+                "dllFile": "windows-x64/aitt_native.dll"
+              },
+              {
+                "name": "NativeException",
+                "file": "native_/NativeException.java",
+                "purpose": "Native layer exception wrapper",
+                "responsibilities": ["Error propagation"]
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+
+  "featureModules": {
+    "overview": "Modular features organized by business capability",
+    "modules": {
+      "firmware_flashing": {
+        "name": "Firmware Flashing",
+        "description": "Core capability for flashing embedded systems",
+        "features": [
+          "Multi-module firmware validation",
+          "Memory address conflict detection",
+          "CMM script generation",
+          "TRACE32 integration",
+          "Progress monitoring",
+          "Abort and recovery"
+        ],
+        "services": [
+          "FlashingService",
+          "Validator",
+          "CmmGenerator",
+          "Trace32Runner"
+        ],
+        "models": [
+          "FlashingSession",
+          "SoftwareModule",
+          "TargetProfile",
+          "ValidationResult"
+        ],
+        "dataStores": [
+          "SessionStore",
+          "ProfileStore"
+        ],
+        "ui": ["FlashingController"],
+        "resources": ["flashing.fxml"]
+      },
+
+      "hardware_management": {
+        "name": "Hardware Management",
+        "description": "Local USB/JTAG/Serial debug probe control",
+        "features": [
+          "Automatic probe detection",
+          "Connection management",
+          "Command execution",
+          "Real-time logging",
+          "Multi-chipset support",
+          "Connection state events"
+        ],
+        "services": [
+          "HardwareService",
+          "HardwareBridge (JNI)"
+        ],
+        "models": [
+          "HardwareInfo",
+          "CommandResult",
+          "ChipsetConfig"
+        ],
+        "ui": ["HardwareController"],
+        "resources": ["hardware.fxml"],
+        "nativeComponents": [
+          "aitt_native.dll",
+          "chipset_s32k148.c",
+          "chipset_mpc5777m.c"
+        ]
+      },
+
+      "remote_debugging": {
+        "name": "Remote Debugging",
+        "description": "Network-based debug probe management",
+        "features": [
+          "UDP broadcast discovery",
+          "TCP connection management",
+          "Subnet scanning",
+          "DNS-SD discovery",
+          "Remote command execution",
+          "Keep-alive monitoring"
+        ],
+        "services": [
+          "NetworkProbeService",
+          "RemoteFlashingService"
+        ],
+        "models": [
+          "NetworkProbe"
+        ],
+        "ui": ["RemoteProbeController"],
+        "resources": ["remote.fxml"]
+      },
+
+      "scripting": {
+        "name": "CMM Scripting",
+        "description": "TRACE32 CMM script development environment",
+        "features": [
+          "Script composition",
+          "Syntax assistance",
+          "Template library",
+          "Execution control"
+        ],
+        "ui": ["ScriptingController"],
+        "resources": ["scripting.fxml"]
+      },
+
+      "authentication": {
+        "name": "User Authentication",
+        "description": "User login and session management",
+        "features": [
+          "Credential validation",
+          "Session creation",
+          "User roles",
+          "Future: License validation"
+        ],
+        "services": [
+          "AuthService"
+        ],
+        "models": [
+          "User"
+        ],
+        "ui": ["LoginController"],
+        "resources": ["login.fxml"]
+      },
+
+      "configuration": {
+        "name": "Configuration Management",
+        "description": "User preferences and application settings",
+        "features": [
+          "Settings persistence",
+          "Theme management",
+          "Path configuration",
+          "Flashing defaults",
+          "Logging preferences"
+        ],
+        "services": [
+          "SettingsStore",
+          "ThemeManager"
+        ],
+        "models": [
+          "AppSettings"
+        ],
+        "ui": [
+          "SettingsController",
+          "ConfigController"
+        ],
+        "resources": [
+          "settings.fxml",
+          "config.fxml"
+        ]
+      }
+    }
+  },
+
+  "dependencies": {
+    "framework": {
+      "javafx": {
+        "group": "org.openjfx",
+        "artifacts": [
+          "javafx-controls",
+          "javafx-fxml",
+          "javafx-graphics",
+          "javafx-media"
+        ],
+        "version": "20.0.2",
+        "purpose": "Desktop UI framework"
+      },
+      "jackson": {
+        "group": "com.fasterxml.jackson.core",
+        "version": "2.16.1",
+        "purpose": "JSON serialization/deserialization"
+      },
+      "logback": {
+        "group": "ch.qos.logback",
+        "version": "1.4.14",
+        "purpose": "Structured logging"
+      }
+    },
+    "testing": {
+      "junit": {
+        "group": "org.junit.jupiter",
+        "version": "5.10.2",
+        "purpose": "Unit testing framework"
+      }
+    },
+    "native": {
+      "jdk": {
+        "version": "20+",
+        "requirement": "JNI support"
+      },
+      "cmake": {
+        "version": "3.16+",
+        "purpose": "Native build configuration"
+      },
+      "visualStudio": {
+        "version": "2019 or 2022",
+        "requirement": "C++ desktop development"
+      }
+    }
+  },
+
+  "dataFlow": {
+    "flashingWorkflow": {
+      "description": "Typical firmware flashing workflow",
+      "steps": [
+        {
+          "step": 1,
+          "actor": "User",
+          "action": "Select firmware modules and target profile"
+        },
+        {
+          "step": 2,
+          "actor": "FlashingService",
+          "action": "Validate modules against target profile"
+        },
+        {
+          "step": 3,
+          "actor": "Validator",
+          "action": "Check memory addresses, compatibility"
+        },
+        {
+          "step": 4,
+          "actor": "CmmGenerator",
+          "action": "Generate TRACE32 CMM script"
+        },
+        {
+          "step": 5,
+          "actor": "Trace32Runner",
+          "action": "Execute CMM script via TRACE32"
+        },
+        {
+          "step": 6,
+          "actor": "SessionStore",
+          "action": "Archive session for history"
+        },
+        {
+          "step": 7,
+          "actor": "UI",
+          "action": "Display results and completion status"
+        }
+      ],
+      "errorHandling": [
+        "Validation failure -> Stop with error message",
+        "TRACE32 not found -> Show configuration dialog",
+        "Script execution error -> Capture output and display",
+        "User abort -> Graceful shutdown"
+      ]
+    },
+
+    "hardwareConnectionWorkflow": {
+      "description": "Hardware probe discovery and connection",
+      "steps": [
+        {
+          "step": 1,
+          "actor": "HardwareService",
+          "action": "Initialize hardware bridge"
+        },
+        {
+          "step": 2,
+          "actor": "HardwareBridge",
+          "action": "Call JNI to scan for probes"
+        },
+        {
+          "step": 3,
+          "actor": "Native Library",
+          "action": "Enumerate USB/serial ports"
+        },
+        {
+          "step": 4,
+          "actor": "Native Library",
+          "action": "Communicate with each probe"
+        },
+        {
+          "step": 5,
+          "actor": "HardwareService",
+          "action": "Fire discovery events"
+        },
+        {
+          "step": 6,
+          "actor": "UI",
+          "action": "Display available probes"
+        },
+        {
+          "step": 7,
+          "actor": "User",
+          "action": "Select probe and chipset"
+        },
+        {
+          "step": 8,
+          "actor": "HardwareService",
+          "action": "Connect with selected config"
+        }
+      ]
+    }
+  },
+
+  "technicalStack": {
+    "buildSystem": {
+      "tool": "Maven",
+      "sourceEncoding": "UTF-8",
+      "compiler": {
+        "source": "Java 20",
+        "target": "Java 20"
+      }
+    },
+    "ui": {
+      "framework": "JavaFX 20.0.2",
+      "markup": "FXML",
+      "styling": "CSS",
+      "components": [
+        "Controls",
+        "TableView",
+        "TreeView",
+        "TextArea",
+        "ProgressBar",
+        "ComboBox",
+        "Button",
+        "Label"
+      ]
+    },
+    "logging": {
+      "backend": "Logback",
+      "api": "SLF4J",
+      "features": [
+        "Async logging",
+        "File rotation",
+        "Console output",
+        "Configurable levels"
+      ]
+    },
+    "serialization": {
+      "format": "JSON",
+      "library": "Jackson",
+      "usage": [
+        "Settings persistence",
+        "Session archival",
+        "Profile loading"
+      ]
+    },
+    "native": {
+      "language": "C",
+      "buildTool": "CMake",
+      "generator": "Visual Studio 2022",
+      "architecture": "x64",
+      "os": "Windows 10/11",
+      "interfaces": [
+        "JNI (Java Native Interface)",
+        "USB",
+        "Serial",
+        "JTAG",
+        "SWD"
+      ]
+    }
+  },
+
+  "codeOrganization": {
+    "packageStructure": {
+      "root": "com.aerospace.aitt",
+      "packages": {
+        "app": {
+          "path": "com.aerospace.aitt",
+          "purpose": "Entry point and global configuration"
+        },
+        "shell": {
+          "path": "com.aerospace.aitt.shell",
+          "purpose": "Application bootstrap and navigation",
+          "subPackages": []
+        },
+        "core": {
+          "path": "com.aerospace.aitt.core",
+          "purpose": "Cross-cutting infrastructure",
+          "subPackages": [
+            "auth (Authentication)",
+            "config (Configuration)",
+            "log (Logging)",
+            "ui (UI Framework)",
+            "util (Utilities)"
+          ]
+        },
+        "flashing": {
+          "path": "com.aerospace.aitt.flashing",
+          "purpose": "Firmware flashing feature",
+          "subPackages": [
+            "data (Persistence)",
+            "model (Domain models)",
+            "service (Business logic)",
+            "ui (User interface)"
+          ]
+        },
+        "hardware": {
+          "path": "com.aerospace.aitt.hardware",
+          "purpose": "Local hardware management",
+          "subPackages": [
+            "ui (User interface)"
+          ]
+        },
+        "remote": {
+          "path": "com.aerospace.aitt.remote",
+          "purpose": "Network debug probe management",
+          "subPackages": [
+            "model (Domain models)",
+            "service (Business logic)",
+            "ui (User interface)"
+          ]
+        },
+        "native": {
+          "path": "com.aerospace.aitt.native_",
+          "purpose": "JNI hardware bridge",
+          "subPackages": []
+        },
+        "scripting": {
+          "path": "com.aerospace.aitt.scripting",
+          "purpose": "CMM script development",
+          "subPackages": [
+            "ui (User interface)"
+          ]
+        },
+        "config": {
+          "path": "com.aerospace.aitt.config",
+          "purpose": "Advanced configuration",
+          "subPackages": [
+            "ui (User interface)"
+          ]
+        },
+        "testdev": {
+          "path": "com.aerospace.aitt.testdev",
+          "purpose": "Development and testing utilities",
+          "subPackages": [
+            "ui (User interface)"
+          ]
+        }
+      }
+    },
+    "resourceStructure": {
+      "fxml": [
+        "login.fxml (Authentication screen)",
+        "dashboard.fxml (Main navigation)",
+        "flashing.fxml (Flashing module)",
+        "hardware.fxml (Hardware management)",
+        "remote.fxml (Remote probes)",
+        "scripting.fxml (CMM scripting)",
+        "settings.fxml (User settings)",
+        "config.fxml (Advanced configuration)",
+        "testdev.fxml (Development tools)"
+      ],
+      "css": [
+        "style.css (Default theme)",
+        "style-light.css (Light theme)",
+        "carousel-demo.css (Carousel styling)"
+      ],
+      "native": [
+        "windows-x64/aitt_native.dll (Native library)"
+      ],
+      "sounds": [
+        "Various audio files"
+      ],
+      "profiles": [
+        "targets.json (Chipset profiles)"
+      ]
+    }
+  },
+
+  "extensibilityPoints": {
+    "newChipsets": {
+      "description": "Adding support for new hardware chipsets",
+      "steps": [
+        "Create chipset_<name>.c in native/src/",
+        "Implement ChipsetDriver interface",
+        "Register driver in aitt_native.c",
+        "Add to CMakeLists.txt",
+        "Create TargetProfile JSON",
+        "Test via Hardware module"
+      ]
+    },
+    "newRemoteProbeTypes": {
+      "description": "Support additional network probe protocols",
+      "steps": [
+        "Extend RemoteType enum",
+        "Implement discovery logic in NetworkProbeService",
+        "Add connection handler",
+        "Update RemoteFlashingService"
+      ]
+    },
+    "customUIModules": {
+      "description": "Creating new feature modules with UI",
+      "steps": [
+        "Create package under com.aerospace.aitt.<module>",
+        "Create <Module>Controller extending BaseController",
+        "Create <module>.fxml resource",
+        "Register in ModuleLoader",
+        "Add navigation in DashboardController"
+      ]
+    },
+    "customValidation": {
+      "description": "Extending flashing validation rules",
+      "steps": [
+        "Extend Validator class",
+        "Add custom check methods",
+        "Return results in ValidationResult",
+        "Display in UI validation output"
+      ]
+    }
+  },
+
+  "qualityAttributes": {
+    "reliability": [
+      "Async/concurrent operation handling",
+      "Comprehensive error handling",
+      "Session persistence",
+      "Auto-reconnection capabilities",
+      "Graceful degradation"
+    ],
+    "usability": [
+      "Intuitive FXML-based UI",
+      "Real-time progress feedback",
+      "Comprehensive logging",
+      "Theme customization",
+      "Confirmation dialogs"
+    ],
+    "maintainability": [
+      "Layered architecture",
+      "Service-based design",
+      "Clear separation of concerns",
+      "Documented code",
+      "Extensibility points"
+    ],
+    "performance": [
+      "Asynchronous I/O",
+      "Thread pooling",
+      "Async flashing operations",
+      "Efficient hardware communication",
+      "Native library optimization"
+    ],
+    "portability": [
+      "Java 20 cross-platform",
+      "JavaFX for UI portability",
+      "Native layer for x64 Windows",
+      "Modular architecture"
+    ]
+  },
+
+  "deploymentStructure": {
+    "distribution": {
+      "format": "JAR (Maven)",
+      "mainClass": "com.aerospace.aitt.shell.MainApp",
+      "dependencies": "Bundled (all in JAR)",
+      "nativeLibraries": "Bundled in src/main/resources/native/"
+    },
+    "systemRequirements": {
+      "os": "Windows 10/11 (x64)",
+      "runtime": "JDK 20+",
+      "memory": "512MB minimum, 2GB recommended",
+      "disk": "200MB",
+      "externalDependencies": [
+        "TRACE32 (for flashing) - path configured in settings"
+      ]
+    }
+  }
+}

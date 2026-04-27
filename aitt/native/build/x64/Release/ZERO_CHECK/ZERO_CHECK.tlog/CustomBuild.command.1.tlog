@@ -1,0 +1,10 @@
+^C:\USERS\THINKPAD\DESKTOP\ERON\AITT\NATIVE\BUILD\CMAKEFILES\21CAFD194C436FAF6C69A55B0A4890C7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/THINKPAD/Desktop/Eron/aitt/native -BC:/Users/THINKPAD/Desktop/Eron/aitt/native/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/THINKPAD/Desktop/Eron/aitt/native/build/aitt_native.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

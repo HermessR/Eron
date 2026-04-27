@@ -1,0 +1,78 @@
+2026-04-11 06:51:01.273 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-11 06:51:01.563 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native2259999595530642427\aitt_native.dll
+2026-04-11 06:51:01.567 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-11 06:51:02.240 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-11 06:51:02.243 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-11 06:51:02.717 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-11 06:51:03.772 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-11 06:51:03.775 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-11 06:52:09.578 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-11 20:41:56.110 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-11 20:41:56.254 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native13345802812997086143\aitt_native.dll
+2026-04-11 20:41:56.256 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-11 20:41:56.547 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-11 20:41:56.549 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-11 20:41:56.775 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-11 20:41:57.256 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-11 20:41:57.256 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-11 20:42:04.339 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-11 20:43:54.793 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-11 20:43:54.972 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native15829121247015221531\aitt_native.dll
+2026-04-11 20:43:54.976 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-11 20:43:55.234 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-11 20:43:55.235 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-11 20:43:55.441 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-11 20:43:55.892 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-11 20:43:55.893 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-11 20:44:12.170 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-11 20:44:12.173 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-11 20:44:12.174 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-11 20:44:12.239 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-11 20:44:12.354 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-11 20:44:12.357 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-11 20:44:12.363 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-11 20:44:12.364 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-11 20:44:16.518 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-11 20:44:16.611 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-11 20:44:16.631 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-11 20:44:16.638 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-11 20:44:22.111 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings saved to C:\Users\THINKPAD\.aitt\settings.json
+2026-04-11 20:44:22.114 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-11 20:44:22.114 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Theme applied globally: Light
+2026-04-11 20:44:22.114 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Settings saved successfully
+2026-04-11 20:44:24.943 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-11 20:44:24.987 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-11 20:44:24.990 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-11 20:44:24.992 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-11 20:44:27.119 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Remote Probes Module
+2026-04-11 20:44:27.171 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] Initializing RemoteProbeController
+2026-04-11 20:44:27.179 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] Remote Probe Manager displayed
+2026-04-11 20:44:27.179 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/remote.fxml
+2026-04-11 20:44:27.181 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [NetworkProbeService] NetworkProbeService initialized
+2026-04-11 20:44:27.280 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] RemoteProbeController initialized
+2026-04-11 20:44:28.815 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [NetworkProbeService] NetworkProbeService closed
+2026-04-11 20:44:28.815 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [RemoteProbeController] RemoteProbeController cleanup
+2026-04-11 20:44:28.817 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-11 20:44:28.817 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-11 20:44:31.638 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Scripting Console
+2026-04-11 20:44:31.680 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Initializing ScriptingController
+2026-04-11 20:44:31.683 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] HardwareBridge initialized - Native version: 1.0.0
+2026-04-11 20:44:31.683 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] ScriptingController initialized
+2026-04-11 20:44:31.685 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareService] HardwareService initialized
+2026-04-11 20:44:31.687 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Scripting Console displayed
+2026-04-11 20:44:31.687 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/scripting.fxml
+2026-04-11 20:44:33.597 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-11 20:44:33.597 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-11 20:44:37.034 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Flashing Module
+2026-04-11 20:44:37.112 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [FlashingController] Initializing FlashingController
+2026-04-11 20:44:37.123 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/flashing.fxml
+2026-04-11 20:44:37.125 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-11 20:44:37.222 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [SessionStore] Loaded 12 sessions from C:\Users\THINKPAD\.aitt\sessions.json
+2026-04-11 20:44:37.278 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [FlashingController] FlashingController initialized
+2026-04-11 20:44:43.314 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-11 20:44:43.315 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-11 20:44:46.075 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-11 20:44:46.097 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-11 20:44:46.101 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-11 20:44:46.102 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-11 20:44:54.893 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down

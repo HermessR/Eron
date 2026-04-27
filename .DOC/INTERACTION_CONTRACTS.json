@@ -1,0 +1,1580 @@
+{
+  "useCaseInteractions": {
+    "overview": "Communication contracts and interaction flows between Frontend, Backend, Flashing, Remote, and Hardware modules",
+    
+    "primaryUseCases": [
+      {
+        "id": "UC-001",
+        "name": "Firmware Flashing Workflow",
+        "description": "Complete firmware flashing process with validation and execution",
+        "actors": ["User", "Frontend", "Backend Services", "Flashing Module", "Hardware Module"],
+        "interaction": {
+          "steps": [
+            {
+              "seq": 1,
+              "actor": "User",
+              "action": "Initiates flashing in UI",
+              "module": "Frontend (FlashingController)",
+              "operation": "selectModulesAndTarget()",
+              "output": "Event triggered"
+            },
+            {
+              "seq": 2,
+              "actor": "Frontend",
+              "action": "Sends validation request",
+              "module": "Frontend → Backend",
+              "operation": "FlashingService.validate()",
+              "contract": {
+                "request": {
+                  "type": "ValidationRequest",
+                  "payload": {
+                    "modules": [
+                      {
+                        "name": "string",
+                        "binaryPath": "Path",
+                        "baseAddress": "0x<hex>",
+                        "size": "long",
+                        "checksum": "string"
+                      }
+                    ],
+                    "targetProfile": {
+                      "id": "string",
+                      "cpuType": "string",
+                      "flashStart": "0x<hex>",
+                      "flashEnd": "0x<hex>",
+                      "ramAddress": "0x<hex>"
+                    }
+                  }
+                },
+                "response": {
+                  "type": "ValidationResult",
+                  "payload": {
+                    "valid": "boolean",
+                    "errors": ["string"],
+                    "warnings": ["string"]
+                  }
+                }
+              }
+            },
+            {
+              "seq": 3,
+              "actor": "Backend Service",
+              "action": "Validates modules",
+              "module": "Backend (Validator)",
+              "operation": "validator.validate(modules, target)",
+              "details": "Memory address conflict detection, module compatibility checking"
+            },
+            {
+              "seq": 4,
+              "actor": "Frontend",
+              "action": "Displays validation results",
+              "module": "Frontend (FlashingController)",
+              "operation": "displayValidationResults(result)",
+              "userInteraction": "If valid, user clicks 'Execute Flashing'"
+            },
+            {
+              "seq": 5,
+              "actor": "Frontend",
+              "action": "Sends flashing execution request",
+              "module": "Frontend → Backend",
+              "operation": "FlashingService.execute()",
+              "contract": {
+                "request": {
+                  "type": "FlashingRequest",
+                  "payload": {
+                    "modules": "List<SoftwareModule>",
+                    "targetProfile": "TargetProfile",
+                    "outputPath": "Path",
+                    "runTrace32": "boolean",
+                    "trace32Path": "Path"
+                  },
+                  "callbacks": {
+                    "logCallback": "Consumer<String>",
+                    "progressCallback": "Consumer<Double>"
+                  }
+                },
+                "response": {
+                  "type": "CompletableFuture<FlashingSession>",
+                  "asyncResult": {
+                    "sessionId": "string",
+                    "status": "EXECUTING|COMPLETED|FAILED|ABORTED",
+                    "generatedScript": "Path",
+                    "startTime": "LocalDateTime",
+                    "endTime": "LocalDateTime"
+                  }
+                }
+              }
+            },
+            {
+              "seq": 6,
+              "actor": "Backend Service",
+              "action": "Generates CMM script",
+              "module": "Backend (CmmGenerator)",
+              "operation": "cmmGenerator.generate(modules, target)",
+              "contract": {
+                "input": {
+                  "modules": "List<SoftwareModule>",
+                  "targetProfile": "TargetProfile"
+                },
+                "output": {
+                  "type": "CmmScript",
+                  "content": "TRACE32 CMM script as string",
+                  "format": "Text-based command sequence"
+                }
+              }
+            },
+            {
+              "seq": 7,
+              "actor": "Backend Service",
+              "action": "Executes TRACE32",
+              "module": "Backend (Trace32Runner)",
+              "operation": "trace32Runner.execute(cmmScript, trace32Path)",
+              "contract": {
+                "input": {
+                  "scriptPath": "Path",
+                  "trace32ExecutablePath": "Path"
+                },
+                "output": {
+                  "type": "ExecutionResult",
+                  "exitCode": "int",
+                  "stdout": "string",
+                  "stderr": "string"
+                }
+              }
+            },
+            {
+              "seq": 8,
+              "actor": "Backend Service",
+              "action": "Archives session",
+              "module": "Backend (SessionStore)",
+              "operation": "sessionStore.save(session)",
+              "contract": {
+                "input": {
+                  "type": "FlashingSession",
+                  "data": {
+                    "sessionId": "string",
+                    "modules": "List<SoftwareModule>",
+                    "targetProfile": "TargetProfile",
+                    "status": "FlashStatus",
+                    "result": "boolean"
+                  }
+                },
+                "storage": "Serialized to JSON in file system"
+              }
+            },
+            {
+              "seq": 9,
+              "actor": "Frontend",
+              "action": "Receives async result",
+              "module": "Frontend (FlashingController)",
+              "operation": "handleFlashingComplete(session)",
+              "display": "Show completion status, results summary"
+            }
+          ]
+        }
+      },
+
+      {
+        "id": "UC-002",
+        "name": "Hardware Probe Discovery & Connection",
+        "description": "Discover local USB/JTAG/Serial debug probes and establish connection",
+        "actors": ["User", "Frontend", "Backend Services", "Hardware Module", "Native Library"],
+        "interaction": {
+          "steps": [
+            {
+              "seq": 1,
+              "actor": "User",
+              "action": "Opens Hardware module",
+              "module": "Frontend (HardwareController)",
+              "operation": "onModuleInitialize()",
+              "effect": "Auto-triggers probe discovery"
+            },
+            {
+              "seq": 2,
+              "actor": "Frontend",
+              "action": "Requests probe discovery",
+              "module": "Frontend → Backend",
+              "operation": "HardwareService.discoverProbes()",
+              "contract": {
+                "request": {
+                  "type": "ProbeDiscoveryRequest",
+                  "timeout": "30 seconds"
+                },
+                "response": {
+                  "type": "CompletableFuture<List<HardwareInfo>>",
+                  "payload": [
+                    {
+                      "probeId": "string (USB VID:PID or Serial)",
+                      "probeType": "ProbeType (USB|SERIAL|JTAG|SWD)",
+                      "serialNumber": "string",
+                      "firmwareVersion": "string",
+                      "supportedChipsets": ["S32K148", "MPC5777M"]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "seq": 3,
+              "actor": "Backend Service",
+              "action": "Initializes hardware bridge",
+              "module": "Backend (HardwareService → HardwareBridge)",
+              "operation": "HardwareBridge.discoverProbes()",
+              "contract": {
+                "jniCall": "native ProbeInfo[] discoverProbes() throws NativeException"
+              }
+            },
+            {
+              "seq": 4,
+              "actor": "Native Layer",
+              "action": "Enumerates USB/Serial ports",
+              "module": "Native (aitt_native.c)",
+              "operation": "aitt_discover_probes()",
+              "details": "Windows USB enumeration, COM port scanning"
+            },
+            {
+              "seq": 5,
+              "actor": "Native Layer",
+              "action": "Queries chipset drivers",
+              "module": "Native (Chipset Drivers)",
+              "operation": "s32k148_probe() || mpc5777m_probe()",
+              "contract": {
+                "interface": "Chipset driver detection sequence",
+                "inputs": ["Probe connection parameters"],
+                "outputs": ["Chipset identification, capabilities"]
+              }
+            },
+            {
+              "seq": 6,
+              "actor": "Backend Service",
+              "action": "Receives probe list",
+              "module": "Backend (HardwareService)",
+              "operation": "fireDiscoveryEvent(probes)",
+              "contract": {
+                "eventType": "DiscoveryEvent",
+                "listener": "Consumer<List<HardwareInfo>>",
+                "payload": "List of discovered probes"
+              }
+            },
+            {
+              "seq": 7,
+              "actor": "Frontend",
+              "action": "Displays available probes",
+              "module": "Frontend (HardwareController)",
+              "operation": "updateProbeList(probes)",
+              "display": "PopulateUI with probe options"
+            },
+            {
+              "seq": 8,
+              "actor": "User",
+              "action": "Selects probe and chipset",
+              "module": "Frontend (HardwareController)",
+              "operation": "connectButton.onClick(selectedProbe, chipset)"
+            },
+            {
+              "seq": 9,
+              "actor": "Frontend",
+              "action": "Requests connection",
+              "module": "Frontend → Backend",
+              "operation": "HardwareService.connect()",
+              "contract": {
+                "request": {
+                  "type": "ConnectionRequest",
+                  "payload": {
+                    "probeId": "string",
+                    "chipsetConfig": {
+                      "chipsetId": "S32K148|MPC5777M",
+                      "debugPort": "USB/COM port",
+                      "debugFrequency": "integer (MHz)",
+                      "resetType": "string"
+                    }
+                  }
+                },
+                "response": {
+                  "type": "CompletableFuture<Void>",
+                  "success": "Connection established",
+                  "failure": "Exception with error details"
+                }
+              }
+            },
+            {
+              "seq": 10,
+              "actor": "Backend Service",
+              "action": "Connects to probe",
+              "module": "Backend (HardwareService → HardwareBridge)",
+              "operation": "HardwareBridge.connect(probeId, chipsetConfig)",
+              "contract": {
+                "jniCall": "native void connect(String probeId, ChipsetConfig config) throws NativeException"
+              }
+            },
+            {
+              "seq": 11,
+              "actor": "Native Layer",
+              "action": "Initializes chipset driver",
+              "module": "Native (Chipset Driver)",
+              "operation": "chipset_init(config)",
+              "contract": {
+                "input": "ChipsetConfig structure",
+                "output": "success/error code",
+                "state": "Driver now ready for commands"
+              }
+            },
+            {
+              "seq": 12,
+              "actor": "Backend Service",
+              "action": "Fires connection event",
+              "module": "Backend (HardwareService)",
+              "operation": "fireConnectionEvent(CONNECTED, probeId)",
+              "contract": {
+                "eventType": "ConnectionEvent",
+                "listener": "Consumer<ConnectionEvent>",
+                "payload": {
+                  "state": "CONNECTED",
+                  "probeId": "string",
+                  "message": "Connection successful"
+                }
+              }
+            },
+            {
+              "seq": 13,
+              "actor": "Frontend",
+              "action": "Updates UI state",
+              "module": "Frontend (HardwareController)",
+              "operation": "handleConnectionEstablished()",
+              "display": "Enable command buttons, show 'Connected' status"
+            }
+          ]
+        }
+      },
+
+      {
+        "id": "UC-003",
+        "name": "Remote Probe Discovery & Network Connection",
+        "description": "Discover network-attached debug probes via TCP/UDP and establish connection",
+        "actors": ["User", "Frontend", "Backend Services", "Remote Module", "Network"],
+        "interaction": {
+          "steps": [
+            {
+              "seq": 1,
+              "actor": "User",
+              "action": "Opens Remote module",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "onModuleInitialize()",
+              "effect": "Auto-triggers network probe discovery"
+            },
+            {
+              "seq": 2,
+              "actor": "Frontend",
+              "action": "Requests network probe discovery",
+              "module": "Frontend → Backend",
+              "operation": "NetworkProbeService.discover()",
+              "contract": {
+                "request": {
+                  "type": "RemoteDiscoveryRequest",
+                  "discoveryMethods": [
+                    "UDP_BROADCAST",
+                    "TCP_DIRECT",
+                    "SUBNET_SCAN",
+                    "MDNS"
+                  ],
+                  "timeout": "3000ms"
+                },
+                "response": {
+                  "type": "CompletableFuture<List<NetworkProbe>>",
+                  "payload": [
+                    {
+                      "id": "string (unique identifier)",
+                      "hostname": "string (e.g., 'aitt-probe-001')",
+                      "ipAddress": "xxx.xxx.xxx.xxx",
+                      "port": "integer",
+                      "probeType": "RemoteType (AITT_SERVER|TRACE32_UNIT|GENERIC_TCP)",
+                      "connectionStatus": "ConnectionStatus (AVAILABLE|CONNECTED|DISCONNECTED|ERROR)",
+                      "lastSeen": "LocalDateTime"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "seq": 3,
+              "actor": "Backend Service",
+              "action": "Initiates UDP broadcast discovery",
+              "module": "Backend (NetworkProbeService)",
+              "operation": "broadcastDiscovery()",
+              "contract": {
+                "method": "UDP Broadcast to port 20101",
+                "format": "Discovery beacon packet",
+                "expectedResponse": "Probe unicast reply with identification"
+              }
+            },
+            {
+              "seq": 4,
+              "actor": "Backend Service",
+              "action": "Performs subnet scanning",
+              "module": "Backend (NetworkProbeService)",
+              "operation": "subnetScan()",
+              "contract": {
+                "method": "TCP connection attempts to known ports",
+                "timeout": "2000ms per host",
+                "ports": [20101, 2105]
+              }
+            },
+            {
+              "seq": 5,
+              "actor": "Backend Service",
+              "action": "Aggregates discovered probes",
+              "module": "Backend (NetworkProbeService)",
+              "operation": "aggregateResults()",
+              "contract": {
+                "deduplication": "By hostname/IP combination",
+                "sorting": "By connectivity status"
+              }
+            },
+            {
+              "seq": 6,
+              "actor": "Frontend",
+              "action": "Displays network probes",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "updateRemoteProbeList(probes)",
+              "display": "Populate UI with hostname, IP, status"
+            },
+            {
+              "seq": 7,
+              "actor": "User",
+              "action": "Selects remote probe",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "connectButton.onClick(selectedProbe)"
+            },
+            {
+              "seq": 8,
+              "actor": "Frontend",
+              "action": "Requests remote connection",
+              "module": "Frontend → Backend",
+              "operation": "NetworkProbeService.connect()",
+              "contract": {
+                "request": {
+                  "type": "RemoteConnectionRequest",
+                  "payload": {
+                    "probeId": "string",
+                    "ipAddress": "xxx.xxx.xxx.xxx",
+                    "port": "integer",
+                    "timeout": "5000ms"
+                  }
+                },
+                "response": {
+                  "type": "CompletableFuture<Void>",
+                  "success": "Remote connection established",
+                  "failure": "Exception with error details"
+                }
+              }
+            },
+            {
+              "seq": 9,
+              "actor": "Backend Service",
+              "action": "Establishes TCP connection",
+              "module": "Backend (NetworkProbeService)",
+              "operation": "openSocketConnection(ipAddress, port)",
+              "contract": {
+                "protocol": "TCP/IP",
+                "handshake": "Probe identification exchange",
+                "keepAlive": "30-second heartbeat"
+              }
+            },
+            {
+              "seq": 10,
+              "actor": "Backend Service",
+              "action": "Fires connection event",
+              "module": "Backend (NetworkProbeService)",
+              "operation": "fireConnectionEvent(CONNECTED, probeId)",
+              "contract": {
+                "eventType": "RemoteConnectionEvent",
+                "listener": "Consumer<NetworkProbe>",
+                "payload": {
+                  "probeId": "string",
+                  "status": "CONNECTED"
+                }
+              }
+            },
+            {
+              "seq": 11,
+              "actor": "Frontend",
+              "action": "Updates UI state",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "handleRemoteConnectionEstablished()",
+              "display": "Show 'Connected' badge, enable remote operations"
+            }
+          ]
+        }
+      },
+
+      {
+        "id": "UC-004",
+        "name": "Hardware Command Execution",
+        "description": "Send and execute CMM commands via connected hardware probe",
+        "actors": ["User", "Frontend", "Backend Services", "Hardware Module", "Native Library"],
+        "interaction": {
+          "steps": [
+            {
+              "seq": 1,
+              "actor": "User",
+              "action": "Enters CMM command in UI",
+              "module": "Frontend (HardwareController)",
+              "operation": "commandInput.setText(userCommand)"
+            },
+            {
+              "seq": 2,
+              "actor": "User",
+              "action": "Clicks 'Execute' button",
+              "module": "Frontend (HardwareController)",
+              "operation": "executeButton.onClick()"
+            },
+            {
+              "seq": 3,
+              "actor": "Frontend",
+              "action": "Sends command execution request",
+              "module": "Frontend → Backend",
+              "operation": "HardwareService.sendCommand()",
+              "contract": {
+                "request": {
+                  "type": "CommandExecutionRequest",
+                  "payload": {
+                    "command": "string (CMM script command)",
+                    "timeout": "30000ms"
+                  }
+                },
+                "response": {
+                  "type": "CompletableFuture<CommandResult>",
+                  "payload": {
+                    "success": "boolean",
+                    "message": "string (status or error)",
+                    "data": "byte[] (response data)",
+                    "errorCode": "integer"
+                  }
+                }
+              }
+            },
+            {
+              "seq": 4,
+              "actor": "Backend Service",
+              "action": "Executes command via JNI",
+              "module": "Backend (HardwareService → HardwareBridge)",
+              "operation": "HardwareBridge.sendCommand(command)",
+              "contract": {
+                "jniCall": "native CommandResult sendCommand(String command) throws NativeException"
+              }
+            },
+            {
+              "seq": 5,
+              "actor": "Native Layer",
+              "action": "Routes to active chipset driver",
+              "module": "Native (aitt_native.c)",
+              "operation": "chipset_send_command(command)",
+              "contract": {
+                "routing": "Select active driver (S32K148 or MPC5777M)",
+                "commandFormat": "TRACE32 CMM syntax"
+              }
+            },
+            {
+              "seq": 6,
+              "actor": "Native Layer",
+              "action": "Sends command to debug interface",
+              "module": "Native (Chipset Driver)",
+              "operation": "s32k148_send_command() or mpc5777m_send_command()",
+              "details": "SWD or JTAG protocol transmission"
+            },
+            {
+              "seq": 7,
+              "actor": "Native Layer",
+              "action": "Receives response",
+              "module": "Native (Chipset Driver)",
+              "operation": "Read response with timeout",
+              "contract": {
+                "responseTypes": [
+                  "Acknowledgment",
+                  "Data payload",
+                  "Error code",
+                  "Timeout"
+                ]
+              }
+            },
+            {
+              "seq": 8,
+              "actor": "Backend Service",
+              "action": "Receives CommandResult",
+              "module": "Backend (HardwareService)",
+              "operation": "handleCommandResult(result)",
+              "contract": {
+                "resultType": "CommandResult",
+                "fields": {
+                  "success": "true if no error",
+                  "message": "Status/error description",
+                  "data": "Response payload bytes",
+                  "errorCode": "Native error code"
+                }
+              }
+            },
+            {
+              "seq": 9,
+              "actor": "Backend Service",
+              "action": "Fires log event",
+              "module": "Backend (HardwareService)",
+              "operation": "fireLogEvent(logMessage)",
+              "contract": {
+                "eventType": "LogEvent",
+                "listener": "Consumer<String>",
+                "payload": "Formatted log message with timestamp"
+              }
+            },
+            {
+              "seq": 10,
+              "actor": "Frontend",
+              "action": "Displays command result",
+              "module": "Frontend (HardwareController)",
+              "operation": "displayCommandResult(result)",
+              "display": "Show success/error status, data in output pane"
+            }
+          ]
+        }
+      },
+
+      {
+        "id": "UC-005",
+        "name": "Remote Flashing Operation",
+        "description": "Execute firmware flashing via network-connected remote probe",
+        "actors": ["User", "Frontend", "Backend Services", "Remote Module", "Flashing Module", "Network"],
+        "interaction": {
+          "steps": [
+            {
+              "seq": 1,
+              "actor": "User",
+              "action": "Selects modules in Remote Flashing UI",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "selectFirmwareModules()"
+            },
+            {
+              "seq": 2,
+              "actor": "User",
+              "action": "Clicks 'Flash' button",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "flashButton.onClick()"
+            },
+            {
+              "seq": 3,
+              "actor": "Frontend",
+              "action": "Sends remote flashing request",
+              "module": "Frontend → Backend",
+              "operation": "RemoteFlashingService.executeRemoteFlashing()",
+              "contract": {
+                "request": {
+                  "type": "RemoteFlashingRequest",
+                  "payload": {
+                    "remoteProbeId": "string",
+                    "modules": [
+                      {
+                        "name": "string",
+                        "binaryData": "byte[]",
+                        "baseAddress": "0x<hex>",
+                        "size": "long"
+                      }
+                    ],
+                    "targetProfile": {
+                      "id": "string",
+                      "cpuType": "string"
+                    }
+                  }
+                },
+                "response": {
+                  "type": "CompletableFuture<RemoteFlashingResult>",
+                  "payload": {
+                    "success": "boolean",
+                    "remoteSessionId": "string",
+                    "message": "string",
+                    "duration": "long"
+                  }
+                }
+              }
+            },
+            {
+              "seq": 4,
+              "actor": "Backend Service",
+              "action": "Serializes firmware modules",
+              "module": "Backend (RemoteFlashingService)",
+              "operation": "serializeModules(modules)",
+              "contract": {
+                "format": "Binary serialization + metadata JSON",
+                "size": "Can be large (multiple MB)",
+                "compression": "Optional gzip compression for network transmission"
+              }
+            },
+            {
+              "seq": 5,
+              "actor": "Backend Service",
+              "action": "Transmits to remote probe",
+              "module": "Backend (RemoteFlashingService)",
+              "operation": "sendFlashingRequest(socket, serializedData)",
+              "contract": {
+                "protocol": "TCP/IP with custom framing",
+                "messageFormat": "Header(size, type, checksum) + Payload(modules, config)",
+                "reliability": "ACK/NAK handshake for packet loss"
+              }
+            },
+            {
+              "seq": 6,
+              "actor": "Remote Probe",
+              "action": "Receives flashing request",
+              "device": "Network-attached debug probe",
+              "operation": "Process request and execute flashing"
+            },
+            {
+              "seq": 7,
+              "actor": "Remote Probe",
+              "action": "Transmits progress updates",
+              "device": "Network-attached debug probe",
+              "operation": "Send progress notifications over TCP",
+              "contract": {
+                "updateType": "ProgressUpdate",
+                "payload": {
+                  "percentage": "0.0-1.0",
+                  "stage": "VALIDATING|GENERATING|FLASHING|VERIFYING",
+                  "message": "string"
+                }
+              }
+            },
+            {
+              "seq": 8,
+              "actor": "Backend Service",
+              "action": "Receives progress updates",
+              "module": "Backend (RemoteFlashingService)",
+              "operation": "handleProgressUpdate(update)",
+              "propagation": "Forward to UI via callback"
+            },
+            {
+              "seq": 9,
+              "actor": "Frontend",
+              "action": "Displays progress",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "updateProgressBar(percentage)",
+              "display": "Real-time progress visualization"
+            },
+            {
+              "seq": 10,
+              "actor": "Remote Probe",
+              "action": "Sends completion result",
+              "device": "Network-attached debug probe",
+              "operation": "Transmit final result with status",
+              "contract": {
+                "resultType": "RemoteFlashingResult",
+                "payload": {
+                  "success": "boolean",
+                  "sessionId": "string (server-generated)",
+                  "message": "Result summary",
+                  "bytesFlashed": "long",
+                  "duration": "long (milliseconds)"
+                }
+              }
+            },
+            {
+              "seq": 11,
+              "actor": "Backend Service",
+              "action": "Receives final result",
+              "module": "Backend (RemoteFlashingService)",
+              "operation": "handleFlashingComplete(result)"
+            },
+            {
+              "seq": 12,
+              "actor": "Frontend",
+              "action": "Displays completion status",
+              "module": "Frontend (RemoteProbeController)",
+              "operation": "displayFlashingResult()",
+              "display": "Show success/failure, summary statistics"
+            }
+          ]
+        }
+      }
+    ],
+
+    "communicationContracts": {
+      "frontendToBackend": {
+        "overview": "REST-like contracts between Frontend UI and Backend Services",
+        "contracts": [
+          {
+            "id": "C-001",
+            "name": "Validation Contract",
+            "from": "FlashingController",
+            "to": "FlashingService",
+            "operation": "validate(List<SoftwareModule>, TargetProfile)",
+            "requestFormat": {
+              "method": "Synchronous method call",
+              "payload": {
+                "modules": [
+                  {
+                    "name": "String",
+                    "version": "String",
+                    "binaryPath": "Path",
+                    "baseAddress": "long (hex 0x...)",
+                    "size": "long",
+                    "checksum": "String (SHA256)"
+                  }
+                ],
+                "targetProfile": {
+                  "id": "String",
+                  "name": "String",
+                  "cpuType": "String (S32K148|MPC5777M)",
+                  "flashStart": "long (hex 0x...)",
+                  "flashEnd": "long (hex 0x...)",
+                  "ramAddress": "long (hex 0x...)",
+                  "t32ConfigPath": "Path"
+                }
+              }
+            },
+            "responseFormat": {
+              "type": "ValidationResult",
+              "payload": {
+                "valid": "boolean",
+                "errors": ["String (error messages)"],
+                "warnings": ["String (warning messages)"]
+              },
+              "errorHandling": "Throws NativeException on critical failures"
+            }
+          },
+
+          {
+            "id": "C-002",
+            "name": "Flashing Execution Contract",
+            "from": "FlashingController",
+            "to": "FlashingService",
+            "operation": "execute(modules, profile, outputPath, runTrace32, trace32Path, logCallback, progressCallback)",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {
+                "modules": "List<SoftwareModule>",
+                "targetProfile": "TargetProfile",
+                "outputPath": "Path (directory for CMM script)",
+                "runTrace32": "boolean",
+                "trace32Path": "Path (TRACE32 executable)",
+                "callbacks": {
+                  "logCallback": "Consumer<String> (lambda)",
+                  "progressCallback": "Consumer<Double> (0.0 to 1.0)"
+                }
+              }
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<FlashingSession>",
+              "asyncPayload": {
+                "sessionId": "String (UUID)",
+                "status": "FlashStatus enum (IDLE|VALIDATING|GENERATING|EXECUTING|COMPLETED|FAILED|ABORTED)",
+                "generatedScript": "Path",
+                "modules": "List<SoftwareModule>",
+                "targetProfile": "TargetProfile",
+                "startTime": "LocalDateTime",
+                "endTime": "LocalDateTime",
+                "result": "Optional<FlashingResult>"
+              },
+              "callbackContracts": {
+                "logCallback": {
+                  "invoked": "Multiple times during execution",
+                  "parameter": "String message (log line)",
+                  "example": "[2024-03-30 14:23:45] Validating modules..."
+                },
+                "progressCallback": {
+                  "invoked": "Multiple times during execution",
+                  "parameter": "Double percentage (0.0-1.0)",
+                  "stages": {
+                    "0.0-0.2": "Validation phase",
+                    "0.2-0.4": "Script generation",
+                    "0.4-0.95": "TRACE32 execution",
+                    "0.95-1.0": "Archival"
+                  }
+                }
+              }
+            }
+          },
+
+          {
+            "id": "C-003",
+            "name": "Probe Discovery Contract",
+            "from": "HardwareController",
+            "to": "HardwareService",
+            "operation": "discoverProbes()",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {}
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<List<HardwareInfo>>",
+              "asyncPayload": [
+                {
+                  "probeId": "String (USB VID:PID or serial)",
+                  "probeType": "Enum (USB|SERIAL|JTAG|SWD)",
+                  "serialNumber": "String",
+                  "firmwareVersion": "String (e.g., '1.2.3')",
+                  "supportedChipsets": ["String (S32K148|MPC5777M)"]
+                }
+              ]
+            },
+            "eventContract": {
+              "eventType": "DiscoveryEvent",
+              "listener": "Consumer<List<HardwareInfo>>",
+              "fired": "When discovery completes"
+            }
+          },
+
+          {
+            "id": "C-004",
+            "name": "Hardware Connection Contract",
+            "from": "HardwareController",
+            "to": "HardwareService",
+            "operation": "connect(String probeId, ChipsetConfig config)",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {
+                "probeId": "String",
+                "chipsetConfig": {
+                  "chipsetId": "String (S32K148|MPC5777M)",
+                  "debugPort": "String (e.g., 'USB001' or 'COM3')",
+                  "debugFrequency": "int (MHz)",
+                  "resetType": "String (e.g., 'System|Core|Soft')"
+                }
+              }
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<Void>",
+              "success": "void (connection state updates via events)",
+              "failure": "CompletionException with cause"
+            },
+            "eventContract": {
+              "eventType": "ConnectionEvent",
+              "listener": "Consumer<ConnectionEvent>",
+              "event": {
+                "state": "Enum (DISCONNECTED|CONNECTING|CONNECTED|ERROR)",
+                "probeId": "String",
+                "message": "String (status details)"
+              }
+            }
+          },
+
+          {
+            "id": "C-005",
+            "name": "Command Execution Contract",
+            "from": "HardwareController",
+            "to": "HardwareService",
+            "operation": "sendCommand(String command)",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {
+                "command": "String (CMM script command)"
+              }
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<CommandResult>",
+              "asyncPayload": {
+                "success": "boolean",
+                "message": "String (status or error)",
+                "data": "byte[] (response payload)",
+                "errorCode": "int (native error code)"
+              }
+            },
+            "eventContract": {
+              "eventType": "LogEvent",
+              "listener": "Consumer<String>",
+              "fired": "For each command execution",
+              "payload": "String log message"
+            }
+          },
+
+          {
+            "id": "C-006",
+            "name": "Remote Probe Discovery Contract",
+            "from": "RemoteProbeController",
+            "to": "NetworkProbeService",
+            "operation": "discover()",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {}
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<List<NetworkProbe>>",
+              "asyncPayload": [
+                {
+                  "id": "String (unique ID)",
+                  "hostname": "String (DNS-able name)",
+                  "ipAddress": "String (xxx.xxx.xxx.xxx)",
+                  "port": "int (20101 standard)",
+                  "probeType": "Enum (AITT_SERVER|TRACE32_UNIT|GENERIC_TCP)",
+                  "connectionStatus": "Enum (AVAILABLE|CONNECTED|DISCONNECTED|ERROR)",
+                  "lastSeen": "LocalDateTime"
+                }
+              ]
+            }
+          },
+
+          {
+            "id": "C-007",
+            "name": "Remote Connection Contract",
+            "from": "RemoteProbeController",
+            "to": "NetworkProbeService",
+            "operation": "connect(String probeId, String ipAddress, int port)",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {
+                "probeId": "String",
+                "ipAddress": "String",
+                "port": "int",
+                "timeout": "int (milliseconds)"
+              }
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<Void>",
+              "success": "void (connection state updates via events)",
+              "failure": "CompletionException with cause"
+            }
+          },
+
+          {
+            "id": "C-008",
+            "name": "Remote Flashing Contract",
+            "from": "RemoteProbeController",
+            "to": "RemoteFlashingService",
+            "operation": "executeRemoteFlashing(remoteProbeId, modules, targetProfile, progressCallback)",
+            "requestFormat": {
+              "method": "Asynchronous (returns CompletableFuture)",
+              "payload": {
+                "remoteProbeId": "String",
+                "modules": [
+                  {
+                    "name": "String",
+                    "binaryData": "byte[]",
+                    "baseAddress": "long (0x...)",
+                    "size": "long"
+                  }
+                ],
+                "targetProfile": {
+                  "id": "String",
+                  "cpuType": "String"
+                },
+                "progressCallback": "Consumer<RemoteProgressUpdate>"
+              }
+            },
+            "responseFormat": {
+              "type": "CompletableFuture<RemoteFlashingResult>",
+              "asyncPayload": {
+                "success": "boolean",
+                "remoteSessionId": "String",
+                "message": "String",
+                "bytesFlashed": "long",
+                "duration": "long (milliseconds)"
+              }
+            },
+            "callbackContract": {
+              "progressCallback": {
+                "invoked": "Multiple times during remote flashing",
+                "parameter": {
+                  "percentage": "double (0.0-1.0)",
+                  "stage": "String (VALIDATING|GENERATING|FLASHING|VERIFYING)",
+                  "message": "String (progress details)"
+                }
+              }
+            }
+          }
+        ]
+      },
+
+      "backendInternalContracts": {
+        "overview": "Internal communication contracts within backend services",
+        "contracts": [
+          {
+            "id": "C-INT-001",
+            "name": "Validator→FlashingService Contract",
+            "from": "Validator",
+            "to": "FlashingService",
+            "operation": "validate(modules, targetProfile)",
+            "format": {
+              "type": "Synchronous method call",
+              "request": {
+                "modules": "List<SoftwareModule>",
+                "targetProfile": "TargetProfile"
+              },
+              "response": {
+                "type": "ValidationResult",
+                "fields": {
+                  "valid": "boolean",
+                  "errors": "List<String>",
+                  "warnings": "List<String>"
+                }
+              }
+            },
+            "validationChecks": [
+              "No overlapping memory addresses",
+              "All modules fit within flash boundaries",
+              "Alignment requirements met",
+              "Checksum validation"
+            ]
+          },
+
+          {
+            "id": "C-INT-002",
+            "name": "CmmGenerator→FlashingService Contract",
+            "from": "CmmGenerator",
+            "to": "FlashingService",
+            "operation": "generate(modules, targetProfile)",
+            "format": {
+              "type": "Synchronous method call",
+              "request": {
+                "modules": "List<SoftwareModule>",
+                "targetProfile": "TargetProfile"
+              },
+              "response": {
+                "type": "String (CMM script content)",
+                "example": "AREA.A:\n  Data.Load.elf \"module.elf\" /ELF\n  FLASH.Program\nENDAREA"
+              }
+            }
+          },
+
+          {
+            "id": "C-INT-003",
+            "name": "Trace32Runner→FlashingService Contract",
+            "from": "Trace32Runner",
+            "to": "FlashingService",
+            "operation": "execute(scriptPath, trace32Path)",
+            "format": {
+              "type": "Synchronous method call (blocking)",
+              "request": {
+                "scriptPath": "Path",
+                "trace32Path": "Path"
+              },
+              "response": {
+                "type": "ExecutionResult",
+                "fields": {
+                  "exitCode": "int (0=success)",
+                  "stdout": "String",
+                  "stderr": "String",
+                  "duration": "long (milliseconds)"
+                }
+              }
+            }
+          },
+
+          {
+            "id": "C-INT-004",
+            "name": "SessionStore→FlashingService Contract",
+            "from": "SessionStore",
+            "to": "FlashingService",
+            "operation": "save(session)",
+            "format": {
+              "type": "Asynchronous persist operation",
+              "request": {
+                "type": "FlashingSession",
+                "fields": {
+                  "sessionId": "String (UUID)",
+                  "modules": "List<SoftwareModule>",
+                  "targetProfile": "TargetProfile",
+                  "status": "FlashStatus",
+                  "startTime": "LocalDateTime",
+                  "endTime": "LocalDateTime",
+                  "result": "Optional<FlashingResult>"
+                }
+              },
+              "storage": "JSON file in application directory",
+              "format": {
+                "filePath": "$HOME/.aitt/sessions/<sessionId>.json",
+                "structure": "JSON serialization of FlashingSession"
+              }
+            }
+          },
+
+          {
+            "id": "C-INT-005",
+            "name": "HardwareBridge↔Native Layer Contract (JNI)",
+            "from": "HardwareBridge (Java)",
+            "to": "Native C Library",
+            "operations": [
+              {
+                "method": "discoverProbes()",
+                "jniSignature": "native ProbeInfo[] com_aerospace_aitt_native__HardwareBridge_discoverProbes(JNIEnv *env, jobject obj)",
+                "javaReturn": "HardwareInfo[]",
+                "nativeReturn": "ProbeInfo_t[]"
+              },
+              {
+                "method": "connect(String probeId, ChipsetConfig config)",
+                "jniSignature": "native void connect(String, ChipsetConfig)",
+                "parameters": {
+                  "probeId": "UTF-8 string (JNI)",
+                  "config": "Marshalled Java object → C struct"
+                }
+              },
+              {
+                "method": "sendCommand(String command)",
+                "jniSignature": "native CommandResult sendCommand(String)",
+                "returns": "CommandResult object (marshalled from C struct)"
+              },
+              {
+                "method": "readMemory(long address, int length)",
+                "jniSignature": "native byte[] readMemory(long, int)",
+                "returns": "byte array (JNI primitive array)"
+              },
+              {
+                "method": "writeMemory(long address, byte[] data)",
+                "jniSignature": "native void writeMemory(long, byte[])",
+                "parameters": "address (long) and byte array (JNI)"
+              }
+            ],
+            "typeMapping": {
+              "Java String": "C char* (UTF-8)",
+              "Java byte[]": "C uint8_t* + length",
+              "Java long": "C int64_t",
+              "Java object": "C struct (marshalled)"
+            },
+            "errorHandling": "C status codes → Java NativeException"
+          },
+
+          {
+            "id": "C-INT-006",
+            "name": "ProfileStore→FlashingService Contract",
+            "from": "ProfileStore",
+            "to": "FlashingService",
+            "operation": "loadProfile(profileId)",
+            "format": {
+              "type": "Synchronous file read",
+              "request": {
+                "profileId": "String"
+              },
+              "response": {
+                "type": "TargetProfile",
+                "source": "JSON file from profiles/targets.json",
+                "example": {
+                  "id": "s32k148_default",
+                  "name": "NXP S32K148",
+                  "cpuType": "ARM Cortex-M4F",
+                  "flashStart": "0x00000000",
+                  "flashEnd": "0x00200000",
+                  "ramAddress": "0x1fff0000"
+                }
+              }
+            }
+          }
+        ]
+      },
+
+      "nativeLayerContracts": {
+        "overview": "C/Native interface layer contracts",
+        "contracts": [
+          {
+            "id": "C-NATIVE-001",
+            "name": "JNI Probe Discovery Contract",
+            "from": "jni_bindings.c",
+            "to": "aitt_native.c",
+            "operation": "aitt_discover_probes()",
+            "interface": {
+              "cFunction": "int aitt_discover_probes(ProbeInfo_t **out_probes, int *out_count)",
+              "returns": "AITT_OK on success, error code on failure",
+              "output": {
+                "out_probes": "Pointer to array of ProbeInfo_t structures",
+                "out_count": "Number of probes discovered"
+              }
+            },
+            "dataStructure": {
+              "ProbeInfo_t": {
+                "id": "char[64] (USB VID:PID or serial)",
+                "type": "ProbeType_e (USB|SERIAL|JTAG|SWD)",
+                "serial_number": "char[64]",
+                "firmware_version": "char[32]",
+                "supported_chipsets": "char[256] (comma-separated)",
+                "status": "ProbeStatus_e"
+              }
+            }
+          },
+
+          {
+            "id": "C-NATIVE-002",
+            "name": "Chipset Driver Interface Contract",
+            "from": "aitt_native.c",
+            "to": "chipset_*.c drivers",
+            "operations": [
+              {
+                "function": "chipset_init(const ChipsetConfig_t *config)",
+                "purpose": "Initialize chipset driver",
+                "input": {
+                  "chipsetId": "char[32] (S32K148, MPC5777M)",
+                  "debugPort": "char[32] (USB or COM port)",
+                  "debugFrequency": "uint32_t (MHz)",
+                  "resetType": "char[32]"
+                },
+                "output": "AITT_OK or error code"
+              },
+              {
+                "function": "chipset_shutdown(void)",
+                "purpose": "Clean up chipset resources"
+              },
+              {
+                "function": "chipset_send_command(const char *cmd, CommandResult_t *result)",
+                "purpose": "Send CMM command to debug interface",
+                "input": "CMM command string",
+                "output": {
+                  "success": "bool",
+                  "message": "char[256]",
+                  "data": "uint8_t buffer",
+                  "errorCode": "int"
+                }
+              },
+              {
+                "function": "chipset_read_memory(uint64_t addr, uint8_t *buf, int len)",
+                "purpose": "Read target memory",
+                "input": "Address and length",
+                "output": "Bytes read into buffer"
+              },
+              {
+                "function": "chipset_write_memory(uint64_t addr, const uint8_t *data, int len)",
+                "purpose": "Write target memory",
+                "input": "Address, data buffer, length",
+                "output": "Success/failure status"
+              }
+            ],
+            "implementationRequirement": "Each chipset (S32K148, MPC5777M) must implement all functions with protocol-specific details"
+          },
+
+          {
+            "id": "C-NATIVE-003",
+            "name": "S32K148 SWD Debug Interface Contract",
+            "from": "chipset_s32k148.c",
+            "to": "Debug Hardware (SWD interface)",
+            "protocol": "SWD (Serial Wire Debug)",
+            "operations": [
+              {
+                "operation": "SWD connection setup",
+                "frequency": "1-10 MHz",
+                "pins": "SWIO (data), SWCK (clock)"
+              },
+              {
+                "operation": "Read debug port register",
+                "command": "SWD_READ DPIDR (Debug Port ID)",
+                "response": "32-bit register value"
+              },
+              {
+                "operation": "Memory read",
+                "steps": [
+                  "SWIO/SWCK bitbang sequence",
+                  "Memory address in ADDR register",
+                  "Read DATA register",
+                  "Return byte array"
+                ]
+              },
+              {
+                "operation": "Memory write",
+                "steps": [
+                  "Set ADDR register",
+                  "Write DATA register",
+                  "Poll DSTATUS for completion"
+                ]
+              }
+            ]
+          },
+
+          {
+            "id": "C-NATIVE-004",
+            "name": "MPC5777M JTAG Interface Contract",
+            "from": "chipset_mpc5777m.c",
+            "to": "Debug Hardware (JTAG interface)",
+            "protocol": "JTAG (IEEE 1149.1)",
+            "operations": [
+              {
+                "operation": "JTAG TAP reset",
+                "TMS_sequence": "TMS=1 for 5 clocks"
+              },
+              {
+                "operation": "DR scan (Data Register)",
+                "length": "32 bits",
+                "format": "TDI/TDO shifting"
+              },
+              {
+                "operation": "IR scan (Instruction Register)",
+                "length": "8 bits",
+                "commands": "Device-specific IR codes"
+              },
+              {
+                "operation": "Memory read (dual-core aware)",
+                "note": "Must synchronize both cores"
+              },
+              {
+                "operation": "Flash programming",
+                "algorithm": "MPC5777M-specific algorithm"
+              }
+            ]
+          }
+        ]
+      },
+
+      "networkProtocolContracts": {
+        "overview": "Network communication contracts for Remote module",
+        "contracts": [
+          {
+            "id": "C-NET-001",
+            "name": "UDP Discovery Beacon Contract",
+            "direction": "Broadcast/response",
+            "port": 20101,
+            "format": {
+              "beacon_request": {
+                "version": "uint16 (1)",
+                "type": "uint16 (DISCOVERY_REQ = 1)",
+                "payload": "Optional probe type filter"
+              },
+              "beacon_response": {
+                "version": "uint16",
+                "type": "uint16 (DISCOVERY_RESP = 2)",
+                "probeId": "String (hostname or ID)",
+                "ipAddress": "String (sender IP)",
+                "probeType": "uint16 (AITT_SERVER|TRACE32|GENERIC)",
+                "supportedChipsets": "String (comma-separated)"
+              }
+            }
+          },
+
+          {
+            "id": "C-NET-002",
+            "name": "TCP Flashing Over Network Contract",
+            "direction": "Request/response",
+            "protocol": "TCP/IP (port 20101)",
+            "messageFormat": {
+              "header": {
+                "magic": "uint32 (0xDEADBEEF)",
+                "messageType": "uint16 (FLASH_REQ|FLASH_RESP)",
+                "payloadSize": "uint32",
+                "checksum": "uint32 (CRC32)"
+              },
+              "payload": {
+                "requestType": "FlashingRequest",
+                "content": {
+                  "sessionId": "UUID string",
+                  "modules": [
+                    {
+                      "name": "String",
+                      "size": "uint32",
+                      "baseAddress": "uint64",
+                      "data": "byte[size] (binary firmware)"
+                    }
+                  ],
+                  "targetProfile": {
+                    "cpuType": "String",
+                    "flashStart": "uint64",
+                    "flashEnd": "uint64"
+                  }
+                }
+              }
+            },
+            "reliability": {
+              "mechanism": "Frame-based with ACK/NAK",
+              "retransmission": "Automatic for lost frames",
+              "timeout": "5 seconds per frame"
+            }
+          },
+
+          {
+            "id": "C-NET-003",
+            "name": "Progress Update Stream Contract",
+            "direction": "Server→Client (unidirectional)",
+            "protocol": "TCP/IP",
+            "streaming": {
+              "frequency": "Every 100ms or status change",
+              "format": {
+                "header": {
+                  "messageType": "uint16 (PROGRESS_UPDATE = 3)",
+                  "payloadSize": "uint32"
+                },
+                "payload": {
+                  "sessionId": "UUID string",
+                  "percentage": "double (0.0-1.0)",
+                  "stage": "String (VALIDATING|GENERATING|FLASHING|VERIFYING)",
+                  "message": "String (progress details)",
+                  "bytesProcessed": "uint64",
+                  "estimatedRemaining": "uint32 (seconds)"
+                }
+              }
+            }
+          },
+
+          {
+            "id": "C-NET-004",
+            "name": "Keepalive Contract",
+            "direction": "Bidirectional",
+            "interval": "30 seconds",
+            "format": {
+              "messageType": "uint16 (KEEPALIVE = 99)",
+              "payload": {
+                "timestamp": "uint64 (milliseconds)",
+                "probeStatus": "String"
+              }
+            }
+          }
+        ]
+      }
+    },
+
+    "eventDrivenArchitecture": {
+      "overview": "Event-driven communication patterns",
+      "eventTypes": [
+        {
+          "eventId": "EVT-001",
+          "name": "ProbeDiscoveredEvent",
+          "source": "HardwareService",
+          "subscribers": ["HardwareController"],
+          "payload": {
+            "probeId": "String",
+            "probeInfo": "HardwareInfo"
+          }
+        },
+        {
+          "eventId": "EVT-002",
+          "name": "ConnectionStateChangedEvent",
+          "source": "HardwareService, NetworkProbeService",
+          "subscribers": ["HardwareController", "RemoteProbeController"],
+          "payload": {
+            "state": "Enum (DISCONNECTED|CONNECTING|CONNECTED|ERROR)",
+            "probeId": "String",
+            "message": "String"
+          }
+        },
+        {
+          "eventId": "EVT-003",
+          "name": "HardwareLogEvent",
+          "source": "HardwareService",
+          "subscribers": ["HardwareController"],
+          "payload": {
+            "timestamp": "LocalDateTime",
+            "level": "LogLevel (DEBUG|INFO|WARN|ERROR)",
+            "message": "String"
+          }
+        },
+        {
+          "eventId": "EVT-004",
+          "name": "FlashingProgressEvent",
+          "source": "FlashingService (via callback)",
+          "subscribers": ["FlashingController"],
+          "payload": {
+            "percentage": "Double (0.0-1.0)",
+            "stage": "String"
+          }
+        },
+        {
+          "eventId": "EVT-005",
+          "name": "FlashingCompleteEvent",
+          "source": "FlashingService",
+          "subscribers": ["FlashingController"],
+          "payload": {
+            "sessionId": "String",
+            "success": "boolean",
+            "message": "String"
+          }
+        },
+        {
+          "eventId": "EVT-006",
+          "name": "RemoteProbeStatusEvent",
+          "source": "NetworkProbeService",
+          "subscribers": ["RemoteProbeController"],
+          "payload": {
+            "probeId": "String",
+            "status": "ConnectionStatus"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,407 @@
+; ============================================================================
+; AITT Trace32 CMM Test Script Template - MPC Chipset Validation
+; ============================================================================
+; Purpose: Generic validation framework for MPC chipsets (MPC5777M, S32K148)
+; 
+; Architecture Layers:
+;   1. UI Layer → provides input definitions (logical names, types, modes)
+;   2. Abstraction Layer → resolves hardware addresses & encoding formats
+;   3. Trace32 Execution Layer → this CMM script executes test on hardware
+;   4. Post-Processing Layer → external comparison of results
+;
+; CMM Functions:
+;   - Input injection via Data.Set (type-aware)
+;   - Output capture via Data.* read operations
+;   - Breakpoint control and execution flow
+;   - Detailed logging via PRINT statements
+;
+; NOTE: All inputs/outputs use LOGICAL NAMES ONLY.
+;       No raw addresses visible to user.
+; ============================================================================
+
+; ============================================================================
+; SECTION 1: INITIALIZATION & CONFIGURATION
+; ============================================================================
+
+LOCAL &log_file
+LOCAL &breakpoint_name
+LOCAL &chip_type
+LOCAL &test_start_time
+LOCAL &test_end_time
+
+; Initialize logging
+&log_file="./logs/test_execution_" + STR.CUT(STR.REPLACE(STR.REPLACE(STR.REPLACE(STR.REPLACE(DATE.DATE(),":","_")," ","_"),"/","_"),".","_"),0,14) + ".log"
+OPEN #1 &log_file /Create
+
+PRINT "========================================================================" /M
+PRINT "AITT MPC Chipset Validation Test" /M
+PRINT "Test Initialized at " + STR.TIME() /M
+PRINT "========================================================================" /M
+
+; Detect chip type (can be parameterized from UI)
+&chip_type="MPC5777M"  ; USER INPUT: Change to "S32K148" or other variant
+
+PRINT "Target Chipset: &chip_type" /M
+PRINT "" /M
+
+; ============================================================================
+; SECTION 2: INPUT DEFINITIONS (to be populated by UI)
+; ============================================================================
+; Format:
+;   INPUT_<index>_NAME = "logical_name"
+;   INPUT_<index>_TYPE = "boolean|int|float|read-only|write-only|read-write"
+;   INPUT_<index>_MODE = "R|W|RW"
+;   INPUT_<index>_VALUE = <test_value>
+;   INPUT_<index>_ADDRESS = <resolved_hardware_address>  (from Abstraction Layer)
+;   INPUT_<index>_FORMAT = "uint32|sint32|float32|bit|etc"
+;
+; Example: Temperature Sensor Input
+; --------
+
+LOCAL &INPUT_1_NAME
+LOCAL &INPUT_1_TYPE
+LOCAL &INPUT_1_MODE
+LOCAL &INPUT_1_VALUE
+LOCAL &INPUT_1_ADDRESS
+LOCAL &INPUT_1_FORMAT
+
+LOCAL &INPUT_2_NAME
+LOCAL &INPUT_2_TYPE
+LOCAL &INPUT_2_MODE
+LOCAL &INPUT_2_VALUE
+LOCAL &INPUT_2_ADDRESS
+LOCAL &INPUT_2_FORMAT
+
+LOCAL &INPUT_3_NAME
+LOCAL &INPUT_3_TYPE
+LOCAL &INPUT_3_MODE
+LOCAL &INPUT_3_VALUE
+LOCAL &INPUT_3_ADDRESS
+LOCAL &INPUT_3_FORMAT
+
+; USER INPUT - Populate these from UI:
+; ----
+
+&INPUT_1_NAME="temperature_sensor"
+&INPUT_1_TYPE="int"
+&INPUT_1_MODE="RW"
+&INPUT_1_VALUE=1250              ; Test value: 1250 (e.g., 12.50°C in 0.01°C units)
+&INPUT_1_ADDRESS=0x40000000      ; Hardware address (resolved by abstraction layer)
+&INPUT_1_FORMAT="sint32"         ; Signed 32-bit integer
+
+&INPUT_2_NAME="mode_flag"
+&INPUT_2_TYPE="boolean"
+&INPUT_2_MODE="W"
+&INPUT_2_VALUE=1                 ; Test value: 1 (true)
+&INPUT_2_ADDRESS=0x40000004      ; Hardware address
+&INPUT_2_FORMAT="bit"            ; Boolean (single bit)
+
+&INPUT_3_NAME="calibration_data"
+&INPUT_3_TYPE="float"
+&INPUT_3_MODE="RW"
+&INPUT_3_VALUE=2.5               ; Test value: 2.5
+&INPUT_3_ADDRESS=0x40000008      ; Hardware address
+&INPUT_3_FORMAT="float32"        ; IEEE 754 single precision
+
+; ============================================================================
+; SECTION 3: OUTPUT DEFINITIONS (to be populated by UI)
+; ============================================================================
+; Format:
+;   OUTPUT_<index>_NAME = "logical_name"
+;   OUTPUT_<index>_TYPE = "boolean|int|float|read-only|write-only|read-write"
+;   OUTPUT_<index>_MODE = "R|W|RW"
+;   OUTPUT_<index>_ADDRESS = <resolved_hardware_address>
+;   OUTPUT_<index>_FORMAT = "uint32|sint32|float32|bit|etc"
+;
+; NOTE: POST-PROCESSING layer will compare these captured values
+;       against EXPECTED values provided separately by the user.
+;       No comparison logic here in CMM.
+
+LOCAL &OUTPUT_1_NAME
+LOCAL &OUTPUT_1_TYPE
+LOCAL &OUTPUT_1_MODE
+LOCAL &OUTPUT_1_ADDRESS
+LOCAL &OUTPUT_1_FORMAT
+LOCAL &OUTPUT_1_CAPTURED
+
+LOCAL &OUTPUT_2_NAME
+LOCAL &OUTPUT_2_TYPE
+LOCAL &OUTPUT_2_MODE
+LOCAL &OUTPUT_2_ADDRESS
+LOCAL &OUTPUT_2_FORMAT
+LOCAL &OUTPUT_2_CAPTURED
+
+LOCAL &OUTPUT_3_NAME
+LOCAL &OUTPUT_3_TYPE
+LOCAL &OUTPUT_3_MODE
+LOCAL &OUTPUT_3_ADDRESS
+LOCAL &OUTPUT_3_FORMAT
+LOCAL &OUTPUT_3_CAPTURED
+
+; USER INPUT - Populate these from UI:
+; ----
+
+&OUTPUT_1_NAME="status_register"
+&OUTPUT_1_TYPE="int"
+&OUTPUT_1_MODE="R"
+&OUTPUT_1_ADDRESS=0x40000010
+&OUTPUT_1_FORMAT="uint32"
+&OUTPUT_1_CAPTURED=0
+
+&OUTPUT_2_NAME="error_code"
+&OUTPUT_2_TYPE="int"
+&OUTPUT_2_MODE="R"
+&OUTPUT_2_ADDRESS=0x40000014
+&OUTPUT_2_FORMAT="sint32"
+&OUTPUT_2_CAPTURED=0
+
+&OUTPUT_3_NAME="result_status"
+&OUTPUT_3_TYPE="boolean"
+&OUTPUT_3_MODE="R"
+&OUTPUT_3_ADDRESS=0x40000018
+&OUTPUT_3_FORMAT="bit"
+&OUTPUT_3_CAPTURED=0
+
+; ============================================================================
+; SECTION 4: BREAKPOINT CONFIGURATION
+; ============================================================================
+; USER INPUT: Set breakpoint name where test should pause
+; ----
+
+&breakpoint_name="UserFunction_ValidateChipset"
+
+PRINT "" /M
+PRINT "------------------------------------------------------------------------" /M
+PRINT "Setting up Breakpoint: &breakpoint_name" /M
+PRINT "------------------------------------------------------------------------" /M
+
+; Clear any existing breakpoints for this test
+Break.Delete /All
+
+; Set breakpoint at target function
+Break.Set &breakpoint_name /Onchip
+
+PRINT "Breakpoint '&breakpoint_name' set successfully" /M
+PRINT "" /M
+
+; ============================================================================
+; SECTION 5: INPUT INJECTION PHASE
+; ============================================================================
+; Type-aware input mapping and injection
+;
+; Supported types:
+;   - boolean: 0 or 1
+;   - int (signed): raw signed value
+;   - int (unsigned): raw unsigned value
+;   - float: IEEE 754 encoding (resolved by abstraction layer)
+;   - read-only: SKIP injection (Data.Set not allowed)
+;   - write-only: inject via Data.Set (no readback)
+;   - read-write: both inject and readback
+
+PRINT "" /M
+PRINT "------------------------------------------------------------------------" /M
+PRINT "PHASE 1: INPUT INJECTION" /M
+PRINT "------------------------------------------------------------------------" /M
+PRINT "Injecting test inputs into hardware registers..." /M
+PRINT "" /M
+
+; INPUT 1: temperature_sensor (RW mode, signed int)
+; ----
+
+IF ("&INPUT_1_MODE"=="W")||("&INPUT_1_MODE"=="RW")
+(
+  PRINT "[INPUT_1] Injecting &INPUT_1_NAME = &INPUT_1_VALUE (format: &INPUT_1_FORMAT)"
+  
+  ; Type-aware injection
+  IF "&INPUT_1_FORMAT"=="sint32"
+    Data.Set &INPUT_1_ADDRESS %Long &INPUT_1_VALUE
+  ELSE IF "&INPUT_1_FORMAT"=="uint32"
+    Data.Set &INPUT_1_ADDRESS %Long &INPUT_1_VALUE
+  ELSE IF "&INPUT_1_FORMAT"=="float32"
+    Data.Set &INPUT_1_ADDRESS %Float &INPUT_1_VALUE
+  ELSE IF "&INPUT_1_FORMAT"=="bit"
+    Data.Set &INPUT_1_ADDRESS %Byte (&INPUT_1_VALUE&0x1)
+  
+  PRINT "  ✓ Injection complete, address: 0x" + FORMAT.HEX(8., &INPUT_1_ADDRESS)
+)
+ELSE
+(
+  PRINT "[INPUT_1] SKIP &INPUT_1_NAME (read-only mode, no injection)"
+)
+PRINT "" /M
+
+; INPUT 2: mode_flag (W mode, boolean)
+; ----
+
+IF ("&INPUT_2_MODE"=="W")||("&INPUT_2_MODE"=="RW")
+(
+  PRINT "[INPUT_2] Injecting &INPUT_2_NAME = &INPUT_2_VALUE (format: &INPUT_2_FORMAT)"
+  
+  IF "&INPUT_2_FORMAT"=="bit"
+    Data.Set &INPUT_2_ADDRESS %Byte (&INPUT_2_VALUE&0x1)
+  ELSE
+    Data.Set &INPUT_2_ADDRESS %Byte &INPUT_2_VALUE
+  
+  PRINT "  ✓ Injection complete, address: 0x" + FORMAT.HEX(8., &INPUT_2_ADDRESS)
+)
+ELSE
+(
+  PRINT "[INPUT_2] SKIP &INPUT_2_NAME (read-only mode, no injection)"
+)
+PRINT "" /M
+
+; INPUT 3: calibration_data (RW mode, float)
+; ----
+
+IF ("&INPUT_3_MODE"=="W")||("&INPUT_3_MODE"=="RW")
+(
+  PRINT "[INPUT_3] Injecting &INPUT_3_NAME = &INPUT_3_VALUE (format: &INPUT_3_FORMAT)"
+  
+  IF "&INPUT_3_FORMAT"=="float32"
+    Data.Set &INPUT_3_ADDRESS %Float &INPUT_3_VALUE
+  ELSE
+    Data.Set &INPUT_3_ADDRESS %Long &INPUT_3_VALUE
+  
+  PRINT "  ✓ Injection complete, address: 0x" + FORMAT.HEX(8., &INPUT_3_ADDRESS)
+)
+ELSE
+(
+  PRINT "[INPUT_3] SKIP &INPUT_3_NAME (read-only mode, no injection)"
+)
+PRINT "" /M
+
+; ============================================================================
+; SECTION 6: EXECUTION START
+; ============================================================================
+; Begin processor execution until breakpoint
+
+PRINT "------------------------------------------------------------------------" /M
+PRINT "PHASE 2: EXECUTION START" /M
+PRINT "------------------------------------------------------------------------" /M
+PRINT "Starting processor execution..." /M
+
+&test_start_time=STR.TIME()
+
+; Reset CPU and go to breakpoint
+Go
+
+; Wait until breakpoint is hit
+WAIT Break
+PRINT "  ✓ Breakpoint '&breakpoint_name' hit at " + STR.TIME() /M
+PRINT "" /M
+
+; ============================================================================
+; SECTION 7: OUTPUT CAPTURE PHASE
+; ============================================================================
+; Read output values from hardware registers
+; Type-aware readback with format conversion
+
+PRINT "------------------------------------------------------------------------" /M
+PRINT "PHASE 3: OUTPUT CAPTURE" /M
+PRINT "------------------------------------------------------------------------" /M
+PRINT "Capturing output values from hardware registers..." /M
+PRINT "" /M
+
+; OUTPUT 1: status_register (R mode, uint32)
+; ----
+
+IF ("&OUTPUT_1_MODE"=="R")||("&OUTPUT_1_MODE"=="RW")
+(
+  PRINT "[OUTPUT_1] Reading &OUTPUT_1_NAME from address 0x" + FORMAT.HEX(8., &OUTPUT_1_ADDRESS)
+  
+  IF "&OUTPUT_1_FORMAT"=="uint32"
+    &OUTPUT_1_CAPTURED=Data.Long(&OUTPUT_1_ADDRESS)
+  ELSE IF "&OUTPUT_1_FORMAT"=="sint32"
+    &OUTPUT_1_CAPTURED=Data.Long(&OUTPUT_1_ADDRESS)
+  ELSE IF "&OUTPUT_1_FORMAT"=="float32"
+    &OUTPUT_1_CAPTURED=Data.Float(&OUTPUT_1_ADDRESS)
+  ELSE IF "&OUTPUT_1_FORMAT"=="bit"
+    &OUTPUT_1_CAPTURED=Data.Byte(&OUTPUT_1_ADDRESS)
+  
+  PRINT "  ✓ Captured value: &OUTPUT_1_CAPTURED (format: &OUTPUT_1_FORMAT)"
+)
+ELSE
+(
+  PRINT "[OUTPUT_1] SKIP &OUTPUT_1_NAME (write-only mode, no readback)"
+)
+PRINT "" /M
+
+; OUTPUT 2: error_code (R mode, sint32)
+; ----
+
+IF ("&OUTPUT_2_MODE"=="R")||("&OUTPUT_2_MODE"=="RW")
+(
+  PRINT "[OUTPUT_2] Reading &OUTPUT_2_NAME from address 0x" + FORMAT.HEX(8., &OUTPUT_2_ADDRESS)
+  
+  IF "&OUTPUT_2_FORMAT"=="sint32"
+    &OUTPUT_2_CAPTURED=Data.Long(&OUTPUT_2_ADDRESS)
+  ELSE IF "&OUTPUT_2_FORMAT"=="uint32"
+    &OUTPUT_2_CAPTURED=Data.Long(&OUTPUT_2_ADDRESS)
+  ELSE IF "&OUTPUT_2_FORMAT"=="float32"
+    &OUTPUT_2_CAPTURED=Data.Float(&OUTPUT_2_ADDRESS)
+  
+  PRINT "  ✓ Captured value: &OUTPUT_2_CAPTURED (format: &OUTPUT_2_FORMAT)"
+)
+ELSE
+(
+  PRINT "[OUTPUT_2] SKIP &OUTPUT_2_NAME (write-only mode, no readback)"
+)
+PRINT "" /M
+
+; OUTPUT 3: result_status (R mode, boolean)
+; ----
+
+IF ("&OUTPUT_3_MODE"=="R")||("&OUTPUT_3_MODE"=="RW")
+(
+  PRINT "[OUTPUT_3] Reading &OUTPUT_3_NAME from address 0x" + FORMAT.HEX(8., &OUTPUT_3_ADDRESS)
+  
+  IF "&OUTPUT_3_FORMAT"=="bit"
+    &OUTPUT_3_CAPTURED=Data.Byte(&OUTPUT_3_ADDRESS)&0x1
+  ELSE
+    &OUTPUT_3_CAPTURED=Data.Byte(&OUTPUT_3_ADDRESS)
+  
+  PRINT "  ✓ Captured value: &OUTPUT_3_CAPTURED (format: &OUTPUT_3_FORMAT)"
+)
+ELSE
+(
+  PRINT "[OUTPUT_3] SKIP &OUTPUT_3_NAME (write-only mode, no readback)"
+)
+PRINT "" /M
+
+; ============================================================================
+; SECTION 8: TEST COMPLETION & LOGGING SUMMARY
+; ============================================================================
+
+&test_end_time=STR.TIME()
+
+PRINT "------------------------------------------------------------------------" /M
+PRINT "TEST EXECUTION COMPLETE" /M
+PRINT "------------------------------------------------------------------------" /M
+PRINT "" /M
+PRINT "Summary of Injected Inputs:" /M
+PRINT "  [1] &INPUT_1_NAME = &INPUT_1_VALUE (&INPUT_1_FORMAT) @ 0x" + FORMAT.HEX(8., &INPUT_1_ADDRESS) /M
+PRINT "  [2] &INPUT_2_NAME = &INPUT_2_VALUE (&INPUT_2_FORMAT) @ 0x" + FORMAT.HEX(8., &INPUT_2_ADDRESS) /M
+PRINT "  [3] &INPUT_3_NAME = &INPUT_3_VALUE (&INPUT_3_FORMAT) @ 0x" + FORMAT.HEX(8., &INPUT_3_ADDRESS) /M
+PRINT "" /M
+PRINT "Summary of Captured Outputs:" /M
+PRINT "  [1] &OUTPUT_1_NAME = &OUTPUT_1_CAPTURED (&OUTPUT_1_FORMAT) @ 0x" + FORMAT.HEX(8., &OUTPUT_1_ADDRESS) /M
+PRINT "  [2] &OUTPUT_2_NAME = &OUTPUT_2_CAPTURED (&OUTPUT_2_FORMAT) @ 0x" + FORMAT.HEX(8., &OUTPUT_2_ADDRESS) /M
+PRINT "  [3] &OUTPUT_3_NAME = &OUTPUT_3_CAPTURED (&OUTPUT_3_FORMAT) @ 0x" + FORMAT.HEX(8., &OUTPUT_3_ADDRESS) /M
+PRINT "" /M
+PRINT "Breakpoint Hit: &breakpoint_name" /M
+PRINT "Start Time: &test_start_time" /M
+PRINT "End Time:   &test_end_time" /M
+PRINT "" /M
+PRINT "========================================================================" /M
+PRINT "Post-Processing Stage:" /M
+PRINT "  • External system will compare captured outputs against expected values" /M
+PRINT "  • No pass/fail evaluation in this CMM script" /M
+PRINT "  • All outputs logged to: &log_file" /M
+PRINT "========================================================================" /M
+
+CLOSE #1
+
+; Break execution and allow user inspection
+BREAK
+
+ENDDO

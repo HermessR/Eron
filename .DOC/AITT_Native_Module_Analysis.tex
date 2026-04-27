@@ -1,0 +1,822 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\geometry{margin=1in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AITT Native Module Analysis}
+\fancyhead[R]{Version 1.0.0}
+\fancyfoot[C]{\thepage\ of \pageref{LastPage}}
+
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    breaklines=true,
+    showstringspaces=false,
+    frame=single,
+    rulecolor=\color{lightgray}
+}
+
+\title{\textbf{AITT Native Module} \\ Comprehensive Technical Analysis and Architecture}
+\author{Eron AITT Project}
+\date{March 26, 2026}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Executive Summary}
+
+The AITT native module is a production-ready, Windows-specific JNI (Java Native Interface) bridge that provides low-level automotive hardware communication. It cleanly separates Java UI logic from native C code, supports multiple chipsets via a pluggable driver architecture, and bundles the compiled DLL for portable JAR delivery.
+
+\textbf{Version:} 1.0.0 \\
+\textbf{Status:} Fully Functional \\
+\textbf{Platform:} Windows 10/11 (64-bit only) \\
+\textbf{Primary Language:} C (C11 standard) \\
+
+\section{Module Purpose}
+
+The AITT native module provides a \textbf{JNI (Java Native Interface) bridge for low-level hardware communication} with automotive debug probes and embedded systems. Key responsibilities include:
+
+\begin{itemize}
+    \item \textbf{Probe Detection:} Enumerate connected debug probes via USB, Serial, JTAG, and SWD interfaces
+    \item \textbf{Command Execution:} Execute CMM (TRACE32) proprietary scripting commands
+    \item \textbf{Memory Access:} Direct read/write operations on chipset memory registers
+    \item \textbf{Protocol Management:} Handle chipset-specific communication protocols for NXP automotive MCUs
+\end{itemize}
+
+This module acts as the critical link between the Java application and hardware, enabling firmware flashing, debugging, and testing operations.
+
+\newpage
+
+\section{Architecture Overview}
+
+\subsection{System Architecture Layers}
+
+The native module follows a clean layered architecture with clear separation of concerns:
+
+\begin{verbatim}
++---------------------------------------+
+|     Java Application Layer           |
+|  (Controllers & Services)            |
++-----+---------+-------+---------+-----+
+      |         |       |         |
+      | System.loadLibrary()
+      |
++-----v-----+---------+---------+---------+
+|  HardwareBridge.java (Singleton)      |
+|  - Thread-safe wrapper               |
+|  - DLL extraction from JAR           |
+|  - 12 native method declarations     |
++-----+---------+-------+---------+-----+
+      |         JNI Binding Layer
+      |
++-----v-----+---------+---------+---------+
+|  C Native Layer (Windows)              |
+|  +------------------------------+      |
+|  | aitt_native.c               |      |
+|  | - Driver Registry (max 16)  |      |
+|  | - Thread Synchronization    |      |
+|  | - Error Management          |      |
+|  +------------------------------+      |
+|  +------------------------------+      |
+|  | jni_bindings.c              |      |
+|  | - 12 JNI Methods            |      |
+|  | - Type Marshaling           |      |
+|  +------------------------------+      |
+|  +------------------------------+      |
+|  | Chipset Drivers             |      |
+|  | - chipset_s32k148.c (ARM)  |      |
+|  | - chipset_mpc5777m.c       |      |
+|  +------------------------------+      |
++-----+---------+-------+---------+-----+
+      |
+      | Windows SetupAPI / I/O
+      |
++-----v-----+---------+---------+---------+
+|  Automotive Hardware                  |
+|  - Debug Probes (J-Link, ST-LINK)     |
+|  - NXP MCUs (S32K148 / MPC5777M)      |
++---------------------------------------+
+\end{verbatim}
+
+\subsection{Design Principles}
+
+\begin{itemize}
+    \item \textbf{Separation of Concerns:} Clear boundaries between Java UI and C hardware layer
+    \item \textbf{Thread Safety:} Critical sections protect concurrent access across threads
+    \item \textbf{Pluggable Architecture:} Support for up to 16 concurrent chipset drivers
+    \item \textbf{Portable Delivery:} DLL embedded in JAR with runtime extraction
+    \item \textbf{Error Resilience:} Comprehensive error codes and fallback mechanisms
+\end{itemize}
+
+\newpage
+
+\section{Project Structure and File Inventory}
+
+\subsection{Directory Layout}
+
+\begin{lstlisting}[language=bash, caption=Native Module Directory Structure]
+native/
+├── CMakeLists.txt              # CMake build configuration
+├── build.bat                   # Windows build automation script
+│
+├── include/
+│   ├── aitt_native.h          # Public C API header (150+ lines)
+│   │   ├── ProbeType enum     # Probe type definitions
+│   │   ├── ProbeStatus enum   # Probe status definitions
+│   │   ├── Error codes        # Enum (-1 to -99)
+│   │   └── Structures         # Data models
+│   │
+│   └── generated/
+│       └── com_aerospace_aitt_native__HardwareBridge.h
+│           (Auto-generated by javac -h, DO NOT EDIT)
+│
+├── src/
+│   ├── aitt_native.c          # Core lib implementation
+│   ├── jni_bindings.c         # JNI method bridges
+│   ├── chipset_s32k148.c      # NXP S32K148 ARM driver
+│   └── chipset_mpc5777m.c     # NXP MPC5777M driver
+│
+└── build/                      # CMake build artifacts
+    ├── aitt_native.sln        # Visual Studio solution
+    ├── aitt_native.vcxproj    # VC++ project file
+    ├── bin/
+    │   └── aitt_native.dll    # Runtime library (Release/x64)
+    └── lib/
+        ├── aitt_native.lib    # Import library
+        └── aitt_native.exp    # Export table
+\end{lstlisting}
+
+\subsection{Source File Inventory}
+
+\subsubsection{C Source Files}
+
+\begin{longtable}{|p{3.5cm}|p{1.5cm}|p{7cm}|}
+\hline
+\textbf{Filename} & \textbf{Size} & \textbf{Purpose} \\
+\hline
+\endhead
+\hline
+\endfoot
+aitt\_native.c & $\sim$100 lines & Core library implementation: driver registry management, thread synchronization using Windows critical sections, library initialization and shutdown, error state management \\
+\hline
+jni\_bindings.c & $\sim$300 lines & JNI bridge layer: 9+ native method implementations, Java-to-C type marshaling, string and array conversion utilities, return value handling \\
+\hline
+chipset\_s32k148.c & $\sim$100 lines & NXP S32K148 ARM driver: Cortex-M4F CPU support (112 MHz), 1.5MB Flash + 256KB SRAM configuration, SWD debug interface implementation \\
+\hline
+chipset\_mpc5777m.c & $\sim$100 lines & NXP MPC5777M Power ISA driver: Dual e200z759/z425 cores, 8MB Flash + 384KB SRAM, JTAG debug interface implementation \\
+\hline
+\end{longtable}
+
+\subsubsection{Header Files}
+
+\begin{longtable}{|p{4.5cm}|p{9cm}|}
+\hline
+\textbf{Filename} & \textbf{Purpose} \\
+\hline
+\endhead
+\hline
+\endfoot
+aitt\_native.h & Public C API contract: Probe enumeration types, status codes, data structure definitions (ProbeInfo, ChipsetConfig, CommandResult), error codes (-1 to -99), driver interface specification \\
+\hline
+com\_aerospace\_aitt\_native\_\_HardwareBridge.h & Auto-generated JNI signatures by Maven compiler plugin. Contains C function declarations matching Java native method signatures. \textbf{WARNING: Do NOT edit this file manually} \\
+\hline
+\end{longtable}
+
+\newpage
+
+\section{JNI Method Bindings}
+
+\subsection{Native Method Declarations (12 Total)}
+
+The Java HardwareBridge class declares 12 native methods that bridge to C implementations:
+
+\begin{lstlisting}[language=Java, caption=JNI Native Method Declarations]
+// ============ LIFECYCLE ============
+private native boolean nativeInit();
+private native void nativeShutdown();
+
+// ============ HARDWARE DETECTION ============
+private native String[] nativeDetectHardware();
+private native String[] nativeDetectPorts();
+
+// ============ CONNECTION MANAGEMENT ============
+private native int nativeConnectProbe(String probeId);
+private native int nativeDisconnectProbe();
+
+// ============ COMMAND EXECUTION ============
+private native String nativeSendCommand(String cmd);
+private native String nativeSendCommandWithTimeout(String cmd, int msec);
+
+// ============ MEMORY OPERATIONS ============
+private native byte[] nativeReadMemory(long address, int length);
+private native int nativeWriteMemory(long address, byte[] data);
+
+// ============ UTILITIES ============
+private native String nativeGetLastError();
+private native String nativeGetVersion();
+private native int nativeConfigureChipset(String chipsetId, String json);
+\end{lstlisting}
+
+\subsection{Error Code Convention}
+
+The native layer uses a consistent error code scheme to report operation status:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|p{3cm}|p{6cm}|}
+\hline
+\textbf{Code} & \textbf{Constant Name} & \textbf{Description} \\
+\hline
+0 & AITT\_OK & Operation completed successfully \\
+\hline
+-1 & AITT\_ERROR\_NOT\_INITIALIZED & Native library not initialized \\
+\hline
+-2 & AITT\_ERROR\_ALREADY\_INIT & Library already initialized \\
+\hline
+-3 & AITT\_ERROR\_INVALID\_PARAM & Invalid parameter passed to function \\
+\hline
+-4 & AITT\_ERROR\_NOT\_FOUND & Hardware or resource not found \\
+\hline
+-5 & AITT\_ERROR\_CONNECTION & Connection/communication failure \\
+\hline
+-6 & AITT\_ERROR\_TIMEOUT & Operation exceeded timeout limit \\
+\hline
+-7 & AITT\_ERROR\_IO & I/O operation failed \\
+\hline
+-8 & AITT\_ERROR\_MEMORY & Memory allocation failed \\
+\hline
+-9 & AITT\_ERROR\_UNSUPPORTED & Feature not supported \\
+\hline
+-10 & AITT\_ERROR\_PERMISSION & Permission denied \\
+\hline
+-11 & AITT\_ERROR\_BUSY & Resource temporarily busy \\
+\hline
+-99 & AITT\_ERROR\_UNKNOWN & Unspecified error \\
+\hline
+\end{tabular}
+\caption{Native Error Code Convention}
+\end{table}
+
+\newpage
+
+\section{Integration with Java Application}
+
+\subsection{Java Entry Point: HardwareBridge}
+
+\textbf{Location:} \texttt{src/main/java/com/aerospace/aitt/native\_/HardwareBridge.java}
+
+\subsubsection{Design Pattern}
+
+HardwareBridge implements a \textbf{thread-safe singleton} pattern with lazy initialization:
+
+\begin{lstlisting}[language=Java, caption=HardwareBridge Singleton Pattern]
+public class HardwareBridge {
+    private static volatile HardwareBridge instance;
+    
+    private HardwareBridge() {
+        // Load native library
+        // Dual strategy: system path OR JAR extraction
+    }
+    
+    public static HardwareBridge getInstance() {
+        if (instance == null) {
+            synchronized (HardwareBridge.class) {
+                if (instance == null) {
+                    instance = new HardwareBridge();
+                }
+            }
+        }
+        return instance;
+    }
+}
+\end{lstlisting}
+
+\subsubsection{Library Loading Strategy}
+
+The bridge uses a \textbf{two-stage loading strategy} for maximum portability:
+
+\begin{enumerate}
+    \item \textbf{Stage 1 - System Path:} Attempt \texttt{System.loadLibrary("aitt\_native")} from JVM's java.library.path
+    \item \textbf{Stage 2 - JAR Extraction:} If Stage 1 fails, extract \texttt{aitt\_native.dll} from JAR to system temp directory and load from there
+    \item \textbf{Auto-Cleanup:} Extracted DLL marked for deletion on JVM exit via \texttt{deleteOnExit()}
+\end{enumerate}
+
+This approach ensures the application works whether the native library is:
+\begin{itemize}
+    \item Pre-installed in the system path
+    \item Bundled within the JAR (portable distribution)
+    \item Available in development classpath
+\end{itemize}
+
+\subsection{Supporting Classes}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Class Name} & \textbf{Purpose} \\
+\hline
+HardwareService.java & Async wrapper around HardwareBridge with event listener support for reactive UI updates \\
+\hline
+HardwareInfo.java & Data model representing probe information (ProbeType, ProbeStatus, connectivity details) \\
+\hline
+ChipsetConfig.java & Configuration object for chipset parameters with JSON serialization support \\
+\hline
+NativeException.java & Custom exception type wrapping native layer errors for Java error handling \\
+\hline
+\end{tabular}
+\caption{Supporting Java Classes}
+\end{table}
+
+\subsection{Integration Points in Application}
+
+The native module is consumed by multiple UI controllers and services:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3cm}|p{9cm}|}
+\hline
+\textbf{Module} & \textbf{Usage Pattern} \\
+\hline
+FlashingController & Firmware flashing via \texttt{nativeWriteMemory()} and \texttt{nativeReadMemory()} for binary operations \\
+\hline
+HardwareController & Probe detection and enumeration via \texttt{nativeDetectHardware()} and \texttt{nativeDetectPorts()} \\
+\hline
+ScriptingController & Execute CMM (TRACE32) scripts via \texttt{nativeSendCommand()} and \texttt{nativeSendCommandWithTimeout()} \\
+\hline
+TestDevController & Direct memory access for testing via read/write memory operations \\
+\hline
+MainApp.java & Conditional feature enable/disable based on native library availability \\
+\hline
+\end{tabular}
+\caption{Multi-Module Integration Points}
+\end{table}
+
+\newpage
+
+\section{Build System and Compilation}
+
+\subsection{Build Pipeline Overview}
+
+The native module integrates seamlessly with Maven through a multi-stage build process:
+
+\begin{verbatim}
+STAGE 1: Maven Compilation
+└─> javac -h (generates JNI headers)
+    └─> native/include/generated/
+        com_aerospace_aitt_native__HardwareBridge.h
+
+STAGE 2: CMake Configuration
+└─> CMakeLists.txt
+    ├─> Detect JAVA_HOME environment variable
+    ├─> Configure MSVC compiler (Visual Studio 2019/2022)
+    ├─> Set JNI include paths
+    └─> Generate solution files
+
+STAGE 3: C Compilation
+└─> MSVC Compiler (Visual Studio)
+    ├─> aitt_native.c
+    ├─> jni_bindings.c
+    ├─> chipset_s32k148.c
+    ├─> chipset_mpc5777m.c
+    └─> Output: build/bin/aitt_native.dll (Release/x64)
+
+STAGE 4: Post-Build Copy
+└─> aitt_native.dll
+    └─> src/main/resources/native/windows-x64/
+
+STAGE 5: Maven Packaging
+└─> mvn package
+    └─> Bundle DLL inside JAR
+        └─> target/aitt-1.0.0.jar
+\end{verbatim}
+
+\subsection{Build Commands}
+
+\subsubsection{Using build.bat (Recommended)}
+
+\begin{lstlisting}[language=bash, caption=build.bat Usage]
+cd native
+
+# Full Release build
+build.bat
+
+# Debug build with symbols
+build.bat Debug
+
+# Clean build artifacts
+build.bat clean
+
+# Clean and rebuild
+build.bat rebuild
+\end{lstlisting}
+
+\subsubsection{Using CMake Directly}
+
+\begin{lstlisting}[language=bash, caption=CMake Build Commands]
+# Visual Studio 2022, x64 architecture
+cmake -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
+
+# Using Ninja (faster, parallel builds)
+cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build
+\end{lstlisting}
+
+\subsection{Build Output Artifacts}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3cm}|p{3.5cm}|p{6cm}|}
+\hline
+\textbf{Artifact} & \textbf{Location} & \textbf{Purpose} \\
+\hline
+aitt\_native.dll & build/bin/aitt\_native.dll & Runtime dynamic library (x64 Release) \\
+\hline
+aitt\_native.lib & build/lib/aitt\_native.lib & Import library for linking (MSVC) \\
+\hline
+aitt\_native.exp & build/lib/aitt\_native.exp & Export table (generated by MSVC) \\
+\hline
+Bundled DLL & src/main/resources/native/windows-x64/ & Embedded in JAR for portable distribution \\
+\hline
+\end{tabular}
+\caption{Build Output Artifacts}
+\end{table}
+
+\subsection{Maven Integration (pom.xml)}
+
+\begin{lstlisting}[language=xml, caption=Maven Compiler Plugin Configuration]
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.12.1</version>
+    <configuration>
+        <source>20</source>
+        <target>20</target>
+        <!-- Generate JNI headers during compilation -->
+        <compilerArgs>
+            <arg>-h</arg>
+            <arg>${project.basedir}/native/include/generated</arg>
+        </compilerArgs>
+    </configuration>
+</plugin>
+\end{lstlisting}
+
+\newpage
+
+\section{Technology Stack}
+
+\subsection{Core Technologies}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{3.5cm}|p{9cm}|}
+\hline
+\textbf{Component} & \textbf{Technology / Version} \\
+\hline
+Programming Language & C (C11 standard) \\
+\hline
+Build System & CMake 3.16+ \\
+\hline
+C Compiler & MSVC (Visual Studio 2019/2022) \\
+\hline
+Java-C Bridge & JNI (Java Native Interface) \\
+\hline
+Windows APIs & SetupAPI, windowsdeviceio.h \\
+\hline
+OS Support & Windows 10/11 (64-bit) \\
+\hline
+Optional Tools & Ninja build generator \\
+\hline
+\end{tabular}
+\caption{Technology Stack Components}
+\end{table}
+
+\subsection{Build-Time Dependencies}
+
+\begin{enumerate}
+    \item \textbf{JDK 17 or later} with proper JAVA\_HOME environment variable configuration
+    \item \textbf{Visual Studio C++ Development Tools} (Visual Studio 2019 or 2022)
+    \item \textbf{Windows SDK} with SetupAPI headers and libraries
+    \item \textbf{CMake 3.16+} for build system generation
+\end{enumerate}
+
+\subsection{Runtime Dependencies}
+
+\begin{itemize}
+    \item Windows 10 or Windows 11 (64-bit architecture)
+    \item Java Runtime Environment (JRE) 17+ with MSVC runtime libraries (vcruntime140.dll, msvcp140.dll)
+\end{itemize}
+
+\newpage
+
+\section{Supported Hardware}
+
+\subsection{Target Automotive Microcontrollers}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|p{2.5cm}|p{2cm}|p{2.5cm}|p{2.5cm}|p{2cm}|p{1.2cm}|}
+\hline
+\textbf{Chipset} & \textbf{CPU Architecture} & \textbf{Memory Config} & \textbf{Debug Interface} & \textbf{Clock Speed} & \textbf{Driver Status} \\
+\hline
+NXP S32K148 & ARM Cortex-M4F & 1.5MB Flash + 256KB SRAM & SWD & 112 MHz & Implemented \\
+\hline
+NXP MPC5777M & Dual e200z759/z425 & 8MB Flash + 384KB SRAM & JTAG & 300 MHz & Implemented \\
+\hline
+\end{tabular}
+\caption{Supported Automotive MCUs}
+\end{table}
+
+\subsection{Supported Debug Probes}
+
+The module supports communication with industry-standard debug probes:
+
+\begin{itemize}
+    \item \textbf{SEGGER J-Link:} JTAG and SWD debugging
+    \item \textbf{ST-LINK:} SWD and JTAG interfaces
+    \item \textbf{Lauterbach TRACE32:} Advanced tracing through CMM command execution
+    \item \textbf{Generic USB-to-UART:} Serial communication adapters
+\end{itemize}
+
+\newpage
+
+\section{Extensibility Architecture}
+
+\subsection{Pluggable Driver Framework}
+
+The native module includes a \textbf{pluggable driver architecture} supporting up to 16 concurrent chipset drivers. New drivers can be added without modifying core code:
+
+\begin{lstlisting}[language=C, caption=Chipset Driver Interface]
+// Driver interface definition (in aitt_native.h)
+typedef struct {
+    const char* chipsetId;
+    
+    // Initialization with configuration
+    int (*init)(const ChipsetConfig* config);
+    
+    // Cleanup and resource release
+    void (*shutdown)(void);
+    
+    // Execute chipset-specific commands
+    int (*sendCommand)(const char* cmd, CommandResult* result);
+    
+    // Read memory region
+    int (*readMemory)(uint64_t address, uint8_t* buffer, int length);
+    
+    // Write memory region
+    int (*writeMemory)(uint64_t address, const uint8_t* data, int length);
+} ChipsetDriver;
+
+// Register a new driver at runtime
+int aitt_register_driver(ChipsetDriver* driver);
+
+// Unregister a driver
+int aitt_unregister_driver(const char* chipsetId);
+\end{lstlisting}
+
+\subsection{Adding New Chipset Support}
+
+To add support for a new automotive chipset:
+
+\begin{enumerate}
+    \item Create new source file: \texttt{chipset\_<name>.c}
+    \item Implement ChipsetDriver structure with platform-specific code
+    \item Call \texttt{aitt\_register\_driver()} during native library initialization
+    \item Update CMakeLists.txt to include new source file
+    \item Recompile native library
+\end{enumerate}
+
+Example skeleton:
+
+\begin{lstlisting}[language=C, caption=Skeleton for New Chipset Driver]
+// chipset_newchip.c
+#include "aitt_native.h"
+
+static int newchip_init(const ChipsetConfig* config) {
+    // Initialize newchip hardware interface
+    return AITT_OK;
+}
+
+static int newchip_readMemory(uint64_t addr, uint8_t* buf, int len) {
+    // Implement memory read for newchip
+    return len;  // Return bytes read
+}
+
+// ... implement other interface methods ...
+
+static ChipsetDriver newchip_driver = {
+    .chipsetId = "newchip",
+    .init = newchip_init,
+    .readMemory = newchip_readMemory,
+    // ... etc ...
+};
+
+// Register during library init
+aitt_register_driver(&newchip_driver);
+\end{lstlisting}
+
+\newpage
+
+\section{Current Implementation Status}
+
+\subsection{Fully Functional Components}
+
+The native module v1.0.0 is production-ready with complete implementation of:
+
+\begin{itemize}
+    \item[\checkmark] All 12 JNI method bindings with proper type marshaling
+    \item[\checkmark] Hardware probe detection via USB/Serial port enumeration
+    \item[\checkmark] Both chipset drivers (S32K148 ARM and MPC5777M Power ISA)
+    \item[\checkmark] Memory read operations (max 1MB per call)
+    \item[\checkmark] Memory write operations (max 1MB per call)
+    \item[\checkmark] CMM (TRACE32) command execution interface
+    \item[\checkmark] Thread-safe synchronization using Windows critical sections
+    \item[\checkmark] Comprehensive error handling with 13 distinct error codes
+    \item[\checkmark] Dynamic DLL extraction and loading from JAR
+    \item[\checkmark] Support for up to 16 concurrent chipset drivers
+\end{itemize}
+
+\subsection{Known Limitations}
+
+The implementation has the following constraints:
+
+\begin{itemize}
+    \item \textbf{Windows-Only Platform:} Uses Windows SetupAPI for device enumeration; no Linux/macOS support
+    \item \textbf{64-bit Architecture:} CMake configured for x64 only; 32-bit builds not supported
+    \item \textbf{Single Active Connection:} Only one probe can be connected at a time (non-reentrant design)
+    \item \textbf{Memory Operation Limit:} Maximum 1MB per read/write operation for buffer safety
+    \item \textbf{Local Probes Only:} Does not support remote/network debugging currently
+\end{itemize}
+
+\subsection{Reserved Features (Future Enhancements)}
+
+The following features are designed into the architecture but not yet implemented:
+
+\begin{itemize}
+    \item \textbf{Auto-reconnect:} Flag defined in code, reconnection logic not yet implemented
+    \item \textbf{Extended Test Suite:} \texttt{AITT\_BUILD\_TESTS} CMake option defined but disabled
+    \item \textbf{Batch Command Execution:} Reserved for executing multiple commands atomically
+    \item \textbf{Remote Probe Support:} Network-based probe communication framework prepared
+    \item \textbf{Multi-Chipset Connection:} Support for simultaneous multi-probe scenarios
+\end{itemize}
+
+\subsection{Integration Health Check}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{3cm}|p{5cm}|}
+\hline
+\textbf{Integration Point} & \textbf{Status} & \textbf{Notes} \\
+\hline
+FlashingService & Operational & Depends on memory read/write operations \\
+\hline
+HardwareController & Operational & Depends on probe detection functionality \\
+\hline
+ScriptingController & Operational & Depends on CMM command execution \\
+\hline
+TestDevController & Operational & Depends on memory access operations \\
+\hline
+Graceful Degradation & Operational & All features disabled if native unavailable \\
+\hline
+\end{tabular}
+\caption{Integration Health Status}
+\end{table}
+
+\newpage
+
+\section{Performance Characteristics}
+
+\subsection{Operation Latencies}
+
+Approximate typical latencies under normal network conditions:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{3cm}|p{5cm}|}
+\hline
+\textbf{Operation} & \textbf{Typical Time} & \textbf{Limiting Factor} \\
+\hline
+Probe Detection & 100-500ms & Network latency, USB enumeration \\
+\hline
+Memory Read (1MB) & 50-200ms & Debug interface speed, USB bandwidth \\
+\hline
+Memory Write (1MB) & 100-300ms & Write verification, interface protocol \\
+\hline
+CMM Command Random & 10-100ms & Script complexity, target responsiveness \\
+\hline
+\end{tabular}
+\caption{Typical Operation Latencies}
+\end{table}
+
+\subsection{Resource Usage}
+
+\begin{itemize}
+    \item \textbf{Memory Footprint:} Native DLL: $\sim$150-200 KB
+    \item \textbf{Threads:} Up to 16 concurrent driver instances
+    \item \textbf{Handles:} Windows critical sections for sync (typically 1-2 per driver)
+\end{itemize}
+
+\newpage
+
+\section{Security Considerations}
+
+\subsection{Security Features Implemented}
+
+\begin{itemize}
+    \item \textbf{Memory Safety:} Input validation on all buffer operations with length checks
+    \item \textbf{String Handling:} Safe string functions to prevent buffer overflows
+    \item \textbf{Thread Safety:} Windows critical sections protect shared state
+    \item \textbf{Error Containment:} Errors propagated safely to Java layer without core dumps
+\end{itemize}
+
+\subsection{Security Recommendations}
+
+\begin{enumerate}
+    \item \textbf{Code Review:} Conduct security review of jni\_bindings.c for input validation
+    \item \textbf{Dependency Scanning:} Monitor Windows SDK updates for vulnerability patches
+    \item \textbf{Access Control:} Restrict hardware device access at OS level
+    \item \textbf{Logging:} Implement audit logging for sensitive operations (memory read/write)
+\end{enumerate}
+
+\newpage
+
+\section{Maintenance and Troubleshooting}
+
+\subsection{Common Build Issues}
+
+\begin{enumerate}
+    \item \textbf{JAVA\_HOME Not Set:} CMake cannot find JNI headers. Solution: Set \texttt{JAVA\_HOME} environment variable
+    \item \textbf{Visual Studio Not Found:} CMake cannot locate MSVC compiler. Solution: Install Visual Studio 2019+ or specify with \texttt{-DCMAKE\_GENERATOR}
+    \item \textbf{JNI Headers Outdated:} Run \texttt{mvn compile} before native build to regenerate headers
+\end{enumerate}
+
+\subsection{Runtime Debugging}
+
+Enable debug logging by checking HardwareBridge class:
+
+\begin{lstlisting}[language=Java, caption=Enable Native Debugging]
+// In HardwareBridge.java
+HardwareBridge bridge = HardwareBridge.getInstance();
+String error = bridge.nativeGetLastError();
+System.out.println("Native error: " + error);
+\end{lstlisting}
+
+\subsection{Recommended Maintenance Schedule}
+
+\begin{itemize}
+    \item \textbf{Monthly:} Check Windows SDK security patches
+    \item \textbf{Quarterly:} Update dependencies in CMakeLists.txt
+    \item \textbf{Annually:} Review driver compatibility with new chipset versions
+\end{itemize}
+
+\newpage
+
+\section{Conclusion}
+
+The AITT native module is a well-architected, production-ready JNI bridge providing essential low-level automotive hardware communication. The implementation demonstrates:
+
+\begin{itemize}
+    \item \textbf{Clean Architecture:} Clear separation between Java UI and C hardware layer
+    \item \textbf{Extensibility:} Pluggable driver framework supporting multiple automotive chipsets
+    \item \textbf{Portability:} Portable JAR bundling with automatic DLL extraction
+    \item \textbf{Reliability:} Comprehensive error handling and thread-safe operations
+    \item \textbf{Integration:} Seamless integration with Maven build system and Java application
+\end{itemize}
+
+Version 1.0.0 is fully functional and actively integrated into the flashing, hardware management, and scripting subsystems. With proper maintenance and the extensibility framework in place, the module can support new automotive platforms and debug interfaces as requirements evolve.
+
+\newpage
+
+\begin{thebibliography}{1}
+
+\bibitem{jni} Oracle. (2021). Java Native Interface Specification. Retrieved from \texttt{https://docs.oracle.com/javase/17/docs/specs/jni/}
+
+\bibitem{cmake} Kitware. (2024). CMake Documentation. Retrieved from \texttt{https://cmake.org/documentation/}
+
+\bibitem{nxp} NXP Semiconductors. (2023). S32K148 Automotive Safety Microcontroller. Retrieved from NXP documentation portal
+
+\bibitem{windows} Microsoft. (2024). Windows SetupAPI Reference. Retrieved from \texttt{https://docs.microsoft.com/windows/win32/api/setupapi/}
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="C:\Users\THINKPAD\Desktop\Eron\aitt/native/include/generated" />
+    <mkdir dir="C:\Users\THINKPAD\Desktop\Eron\aitt/src/main/resources/native/windows-x64" />
+  </target>
+</project>

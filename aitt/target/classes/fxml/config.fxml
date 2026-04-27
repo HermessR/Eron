@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="module-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.config.ui.ConfigController">
+    
+    <!-- Top Header -->
+    <top>
+        <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+            
+            <Button text="← Back" styleClass="back-button" onAction="#handleBack"/>
+            <Separator orientation="VERTICAL"/>
+            <Label styleClass="module-header-title" text="Configuration Module"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <Label styleClass="module-status-badge" text="Coming Soon"/>
+        </HBox>
+    </top>
+    
+    <!-- Center Content -->
+    <center>
+        <VBox alignment="CENTER" spacing="20" styleClass="placeholder-content">
+            <padding>
+                <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
+            
+            <Label styleClass="placeholder-icon" text="⚙"/>
+            <Label styleClass="placeholder-title" text="Configuration Module"/>
+            <Label styleClass="placeholder-subtitle" text="This module is under development"/>
+            
+            <VBox alignment="CENTER" spacing="10" styleClass="feature-list">
+                <Label text="Planned Features:" styleClass="feature-header"/>
+                <Label text="• Target profile management" styleClass="feature-item"/>
+                <Label text="• Flash algorithm configuration" styleClass="feature-item"/>
+                <Label text="• Communication settings" styleClass="feature-item"/>
+                <Label text="• User preferences" styleClass="feature-item"/>
+                <Label text="• Export/Import configurations" styleClass="feature-item"/>
+            </VBox>
+            
+            <Region VBox.vgrow="ALWAYS"/>
+            
+            <Button text="Return to Dashboard" styleClass="primary-button" onAction="#handleBack"/>
+        </VBox>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="6" right="15" bottom="6" left="15"/>
+            </padding>
+            
+            <Label text="Configuration Module" styleClass="status-text"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label styleClass="status-text-dim" text="Module not yet implemented"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

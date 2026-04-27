@@ -1,0 +1,1117 @@
+2026-04-14 10:59:11.128 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 10:59:11.622 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native4568810480460288180\aitt_native.dll
+2026-04-14 10:59:11.627 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 10:59:12.887 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 10:59:12.893 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 10:59:13.935 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 10:59:15.601 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 10:59:15.604 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 10:59:27.244 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-14 10:59:27.255 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-14 10:59:27.278 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-14 10:59:27.469 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 10:59:27.812 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 10:59:27.830 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 10:59:27.863 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 10:59:27.864 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 10:59:42.592 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Flashing Module
+2026-04-14 10:59:42.826 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [FlashingController] Initializing FlashingController
+2026-04-14 10:59:42.842 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/flashing.fxml
+2026-04-14 10:59:42.872 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-14 10:59:43.038 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [SessionStore] Loaded 12 sessions from C:\Users\THINKPAD\.aitt\sessions.json
+2026-04-14 10:59:43.489 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [FlashingController] FlashingController initialized
+2026-04-14 11:02:42.245 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 11:02:42.245 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 11:04:16.188 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 13:15:54.256 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 13:15:54.397 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native7857755046743297219\aitt_native.dll
+2026-04-14 13:15:54.399 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 13:15:54.651 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 13:15:54.653 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 13:15:54.857 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 13:15:55.305 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 13:15:55.306 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 13:16:04.450 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-14 13:16:04.453 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-14 13:16:04.454 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-14 13:16:04.518 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 13:16:04.597 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 13:16:04.600 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 13:16:04.607 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:16:04.607 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:16:07.965 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:16:14.538 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 13:32:09.421 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 13:32:09.573 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native3856036873358577430\aitt_native.dll
+2026-04-14 13:32:09.574 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 13:32:09.834 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 13:32:09.836 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 13:32:10.050 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 13:32:10.565 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 13:32:10.565 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 13:32:20.272 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-14 13:32:20.274 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-14 13:32:20.275 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-14 13:32:20.323 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 13:32:20.402 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 13:32:20.405 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 13:32:20.415 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:32:20.415 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:32:29.427 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:32:35.953 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Configuration Module
+2026-04-14 13:32:35.969 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ConfigController] ConfigController initialized (placeholder)
+2026-04-14 13:32:35.971 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/config.fxml
+2026-04-14 13:32:38.419 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:32:38.420 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:32:39.746 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Scripting Console
+2026-04-14 13:32:39.842 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Initializing ScriptingController
+2026-04-14 13:32:39.847 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] HardwareBridge initialized - Native version: 1.0.0
+2026-04-14 13:32:39.848 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] ScriptingController initialized
+2026-04-14 13:32:39.850 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareService] HardwareService initialized
+2026-04-14 13:32:39.850 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Scripting Console displayed
+2026-04-14 13:32:39.850 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/scripting.fxml
+2026-04-14 13:32:42.069 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:32:42.069 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:32:43.699 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 13:35:01.705 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 13:35:01.849 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native9624276001518986286\aitt_native.dll
+2026-04-14 13:35:01.854 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 13:35:02.141 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 13:35:02.142 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 13:35:02.412 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 13:35:02.906 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 13:35:02.907 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 13:35:54.115 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admoin
+2026-04-14 13:35:54.119 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admoin authenticated successfully
+2026-04-14 13:35:54.131 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admoin
+2026-04-14 13:35:54.185 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 13:35:54.267 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 13:35:54.270 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 13:35:54.279 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:35:54.279 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:36:00.227 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:36:00.325 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:129
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[129,36]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:36:00.402 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:36:00.430 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:129
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[129,36]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:36:01.163 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:36:01.182 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:129
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[129,36]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:36:02.011 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:36:02.030 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:129
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[129,36]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:36:02.715 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:36:02.731 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:129
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[129,36]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:36:02.882 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:36:02.899 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:129
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[129,36]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:36:29.502 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 13:37:42.646 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 13:37:42.807 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native16784718469723445255\aitt_native.dll
+2026-04-14 13:37:42.810 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 13:37:43.063 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 13:37:43.064 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 13:37:43.277 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 13:37:43.736 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 13:37:43.737 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 13:37:49.581 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: sdsfss
+2026-04-14 13:37:49.584 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User sdsfss authenticated successfully
+2026-04-14 13:37:49.584 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: sdsfss
+2026-04-14 13:37:49.630 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 13:37:49.723 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 13:37:49.727 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 13:37:49.738 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:37:49.738 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:37:52.531 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:37:52.660 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:37:58.692 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Hardware Module
+2026-04-14 13:37:58.766 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareController] Initializing HardwareController
+2026-04-14 13:37:58.771 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] HardwareBridge initialized - Native version: 1.0.0
+2026-04-14 13:37:58.773 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareService] HardwareService initialized
+2026-04-14 13:37:58.774 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/hardware.fxml
+2026-04-14 13:37:59.006 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareController] HardwareController initialized
+2026-04-14 13:38:00.669 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:38:00.669 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:38:02.490 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Flashing Module
+2026-04-14 13:38:02.547 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [FlashingController] Initializing FlashingController
+2026-04-14 13:38:02.558 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/flashing.fxml
+2026-04-14 13:38:02.579 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-14 13:38:02.680 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [SessionStore] Loaded 12 sessions from C:\Users\THINKPAD\.aitt\sessions.json
+2026-04-14 13:38:02.770 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [FlashingController] FlashingController initialized
+2026-04-14 13:38:03.717 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:38:03.717 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:38:12.467 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:38:12.493 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:38:12.530 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:38:12.565 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:38:13.050 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:38:13.070 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:38:13.250 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:38:13.274 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:38:13.330 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:38:13.356 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:38:13.954 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:38:13.970 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.ui.StageManager - Failed to load scene: /fxml/testdev.fxml
+javafx.fxml.LoadException: 
+/C:/Users/THINKPAD/Desktop/Eron/aitt/target/classes/fxml/testdev.fxml:227
+
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2722)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2665)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.aerospace.aitt.core.ui.StageManager.loadView(StageManager.java:123)
+	at com.aerospace.aitt.core.ui.StageManager.switchScene(StageManager.java:82)
+	at com.aerospace.aitt.shell.DashboardController.openTestDevModule(DashboardController.java:471)
+	at com.aerospace.aitt.shell.DashboardController.openModuleAtIndex(DashboardController.java:342)
+	at com.aerospace.aitt.shell.DashboardController.lambda$setupModuleCarousel$1(DashboardController.java:177)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189)
+	at javafx.base@20.0.2/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base@20.0.2/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base@20.0.2/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3684)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$MouseHandler.process(Scene.java:3989)
+	at javafx.graphics@20.0.2/javafx.scene.Scene.processMouseEvent(Scene.java:1890)
+	at javafx.graphics@20.0.2/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2704)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics@20.0.2/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.handleMouseEvent(View.java:551)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.View.notifyMouse(View.java:937)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@20.0.2/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[227,32]
+Message: The entity name must immediately follow the '&' in the entity reference.
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:652)
+	at java.xml/javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:84)
+	at javafx.fxml@20.0.2/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2635)
+	... 37 common frames omitted
+2026-04-14 13:41:27.385 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 13:55:26.845 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 13:55:26.991 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native4101269643480005396\aitt_native.dll
+2026-04-14 13:55:26.996 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 13:55:27.242 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 13:55:27.243 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 13:55:27.471 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 13:55:27.929 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 13:55:27.930 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 13:56:36.038 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-14 13:56:36.041 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-14 13:56:36.047 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-14 13:56:36.106 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 13:56:36.191 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 13:56:36.196 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 13:56:36.204 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 13:56:36.205 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 13:59:09.476 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 13:59:09.580 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 13:59:09.603 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 13:59:09.607 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 13:59:09.608 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:06:35.167 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:06:35.309 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native5501791258927747322\aitt_native.dll
+2026-04-14 14:06:35.314 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:06:35.555 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:06:35.557 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:06:35.768 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:06:36.225 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:06:36.225 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:06:46.657 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-14 14:06:46.661 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-14 14:06:46.672 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-14 14:06:46.732 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:06:46.823 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:06:46.827 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:06:46.836 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:06:46.836 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:06:50.172 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:06:50.294 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:06:50.318 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:06:50.324 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:06:50.324 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:08:27.296 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:08:37.444 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:09:32.567 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:09:32.775 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native884599304886906490\aitt_native.dll
+2026-04-14 14:09:32.778 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:09:33.125 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:09:33.126 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:09:33.357 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:09:33.859 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:09:33.860 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:11:06.564 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-14 14:11:06.568 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-14 14:11:06.574 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-14 14:11:06.631 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:11:06.718 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:11:06.722 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:11:06.733 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:11:06.733 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:11:10.028 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:11:10.143 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:11:10.163 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:11:10.167 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:11:10.167 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:11:40.789 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 14:11:40.792 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:11:40.792 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:11:42.540 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-14 14:11:42.603 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-14 14:11:42.631 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-14 14:11:42.636 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:11:49.924 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings saved to C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:11:49.926 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:11:49.926 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Theme applied globally: Dark
+2026-04-14 14:11:49.927 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Settings saved successfully
+2026-04-14 14:11:54.276 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:11:54.283 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:11:54.284 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:12:48.852 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:16:01.329 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:16:01.462 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native13639131106011499926\aitt_native.dll
+2026-04-14 14:16:01.466 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:16:01.722 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:16:01.723 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:16:01.931 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:16:02.378 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:16:02.380 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:16:11.018 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-14 14:16:11.025 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-14 14:16:11.026 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-14 14:16:11.075 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:16:11.156 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:16:11.159 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:16:11.167 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:16:11.167 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:16:15.821 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:16:15.941 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:16:15.959 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:16:15.964 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:16:15.965 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:16:25.429 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 14:16:25.431 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:16:25.431 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:16:26.636 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-14 14:16:26.695 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-14 14:16:26.719 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-14 14:16:26.723 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:16:32.271 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings saved to C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:16:32.274 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:16:32.274 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Theme applied globally: Light
+2026-04-14 14:16:32.274 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Settings saved successfully
+2026-04-14 14:16:34.717 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:16:34.723 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:16:34.723 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:17:38.581 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:17:38.759 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native18361224840414169353\aitt_native.dll
+2026-04-14 14:17:38.761 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:17:39.026 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:17:39.027 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:17:39.261 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:17:39.718 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:17:39.719 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:17:47.302 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ami
+2026-04-14 14:17:47.307 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ami authenticated successfully
+2026-04-14 14:17:47.307 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ami
+2026-04-14 14:17:47.356 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:17:47.441 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:17:47.444 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:17:47.452 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:17:47.452 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:17:50.051 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:17:50.162 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:17:50.182 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:17:50.186 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:17:50.186 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:18:02.621 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Switched to chipset: S32K148
+2026-04-14 14:18:06.579 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Switched to chipset: MPC5777M
+2026-04-14 14:18:09.430 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:18:40.788 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 14:18:40.791 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:18:40.791 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:18:43.165 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Scripting Console
+2026-04-14 14:18:43.204 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Initializing ScriptingController
+2026-04-14 14:18:43.207 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] HardwareBridge initialized - Native version: 1.0.0
+2026-04-14 14:18:43.208 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] ScriptingController initialized
+2026-04-14 14:18:43.210 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareService] HardwareService initialized
+2026-04-14 14:18:43.211 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ScriptingController] Scripting Console displayed
+2026-04-14 14:18:43.211 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/scripting.fxml
+2026-04-14 14:18:45.189 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:18:45.189 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:21:00.942 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:21:22.532 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:21:22.696 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native15640535959936960670\aitt_native.dll
+2026-04-14 14:21:22.698 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:21:23.117 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:21:23.118 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:21:23.406 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:21:23.868 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:21:23.868 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:21:34.642 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-14 14:21:34.646 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-14 14:21:34.656 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-14 14:21:34.708 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:21:34.787 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:21:34.791 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:21:34.799 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:21:34.799 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:21:37.657 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:21:37.767 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:21:37.787 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:21:37.791 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:21:37.792 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:22:14.075 [JavaFX Application Thread] WARN  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Failed to resolve address: Unknown logical name: 'kfkfkfkf'. Available names: [adc_ch3_raw, adc_ch0_raw, calibration_data, adc_ch1_raw, status_register, pwm_enable, gpio_port_a, gpio_port_b, temperature_sensor, mode_flag, voltage_output, result_status, current_input, pwm_frequency, error_code, adc_ch2_raw, pwm_duty_cycle]
+2026-04-14 14:24:44.065 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:24:44.221 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native11975008554261800176\aitt_native.dll
+2026-04-14 14:24:44.225 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:24:44.498 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:24:44.499 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:24:44.712 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:24:45.164 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:24:45.164 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:25:10.670 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-14 14:25:10.672 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-14 14:25:10.673 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-14 14:25:10.722 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:25:10.804 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:25:10.807 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:25:10.816 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:25:10.816 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:25:13.671 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:25:13.795 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:25:13.813 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:25:13.817 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:25:13.818 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:31:22.589 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 14:31:22.594 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:31:22.594 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:31:24.157 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-14 14:31:24.232 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-14 14:31:24.276 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-14 14:31:24.281 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:31:30.808 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings saved to C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:31:30.811 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:31:30.811 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Theme applied globally: Dark
+2026-04-14 14:31:30.811 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Settings saved successfully
+2026-04-14 14:31:32.701 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:31:32.708 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:31:32.708 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:31:53.341 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:35:50.899 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:38:04.897 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:38:05.215 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native15344420100589067208\aitt_native.dll
+2026-04-14 14:38:05.224 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:38:05.627 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:38:05.631 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:38:05.887 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:38:06.524 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:38:06.525 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:43:22.270 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 14:54:46.516 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:54:46.691 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native9994539117341526791\aitt_native.dll
+2026-04-14 14:54:46.695 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:54:47.119 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:54:47.122 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:54:47.527 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:54:48.482 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:54:48.484 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:55:06.702 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-14 14:55:06.706 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-14 14:55:06.707 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-14 14:55:06.755 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:55:06.858 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:55:06.862 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:55:06.871 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:55:06.871 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:55:10.642 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:55:10.769 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:55:10.793 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:55:10.798 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:55:10.798 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:55:14.335 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 14:55:14.337 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:55:14.337 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:55:15.526 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Settings dialog
+2026-04-14 14:55:15.596 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Initializing SettingsController
+2026-04-14 14:55:15.620 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [ProfileStore] Loaded 8 target profiles
+2026-04-14 14:55:15.626 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Dark
+2026-04-14 14:55:21.366 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings saved to C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:55:21.369 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:55:21.369 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Theme applied globally: Light
+2026-04-14 14:55:21.369 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [SettingsController] Settings saved successfully
+2026-04-14 14:55:23.805 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:55:23.810 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:55:23.811 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:56:14.129 [JavaFX Application Thread] WARN  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Failed to resolve address: Unknown logical name: 'dsfsfs'. Available names: [adc_ch3_raw, adc_ch0_raw, calibration_data, adc_ch1_raw, status_register, pwm_enable, gpio_port_a, gpio_port_b, temperature_sensor, mode_flag, voltage_output, result_status, current_input, pwm_frequency, error_code, adc_ch2_raw, pwm_duty_cycle]
+2026-04-14 14:58:20.207 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 14:58:20.352 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native17908917377146767540\aitt_native.dll
+2026-04-14 14:58:20.355 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 14:58:20.596 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 14:58:20.597 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 14:58:20.810 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 14:58:21.253 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 14:58:21.253 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 14:58:35.563 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: admin
+2026-04-14 14:58:35.567 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User admin authenticated successfully
+2026-04-14 14:58:35.575 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: admin
+2026-04-14 14:58:35.626 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 14:58:35.702 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 14:58:35.704 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 14:58:35.712 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:58:35.713 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:58:38.452 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:58:38.571 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 14:58:38.603 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 14:58:38.611 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:58:38.611 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 14:58:47.059 [JavaFX Application Thread] WARN  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Failed to resolve address: Unknown logical name: 'logic1'. Available names: [adc_ch3_raw, adc_ch0_raw, calibration_data, adc_ch1_raw, status_register, pwm_enable, gpio_port_a, gpio_port_b, temperature_sensor, mode_flag, voltage_output, result_status, current_input, pwm_frequency, error_code, adc_ch2_raw, pwm_duty_cycle]
+2026-04-14 14:59:31.606 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 14:59:31.609 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 14:59:31.610 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 14:59:33.374 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 14:59:33.378 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 14:59:33.378 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 15:00:00.747 [ForkJoinPool.commonPool-worker-2] INFO  com.aerospace.aitt.core.log.AppLogger - [CMMTestService] Generating CMM script for test: ChipsetValidation_1776175118584
+2026-04-14 15:00:00.747 [ForkJoinPool.commonPool-worker-2] ERROR com.aerospace.aitt.core.log.AppLogger - [CMMTestService] Failed to generate CMM script: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+2026-04-14 15:00:00.747 [ForkJoinPool.commonPool-worker-2] ERROR com.aerospace.aitt.core.log.AppLogger - Failed to generate CMM script: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+java.lang.IllegalArgumentException: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+	at com.aerospace.aitt.testdev.service.CMMTestService.lambda$generateTestScript$0(CMMTestService.java:68)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+2026-04-14 15:00:08.298 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.log.AppLogger - [TestDevController] Script generation error: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+2026-04-14 15:00:08.299 [JavaFX Application Thread] ERROR com.aerospace.aitt.core.log.AppLogger - Script generation error: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+java.util.concurrent.CompletionException: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:315)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:320)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1770)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.RuntimeException: Script generation failed: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+	at com.aerospace.aitt.testdev.service.CMMTestService.lambda$generateTestScript$0(CMMTestService.java:92)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	... 6 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Invalid logical name: logic1. Run getAvailableLogicalNames() for valid options.
+	at com.aerospace.aitt.testdev.service.CMMTestService.lambda$generateTestScript$0(CMMTestService.java:68)
+	... 7 common frames omitted
+2026-04-14 15:00:22.526 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Returning to dashboard from CMM Test Development module
+2026-04-14 15:00:22.528 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 15:00:22.528 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 15:00:33.694 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 15:11:31.002 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down
+2026-04-14 15:17:49.592 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Starting JavaFX application
+2026-04-14 15:17:49.729 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.log.AppLogger - [HardwareBridge] Native library extracted and loaded from: C:\Users\THINKPAD\AppData\Local\Temp\aitt_native14500867889706140489\aitt_native.dll
+2026-04-14 15:17:49.734 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.shell.MainApp - Native library pre-warmed successfully
+2026-04-14 15:17:49.976 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.config.SettingsStore - Settings loaded from C:\Users\THINKPAD\.aitt\settings.json
+2026-04-14 15:17:49.977 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.ThemeManager - Applied theme: Light
+2026-04-14 15:17:50.176 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.LoginController - Initializing LoginController
+2026-04-14 15:17:50.609 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/login.fxml
+2026-04-14 15:17:50.609 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application UI initialized successfully
+2026-04-14 15:18:19.227 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - Authentication attempt for user: ADMIN
+2026-04-14 15:18:19.231 [ForkJoinPool.commonPool-worker-1] INFO  com.aerospace.aitt.core.auth.AuthService - User ADMIN authenticated successfully
+2026-04-14 15:18:19.241 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.LoginController - Login successful for user: ADMIN
+2026-04-14 15:18:19.291 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Initializing DashboardController
+2026-04-14 15:18:19.374 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Navigation sound loaded
+2026-04-14 15:18:19.377 [JavaFX Application Thread] DEBUG com.aerospace.aitt.shell.DashboardController - Module carousel initialized with 6 cards
+2026-04-14 15:18:19.384 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Dashboard displayed
+2026-04-14 15:18:19.384 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/dashboard.fxml
+2026-04-14 15:18:22.358 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.DashboardController - Opening Test Development Module
+2026-04-14 15:18:22.470 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] Initializing TestDevController
+2026-04-14 15:18:22.490 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] TestDevController initialized successfully
+2026-04-14 15:18:22.494 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.log.AppLogger - [TestDevController] CMM Test Development module displayed
+2026-04-14 15:18:22.494 [JavaFX Application Thread] INFO  com.aerospace.aitt.core.ui.StageManager - Switched to scene: /fxml/testdev.fxml
+2026-04-14 15:19:06.721 [JavaFX Application Thread] INFO  com.aerospace.aitt.shell.MainApp - Application shutting down

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\src\aitt_native.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\src\jni_bindings.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\src\chipset_s32k148.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\src\chipset_mpc5777m.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\include\aitt_native.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\THINKPAD\Desktop\Eron\aitt\native\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{27D389B7-FDCE-318B-A17E-FBB1D382A141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AB6401D7-C7F7-3800-BD8E-B88443AA6544}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

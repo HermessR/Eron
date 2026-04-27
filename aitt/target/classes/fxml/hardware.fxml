@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="module-container"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.aerospace.aitt.hardware.ui.HardwareController">
+    
+    <!-- Top Header -->
+    <top>
+        <VBox spacing="0">
+            <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="10">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                </padding>
+                
+                <Button text="← Back" styleClass="back-button" onAction="#handleBack"/>
+                <Separator orientation="VERTICAL"/>
+                <Label styleClass="module-header-title" text="Hardware Probe Manager"/>
+                
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <!-- Chipset Selection -->
+                <Label text="Target Chipset:"/>
+                <ComboBox fx:id="chipsetComboBox" prefWidth="150"/>
+                
+                <Separator orientation="VERTICAL"/>
+                
+                <VBox spacing="2">
+                    <Label fx:id="lblConnectionStatus" styleClass="profile-info" text="Status: Disconnected"/>
+                    <Label fx:id="lblNativeVersion" styleClass="profile-info-small" text="Native: -"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Loading Progress Bar -->
+            <StackPane fx:id="loadingPane" styleClass="progress-container" managed="false" visible="false">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="8" right="20" bottom="8" left="20"/>
+                    </padding>
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <HBox spacing="10">
+                            <Label fx:id="lblLoadingStatus" styleClass="status-label" text="Processing..."/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Button fx:id="btnCancelOperation" text="Cancel" styleClass="abort-button" 
+                                    onAction="#handleCancelOperation"/>
+                        </HBox>
+                        <ProgressBar fx:id="mainProgressBar" progress="-1" maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+            </StackPane>
+        </VBox>
+    </top>
+    
+    <!-- Center Content -->
+    <center>
+        <SplitPane dividerPositions="0.4" orientation="HORIZONTAL">
+            <!-- Left Panel - Probe Detection & Connection -->
+            <VBox spacing="10" styleClass="panel">
+                <padding>
+                    <Insets top="8" right="8" bottom="8" left="8"/>
+                </padding>
+                
+                <!-- Probe Detection Section -->
+                <Label styleClass="panel-title" text="Hardware Detection"/>
+                
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="btnScanHardware" text="🔍 Scan Probes" styleClass="action-button"/>
+                    <Button fx:id="btnScanPorts" text="🔌 Scan Ports" styleClass="action-button-secondary"/>
+                    <ProgressIndicator fx:id="scanProgress" prefWidth="20" prefHeight="20" visible="false"/>
+                </HBox>
+                
+                <Label fx:id="lblScanStatus" styleClass="field-hint" text="Click 'Scan Probes' to detect connected debug hardware"/>
+                
+                <ListView fx:id="probeListView" VBox.vgrow="ALWAYS" styleClass="probe-list">
+                    <placeholder>
+                        <Label text="No probes detected. Connect hardware and scan." styleClass="table-placeholder"/>
+                    </placeholder>
+                </ListView>
+                
+                <Separator/>
+                
+                <!-- Connection Section -->
+                <Label styleClass="panel-title" text="Connection"/>
+                
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="btnConnect" text="▶ Connect" styleClass="primary-button" prefWidth="120"/>
+                    <Button fx:id="btnDisconnect" text="■ Disconnect" styleClass="action-button-secondary" prefWidth="120"/>
+                </HBox>
+                
+                <GridPane hgap="10" vgap="8" styleClass="info-grid">
+                    <Label text="Probe:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="field-label"/>
+                    <Label fx:id="lblProbeInfo" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="field-value"/>
+                    
+                    <Label text="Interface:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="field-label"/>
+                    <Label fx:id="lblInterfaceType" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="field-value"/>
+                </GridPane>
+            </VBox>
+            
+            <!-- Right Panel - Commands & Log -->
+            <SplitPane dividerPositions="0.35" orientation="VERTICAL">
+                <!-- Command Panel -->
+                <VBox spacing="10" styleClass="panel">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <Label styleClass="panel-title" text="Quick Commands"/>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="btnSystemUp" text="System.Up" styleClass="action-button" prefWidth="100"/>
+                        <Button fx:id="btnSystemReset" text="System.Reset" styleClass="action-button" prefWidth="100"/>
+                        <Button fx:id="btnBreak" text="Break" styleClass="action-button-secondary" prefWidth="80"/>
+                        <Button fx:id="btnGo" text="Go" styleClass="execute-button" prefWidth="80"/>
+                    </HBox>
+                    
+                    <Separator/>
+                    
+                    <Label styleClass="panel-title" text="Custom Command"/>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="txtCommand" HBox.hgrow="ALWAYS" 
+                                   promptText="Enter CMM command (e.g., Data.Dump 0x08000000)..."/>
+                        <Button fx:id="btnSendCommand" text="Send" styleClass="primary-button" prefWidth="80"/>
+                    </HBox>
+                    
+                    <Label styleClass="field-hint" text="Enter any valid CMM/PRACTICE command to execute on target"/>
+                </VBox>
+                
+                <!-- Log Panel -->
+                <VBox spacing="10" styleClass="panel">
+                    <padding>
+                        <Insets top="8" right="8" bottom="8" left="8"/>
+                    </padding>
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label styleClass="panel-title" text="Command Output"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnClearLog" text="Clear" styleClass="small-button"/>
+                    </HBox>
+                    
+                    <TextArea fx:id="logArea" VBox.vgrow="ALWAYS" editable="false" 
+                              wrapText="true" styleClass="log-area"
+                              promptText="Command output will appear here..."/>
+                </VBox>
+            </SplitPane>
+        </SplitPane>
+    </center>
+    
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="6" right="15" bottom="6" left="15"/>
+            </padding>
+            
+            <Label fx:id="lblStatusBar" text="Ready" styleClass="status-text"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="lblConnectedProbe" text="No probe connected" styleClass="status-text"/>
+            <Separator orientation="VERTICAL"/>
+            <Label fx:id="lblChipsetInfo" text="Chipset: None" styleClass="status-text"/>
+        </HBox>
+    </bottom>
+</BorderPane>
